@@ -20,7 +20,7 @@ const heroSlides = [
     title: 'Die Seiser Alm wartet auf Sie',
   },
   {
-    image: '/images/hof/Südtirol Sommer Rittner Horn.jpeg',
+    image: '/images/hof/Suedtirol Sommer Rittner Horn.jpeg',
     subtitle: 'Berge, Täler & Kultur',
     title: 'Südtirol entdecken',
   },
@@ -39,7 +39,7 @@ const apartments = [
     floor: 'Erdgeschoss',
     bedrooms: '2',
     highlight: 'Geräumige Wohnung mit privater Terrasse, perfekt für Familien mit Kindern.',
-    image: '/images/ferienwohnungen/Ost Wohnbereich höhere Pixel.jpg',
+    image: '/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg',
     badge: 'Besonders kinderfreundlich',
   },
   {
@@ -63,23 +63,23 @@ const apartments = [
     badge: 'Besonders kinderfreundlich',
   },
   {
-    name: 'Wohnung Südost',
+    name: 'Wohnung Suedost',
     slug: 'suedost',
     persons: '6',
     floor: '1. Obergeschoss',
     bedrooms: '3',
-    highlight: 'Unsere größte Wohnung mit Wintergarten – ideal für größere Familien oder Gruppen.',
-    image: '/images/ferienwohnungen/Südost Wintergarten.jpg',
+    highlight: 'Unsere größte Wohnung mit Wintergarten – ideal für größere Familien.',
+    image: '/images/ferienwohnungen/Suedost Wintergarten.jpg',
     badge: 'Bis 6 Personen',
   },
   {
-    name: 'Wohnung Südwest',
+    name: 'Wohnung Suedwest',
     slug: 'suedwest',
     persons: '4–5',
     floor: 'Erdgeschoss',
     bedrooms: '2',
     highlight: 'Sonnige Wohnung mit Wintergarten und eigenem Außenbereich mit Grill.',
-    image: '/images/ferienwohnungen/Südwest Wintergarten 1.jpeg',
+    image: '/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg',
     badge: 'Besonders kinderfreundlich',
   },
 ];
@@ -114,98 +114,116 @@ const featuredReviews = [
 
 <Layout title="Urlaub am Bauernhof in Südtirol">
 
-  <!-- HERO SLIDER -->
+  <!-- ═══ HERO ═══ -->
   <div class="hero-slider relative h-screen overflow-hidden">
     <div class="swiper h-full" id="hero-swiper">
       <div class="swiper-wrapper">
         {heroSlides.map((slide) => (
           <div class="swiper-slide relative">
-            <img
-              src={slide.image}
-              alt={slide.title}
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-            <div class="absolute inset-0 bg-hero-gradient"></div>
+            <img src={slide.image} alt={slide.title} class="w-full h-full object-cover" loading="eager" />
+            <div class="absolute inset-0" style="background:radial-gradient(ellipse at center,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.2) 60%,rgba(0,0,0,0.45) 100%)"></div>
+            <div class="absolute inset-x-0 top-0 h-48" style="background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%)"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-              <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gold mb-4 font-sans">{slide.subtitle}</p>
-              <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-tight">{slide.title}</h2>
+              <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gold mb-4 font-sans" style="text-shadow:0 1px 8px rgba(0,0,0,0.8),0 0 30px rgba(0,0,0,0.5)">{slide.subtitle}</p>
+              <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-tight" style="text-shadow:0 2px 4px rgba(0,0,0,0.9),0 4px 20px rgba(0,0,0,0.7),0 8px 40px rgba(0,0,0,0.5)">{slide.title}</h2>
             </div>
           </div>
         ))}
       </div>
-      <div class="swiper-pagination absolute bottom-8 z-10"></div>
+      <div class="swiper-pagination absolute bottom-10 z-10"></div>
     </div>
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-white animate-bounce">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-white/70 animate-bounce">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
       </svg>
     </div>
   </div>
 
-  <!-- INTRO -->
-  <section class="py-24 md:py-32 bg-linen">
-    <div class="container mx-auto px-6 md:px-12">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in">
-          <p class="section-subtitle">Familie Griesser · Kastelruth</p>
+  <!-- ═══ INTRO ═══ -->
+  <section class="bg-linen">
+    <div class="grid lg:grid-cols-2 min-h-[85vh]">
+
+      <!-- Image — fills left column completely -->
+      <div class="relative min-h-[50vh] lg:min-h-0 overflow-hidden fade-in">
+        <img
+          src="/images/hof/Koflerhof Hofumgebung Sommer.jpg"
+          alt="Koflerhof Südtirol"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <!-- Subtle floating badge -->
+        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm px-6 py-4 shadow-lg">
+          <p class="text-xs tracking-[0.25em] uppercase text-forest-700 font-sans">Seit Generationen</p>
+          <p class="font-serif text-lg text-stone-800 mt-0.5">Familie Griesser · Kastelruth</p>
+        </div>
+      </div>
+
+      <!-- Text — right column, vertically centered -->
+      <div class="flex items-center px-10 md:px-16 lg:px-20 py-20 fade-in">
+        <div class="max-w-lg">
+          <p class="section-subtitle">Herzlich willkommen</p>
           <h1 class="section-title mb-6">
-            Urlaub auf dem Bauernhof –<br/>
-            <em class="font-normal italic text-earth-700">herzlich &amp; unvergesslich</em>
+            Urlaub auf dem<br/>
+            Bauernhof –<br/>
+            <em class="font-normal italic text-earth-700">unvergesslich</em>
           </h1>
           <div class="deco-line mx-0 mb-8"></div>
-          <p class="prose-kofler mb-6">
-            Willkommen auf dem Koflerhof! Inmitten des malerischen Eisacktals, nur wenige Kilometer
-            von Kastelruth entfernt, erwartet Sie unser Familienbetrieb mit fünf liebevoll eingerichteten
-            Ferienwohnungen.
+          <p class="prose-kofler mb-5">
+            Inmitten des malerischen Eisacktals, nur wenige Kilometer von Kastelruth entfernt,
+            erwartet Sie der Koflerhof mit fünf liebevoll eingerichteten Ferienwohnungen,
+            echtem Bauernhofleben und der ganzen Herzlichkeit unserer Familie.
           </p>
-          <p class="prose-kofler mb-8">
-            Genießen Sie die Ruhe der Südtiroler Natur, frische Luft, herzliche Gastfreundschaft und
-            die ideale Lage für Wanderungen, Skifahren und Kulturausflüge. Die berühmte Seiser Alm
-            erreichen Sie in nur 10 Minuten mit dem Auto.
+          <p class="prose-kofler mb-10">
+            Die Seiser Alm erreichen Sie in 10 Minuten, Skigebiete, Wanderwege und charmante
+            Südtiroler Städtchen liegen direkt vor Ihrer Haustür.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="/ferienwohnungen" class="btn-primary">Wohnungen entdecken</a>
             <a href="/anfrage" class="btn-outline">Anfrage senden</a>
           </div>
         </div>
-
-        <div class="fade-in grid grid-cols-2 gap-3">
-          <div class="space-y-3">
-            <img src="/images/hof/Familie Griesser.jpg" alt="Familie Griesser" class="w-full aspect-[3/4] object-cover object-top" />
-            <img src="/images/hof/Tiere Ziegen füttern.jpeg" alt="Ziegen füttern" class="w-full aspect-square object-cover" />
-          </div>
-          <div class="space-y-3 mt-8">
-            <img src="/images/hof/Garten Pool 1.png" alt="Pool im Garten" class="w-full aspect-square object-cover" />
-            <img src="/images/hof/Garten Gartenhütte.jpg" alt="Gartenhütte" class="w-full aspect-[3/4] object-cover" />
-          </div>
-        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- HIGHLIGHTS STRIP -->
-  <section class="bg-forest-700 text-white py-16">
+  <!-- ═══ HIGHLIGHTS STRIP ═══ -->
+  <section class="bg-forest-700 text-white py-14">
     <div class="container mx-auto px-6 md:px-12">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20">
         {[
-          { icon: '🏔️', label: 'Seiser Alm', sub: '10 Minuten entfernt' },
-          { icon: '🏠', label: '5 Wohnungen', sub: 'Für 3–6 Personen' },
-          { icon: '🐐', label: 'Bauernhofleben', sub: 'Tiere & frische Natur' },
-          { icon: '🎿', label: 'Skigebiete', sub: '10–20 Minuten entfernt' },
+          { icon: '🏔️', label: 'Seiser Alm', sub: '10 Min. entfernt' },
+          { icon: '🏠', label: '5 Wohnungen', sub: 'für 3–6 Personen' },
+          { icon: '🐐', label: 'Bauernhofleben', sub: 'Tiere & Natur' },
+          { icon: '🎿', label: 'Skigebiete', sub: '10–20 Min. entfernt' },
         ].map(item => (
-          <div class="fade-in">
-            <div class="text-4xl mb-3">{item.icon}</div>
-            <div class="font-serif text-xl text-gold mb-1">{item.label}</div>
-            <div class="text-sm text-white/70 tracking-wider">{item.sub}</div>
+          <div class="fade-in text-center py-4 px-6">
+            <div class="text-4xl mb-2">{item.icon}</div>
+            <div class="font-serif text-lg text-gold leading-tight">{item.label}</div>
+            <div class="text-xs text-white/60 tracking-wider mt-1">{item.sub}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- APARTMENTS -->
+  <!-- ═══ FULL-BLEED PANORAMA ═══ -->
+  <div class="relative h-[55vh] overflow-hidden fade-in">
+    <img
+      src="/images/hof/Koflerhof Sommer.JPG"
+      alt="Koflerhof"
+      class="w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0) 50%)"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="container mx-auto px-6 md:px-12">
+        <p class="text-xs tracking-[0.35em] uppercase text-gold mb-2" style="text-shadow:0 1px 6px rgba(0,0,0,0.8)">Ihr Zuhause in Südtirol</p>
+        <p class="font-serif text-3xl md:text-5xl text-white max-w-lg leading-snug" style="text-shadow:0 2px 12px rgba(0,0,0,0.7)">Wärme, Natur<br/>und echte Gastfreundschaft</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ APARTMENTS ═══ -->
   <section class="py-24 md:py-32 bg-white">
     <div class="container mx-auto px-6 md:px-12">
       <div class="text-center mb-16 fade-in">
@@ -213,11 +231,10 @@ const featuredReviews = [
         <h2 class="section-title">Unsere Ferienwohnungen</h2>
         <div class="deco-line"></div>
         <p class="prose-kofler max-w-2xl mx-auto mt-6">
-          Jede unserer fünf Wohnungen ist liebevoll eingerichtet und mit allem ausgestattet,
-          was Sie für einen erholsamen Urlaub benötigen.
+          Fünf liebevoll eingerichtete Wohnungen – jede mit eigenem Charakter,
+          alle mit dem Komfort, den Sie für einen erholsamen Urlaub verdienen.
         </p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {apartments.map((apt) => (
           <div class="fade-in">
@@ -225,86 +242,93 @@ const featuredReviews = [
           </div>
         ))}
       </div>
-
-      <div class="text-center mt-12 fade-in">
+      <div class="text-center mt-14 fade-in">
         <a href="/ferienwohnungen" class="btn-outline">Alle Wohnungen vergleichen</a>
       </div>
     </div>
   </section>
 
-  <!-- AMENITIES -->
-  <section class="py-24 md:py-32 bg-cream">
-    <div class="container mx-auto px-6 md:px-12">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in order-2 lg:order-1">
-          <p class="section-subtitle">Alles inklusive</p>
-          <h2 class="section-title mb-6">Was wir für Sie bereithalten</h2>
-          <div class="deco-line mx-0 mb-8"></div>
-          <div class="grid sm:grid-cols-2 gap-4">
-            {[
-              { icon: '🛏️', text: 'Bettwäsche & Handtücher' },
-              { icon: '👶', text: 'Babyausstattung auf Anfrage' },
-              { icon: '🥗', text: 'Gemüse & Kräuter aus dem Garten' },
-              { icon: '🎯', text: 'Tischfußball, Ping Pong & Trampolin' },
-              { icon: '📚', text: 'Wanderbücher & Gesellschaftsspiele' },
-              { icon: '🔥', text: 'Grill & Liegestühle im Garten' },
-              { icon: '🏊', text: 'Pool (saisonal)' },
-              { icon: '🚗', text: 'Parkplatz & Motorradgarage' },
-              { icon: '🥐', text: 'Brötchenservice (auf Wunsch)' },
-              { icon: '🚲', text: 'E-Bike-Verleih vor Ort' },
-              { icon: '📶', text: 'Kostenloses WLAN' },
-              { icon: '❄️', text: 'Klimaanlage & Lüftung' },
-            ].map(item => (
-              <div class="flex items-center gap-3 bg-white p-3 shadow-sm">
-                <span class="text-xl">{item.icon}</span>
-                <span class="text-sm text-stone-700">{item.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div class="fade-in order-1 lg:order-2">
-          <img
-            src="/images/hof/Garten Pool und Trampolin.jpg"
-            alt="Garten mit Pool und Trampolin"
-            class="w-full aspect-[4/5] object-cover shadow-2xl"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ═══ FARM LIFE — full split ═══ -->
+  <section class="bg-cream">
+    <div class="grid lg:grid-cols-2 min-h-[70vh]">
 
-  <!-- FARM LIFE -->
-  <section class="py-24 md:py-32 bg-white">
-    <div class="container mx-auto px-6 md:px-12">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in">
-          <div class="grid grid-cols-2 gap-3">
-            <img src="/images/hof/Tiere Ziege.jpg" alt="Ziege" class="w-full aspect-[4/3] object-cover" />
-            <img src="/images/hof/Tiere Katzen.jpg" alt="Katzen" class="w-full aspect-[4/3] object-cover" />
-            <img src="/images/hof/Tiere Hasen.jpg" alt="Hasen" class="w-full aspect-[4/3] object-cover" />
-            <img src="/images/hof/Tiere Bidu.JPG" alt="Hund Bidu" class="w-full aspect-[4/3] object-cover" />
-          </div>
-        </div>
-        <div class="fade-in">
+      <!-- Images — 2×2 grid fills entire left column -->
+      <div class="grid grid-cols-2 fade-in">
+        <img src="/images/hof/Tiere Ziegen fuettern.jpeg" alt="Ziegen füttern" class="w-full h-full object-cover aspect-square" loading="lazy" />
+        <img src="/images/hof/Tiere Katzen.jpg" alt="Katzen" class="w-full h-full object-cover aspect-square" loading="lazy" />
+        <img src="/images/hof/Garten Pool Hund.jpeg" alt="Pool" class="w-full h-full object-cover aspect-square" loading="lazy" />
+        <img src="/images/hof/Garten Trampolin.jpeg" alt="Trampolin" class="w-full h-full object-cover aspect-square" loading="lazy" />
+      </div>
+
+      <!-- Text -->
+      <div class="flex items-center px-10 md:px-16 lg:px-20 py-20 fade-in">
+        <div class="max-w-lg">
           <p class="section-subtitle">Echter Bauernhof</p>
-          <h2 class="section-title mb-6">Das Hofleben genießen</h2>
+          <h2 class="section-title mb-6">Das Hofleben<br/>genießen</h2>
           <div class="deco-line mx-0 mb-8"></div>
-          <p class="prose-kofler mb-6">
-            Auf dem Koflerhof erwartet Sie echtes Bauernhofleben: Streichelzoo mit Ziegen, Hasen
-            und Katzen, unser freundlicher Hofhund Bidu, frische Kräuter und Gemüse aus dem
-            eigenen Garten und die selbstgemachte Himbeermarmelade.
+          <p class="prose-kofler mb-5">
+            Ziegen, Hasen, Katzen und Hofhund Bidu – auf dem Koflerhof erwartet Sie
+            echtes Landleben. Kinder lieben die Tiere, den Spielplatz und das große Trampolin.
           </p>
-          <p class="prose-kofler mb-8">
-            Kinder lieben es, die Tiere zu füttern und im großen Garten zu spielen.
-            Für Eltern bietet der Koflerhof die richtige Mischung aus Abenteuer und Erholung.
+          <p class="prose-kofler mb-10">
+            Im Sommer profitieren Sie von frischem Gemüse und Kräutern aus unserem Garten,
+            hausgemachter Himbeermarmelade und dem Pool zum Abkühlen nach einem langen Wandertag.
           </p>
           <a href="/hofleben" class="btn-primary">Hofleben entdecken</a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- SEASONS -->
+  <!-- ═══ AMENITIES ═══ -->
+  <section class="bg-white">
+    <div class="grid lg:grid-cols-2 min-h-[60vh]">
+
+      <!-- Text -->
+      <div class="flex items-center px-10 md:px-16 lg:px-20 py-20 order-2 lg:order-1 fade-in">
+        <div class="max-w-lg">
+          <p class="section-subtitle">Alles inklusive</p>
+          <h2 class="section-title mb-6">Was wir für Sie<br/>bereithalten</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <div class="grid grid-cols-2 gap-y-3 gap-x-6">
+            {[
+              'Bettwäsche & Handtücher',
+              'Schwimmbad (saisonal)',
+              'Babyausstattung',
+              'Brötchenservice',
+              'Garten & Grill',
+              'E-Bike-Verleih',
+              'Trampolin & Spielplatz',
+              'Kostenloses WLAN',
+              'Frisches Gartengemüse',
+              'Motorradgarage',
+              'Wanderbücher & Spiele',
+              'Klimaanlage & Lüftung',
+            ].map(item => (
+              <div class="flex items-center gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-600">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="relative min-h-[50vh] lg:min-h-0 overflow-hidden order-1 lg:order-2 fade-in">
+        <img
+          src="/images/hof/Garten Pool und Trampolin.jpg"
+          alt="Garten mit Pool und Trampolin"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SEASONS ═══ (belassen wie der Nutzer es mag) -->
   <section class="py-24 md:py-32 bg-stone-900 text-white relative overflow-hidden">
     <img
       src="/images/hof/Seiser Alm Winter 1.jpeg"
@@ -321,7 +345,7 @@ const featuredReviews = [
         {[
           { season: 'Frühling', href: '/jahreszeiten/fruehling', image: '/images/hof/Blumen 1.jpg', text: 'Erwachende Natur, erste Wanderungen und frische Bergluft.' },
           { season: 'Sommer', href: '/jahreszeiten/sommer', image: '/images/hof/Seiser Alm.jpg', text: 'Wandern, Radfahren, Pool und unvergessliche Bergpanoramen.' },
-          { season: 'Herbst', href: '/jahreszeiten/herbst', image: '/images/hof/Herbst Törggelen.jpeg', text: 'Goldene Weinberge, Törggelen und bunte Herbstpracht.' },
+          { season: 'Herbst', href: '/jahreszeiten/herbst', image: '/images/hof/Herbst Toerggelen.jpeg', text: 'Goldene Weinberge, Törggelen und bunte Herbstpracht.' },
           { season: 'Winter', href: '/jahreszeiten/winter', image: '/images/hof/Winter Skifahren.jpeg', text: 'Skifahren, Winterwandern und Weihnachtsmärkte.' },
         ].map(item => (
           <a href={item.href} class="group block fade-in">
@@ -342,50 +366,59 @@ const featuredReviews = [
     </div>
   </section>
 
-  <!-- ANGEBOTE -->
-  <section class="py-24 md:py-32 bg-cream">
+  <!-- ═══ ANGEBOTE ═══ -->
+  <section class="py-24 md:py-32 bg-linen">
     <div class="container mx-auto px-6 md:px-12">
       <div class="text-center mb-16 fade-in">
         <p class="section-subtitle">Spezielle Pakete</p>
         <h2 class="section-title">Unsere Angebote</h2>
         <div class="deco-line"></div>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- 3 featured offers in a horizontal scroller on mobile, grid on desktop -->
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
         {[
-          { title: 'Frühlingserwachen', dates: '14. März – 28. März 2026', price: 'ab 495 €', desc: 'Frühlingswanderungen und die erwachende Natur Südtirols erleben.', image: '/images/hof/Blumen 2.jpg' },
-          { title: 'Blütezeit', dates: '11. April – 9. Mai 2026', price: 'ab 505 €', desc: '7 Nächte für 2 Personen inkl. Mobilcard – alle Verkehrsmittel kostenlos.', image: '/images/hof/Blumen 3.jpg' },
-          { title: 'Törggelezeit', dates: '24. Okt. – 14. Nov. 2026', price: 'ab 495 €', desc: 'Kastanienwege, Rotwein und Speck – die Südtiroler Törggele-Zeit.', image: '/images/hof/Herbst Törggelen 1.jpeg' },
-          { title: 'Kultur & Kulinarikwoche', dates: '14. Nov. – 5. Dez. 2026', price: 'ab 380 €', desc: 'Städte, Weihnachtsmärkte und erste Advent-Momente in Südtirol.', image: '/images/hof/Weihnachten Adventskranz.jpeg' },
-          { title: 'Winterwander- & Skiwochen', dates: '9. Jan. – 30. Jan. 2027', price: 'ab 460 €', desc: '7 Nächte inkl. Mobilcard – Skifahren, Winterwandern und Schneeschuh.', image: '/images/hof/Seiser Alm Winter 2.jpeg' },
-          { title: 'Last Minute', dates: 'Bis 7 Tage vor Anreise', price: '–30% Rabatt', desc: 'Spontan entschlossen? Bis zu 30% Rabatt auf den regulären Preis.', image: '/images/hof/Sonnenuntergang.jpg' },
+          { title: 'Frühlingserwachen', dates: '14. März – 28. März 2026', price: 'ab 495 €', desc: 'Erste Wanderungen, blühende Täler und die erwachende Natur Südtirols.', image: '/images/hof/Blumen 2.jpg' },
+          { title: 'Törggelezeit', dates: '24. Okt. – 14. Nov. 2026', price: 'ab 495 €', desc: 'Kastanienwege, Rotwein und Speck – das Südtirol der Sinne.', image: '/images/hof/Herbst Toerggelen 1.jpeg' },
+          { title: 'Winterwander- & Skiwochen', dates: '9. Jan. – 30. Jan. 2027', price: 'ab 460 €', desc: '7 Nächte inkl. Mobilcard – Skifahren auf der Seiser Alm & in Gröden.', image: '/images/hof/Seiser Alm Winter 2.jpeg' },
         ].map(offer => (
-          <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 fade-in">
-            <div class="relative aspect-video overflow-hidden">
+          <div class="group overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-500 fade-in">
+            <div class="relative aspect-[4/3] overflow-hidden">
               <img src={offer.image} alt={offer.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-              <div class="absolute top-4 right-4 bg-gold text-stone-900 font-serif text-lg px-4 py-1.5 shadow">{offer.price}</div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <p class="text-xs tracking-widest uppercase text-gold/80 mb-1">{offer.dates}</p>
+                <div class="flex items-end justify-between">
+                  <h3 class="font-serif text-xl text-white leading-tight">{offer.title}</h3>
+                  <span class="font-serif text-xl text-gold shrink-0 ml-3">{offer.price}</span>
+                </div>
+              </div>
             </div>
             <div class="p-6">
-              <p class="text-xs tracking-widest uppercase text-stone-400 mb-2">{offer.dates}</p>
-              <h3 class="font-serif text-xl text-stone-800 mb-3">{offer.title}</h3>
               <p class="text-stone-600 text-sm leading-relaxed">{offer.desc}</p>
+              <a href="/angebote" class="inline-flex items-center gap-2 mt-4 text-forest-700 text-sm font-medium tracking-wider hover:text-gold transition-colors">
+                Details ansehen
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
             </div>
           </div>
         ))}
       </div>
-      <div class="text-center mt-12 fade-in">
-        <a href="/angebote" class="btn-primary">Alle Angebote ansehen</a>
+
+      <div class="text-center fade-in">
+        <a href="/angebote" class="btn-primary">Alle 6 Angebote ansehen</a>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- ═══ REVIEWS ═══ -->
   <section class="py-24 md:py-32 bg-white">
     <div class="container mx-auto px-6 md:px-12">
       <div class="text-center mb-16 fade-in">
         <p class="section-subtitle">Was unsere Gäste sagen</p>
         <h2 class="section-title">Bewertungen</h2>
         <div class="deco-line"></div>
-        <p class="text-stone-500 text-sm mt-4 tracking-wider">Echte Bewertungen von Google, Booking.com, TripAdvisor & Co.</p>
+        <p class="text-stone-400 text-sm mt-4 tracking-wider">Echte Bewertungen von Google, Booking.com, TripAdvisor & Co.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         {featuredReviews.map(review => (
@@ -400,36 +433,43 @@ const featuredReviews = [
     </div>
   </section>
 
-  <!-- FAMILY CTA -->
-  <section class="py-24 md:py-32 bg-forest-700 text-white">
-    <div class="container mx-auto px-6 md:px-12">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in">
+  <!-- ═══ FAMILY CTA — full-bleed split ═══ -->
+  <section class="bg-forest-700">
+    <div class="grid lg:grid-cols-2 min-h-[65vh]">
+
+      <!-- Image -->
+      <div class="relative min-h-[50vh] lg:min-h-0 overflow-hidden fade-in">
+        <img
+          src="/images/hof/Familie Griesser 2.jpg"
+          alt="Familie Griesser"
+          class="absolute inset-0 w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="flex items-center px-10 md:px-16 lg:px-20 py-20 fade-in">
+        <div class="max-w-lg">
           <p class="text-xs tracking-[0.35em] uppercase text-gold mb-3">Persönlich &amp; herzlich</p>
           <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
             Wir freuen uns auf<br/>
             <em class="italic font-normal text-gold">Ihren Besuch!</em>
           </h2>
-          <div class="w-16 h-0.5 bg-gold mb-8"></div>
-          <p class="text-white/80 text-lg leading-relaxed mb-8">
-            Als Gastgeberfamilie liegt uns das Wohlbefinden unserer Gäste am Herzen.
-            Bei Fragen zur Anreise, zu Ausflugszielen oder zum Hof selbst steht Ihnen
-            Bäuerin Verena gerne persönlich zur Verfügung.
+          <div class="w-16 h-0.5 bg-gold/50 mb-8"></div>
+          <p class="text-white/80 text-lg leading-relaxed mb-10">
+            Als Gastgeberfamilie liegt uns Ihr Wohlbefinden am Herzen.
+            Bei Fragen zu Anreise, Ausflügen oder dem Hof selbst
+            steht Ihnen Bäuerin Verena gerne persönlich zur Verfügung.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="/anfrage" class="btn-gold">Unverbindlich anfragen</a>
-            <a href="/lage" class="inline-block border-2 border-white/40 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors">Lage ansehen</a>
+            <a href="/lage" class="inline-block border border-white/30 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors">
+              Anfahrt ansehen
+            </a>
           </div>
         </div>
-        <div class="fade-in">
-          <img
-            src="/images/hof/Familie Griesser 2.jpg"
-            alt="Familie Griesser – Ihre Gastgeber"
-            class="w-full aspect-[4/3] object-cover object-top shadow-2xl"
-          />
-          <p class="text-white/60 text-sm mt-4 text-center tracking-wider italic">Familie Griesser – Ihre Gastgeber auf dem Koflerhof</p>
-        </div>
       </div>
+
     </div>
   </section>
 

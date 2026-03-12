@@ -55,7 +55,14 @@
 
   /* Nav link */
   .nav-link {
-    @apply text-sm tracking-widest uppercase font-sans hover:text-gold transition-colors duration-200;
+    @apply text-[15px] tracking-[0.15em] uppercase font-sans font-semibold hover:text-gold transition-colors duration-200 relative pb-0.5;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
   }
 }
 

@@ -7,17 +7,17 @@ const gardenGallery = [
   { src: '/images/hof/Garten Pool und Spielbereich.jpg', alt: 'Pool und Spielbereich' },
   { src: '/images/hof/Garten Pool und Trampolin.jpg', alt: 'Pool und Trampolin' },
   { src: '/images/hof/Garten Liegewiese.jpeg', alt: 'Liegewiese' },
-  { src: '/images/hof/Garten Liegestühle.jpeg', alt: 'Liegestühle' },
+  { src: '/images/hof/Garten Liegestuehle.jpeg', alt: 'Liegestühle' },
   { src: '/images/hof/Garten Trampolin.jpeg', alt: 'Trampolin' },
   { src: '/images/hof/Garten Ping Pong.jpeg', alt: 'Ping Pong' },
-  { src: '/images/hof/Garten Gartenhütte.jpg', alt: 'Gartenhütte' },
-  { src: '/images/hof/Gartenhütte Tisch.jpg', alt: 'Gartenhütte Tisch' },
+  { src: '/images/hof/Garten Gartenhuette.jpg', alt: 'Gartenhütte' },
+  { src: '/images/hof/Gartenhuette Tisch.jpg', alt: 'Gartenhuette Tisch' },
   { src: '/images/hof/Garten Liegewiese Spielplatz.jpg', alt: 'Spielplatz' },
 ];
 
 const animalsGallery = [
   { src: '/images/hof/Tiere Ziege.jpg', alt: 'Ziege' },
-  { src: '/images/hof/Tiere Ziegen füttern.jpeg', alt: 'Ziegen füttern' },
+  { src: '/images/hof/Tiere Ziegen fuettern.jpeg', alt: 'Ziegen füttern' },
   { src: '/images/hof/Tiere Ziegen Hund.jpg', alt: 'Ziegen und Hund Bidu' },
   { src: '/images/hof/Tiere Hasen.jpg', alt: 'Hasen' },
   { src: '/images/hof/Tiere Hasen Kopie.jpg', alt: 'Hasen 2' },
@@ -27,9 +27,9 @@ const animalsGallery = [
 
 const gardenProduce = [
   { src: '/images/hof/Garten Gemüse.JPG', alt: 'Gemüse aus dem Garten' },
-  { src: '/images/hof/Garten Kräuter.jpeg', alt: 'Kräuter' },
+  { src: '/images/hof/Garten Kraeuter.jpeg', alt: 'Kräuter' },
   { src: '/images/hof/Garten Pfirsiche.JPG', alt: 'Pfirsiche' },
-  { src: '/images/hof/Garten Nüsse.jpg', alt: 'Nüsse' },
+  { src: '/images/hof/Garten Nuesse.jpg', alt: 'Nüsse' },
   { src: '/images/hof/Himbeeren.jpg', alt: 'Himbeeren' },
   { src: '/images/hof/Apfelstrudel.png', alt: 'Hausgemachter Apfelstrudel' },
 ];
@@ -179,8 +179,8 @@ const gardenProduce = [
           {[
             { apt: 'Wohnung Ost & West', desc: 'Erdgeschoss auf der Nordseite des Hauses. Parkplatz links von der Zufahrt.' },
             { apt: 'Wohnung West 2', desc: 'Zugang über die Westseite des Hauses, Treppe hinauf in das erste Obergeschoss.' },
-            { apt: 'Wohnung Südost', desc: 'Zugang über die Ostseite des Hauses, Treppe hinauf in das erste Obergeschoss.' },
-            { apt: 'Wohnung Südwest', desc: 'Zugang über die Westseite des Hauses, Erdgeschoss.' },
+            { apt: 'Wohnung Suedost', desc: 'Zugang über die Ostseite des Hauses, Treppe hinauf in das erste Obergeschoss.' },
+            { apt: 'Wohnung Suedwest', desc: 'Zugang über die Westseite des Hauses, Erdgeschoss.' },
           ].map(item => (
             <div class="bg-white/10 p-6 border border-white/20">
               <h3 class="font-serif text-xl text-gold mb-2">{item.apt}</h3>
@@ -209,10 +209,10 @@ const gardenProduce = [
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { title: 'Wanderwege', image: '/images/hof/Südtirol Sommer Rittner Horn.jpeg', text: 'Waldwege direkt vom Hof, Tipps im Hofmappen-Guide' },
+          { title: 'Wanderwege', image: '/images/hof/Suedtirol Sommer Rittner Horn.jpeg', text: 'Waldwege direkt vom Hof, Tipps im Hofmappen-Guide' },
           { title: 'Seiser Alm', image: '/images/hof/Seiser Alm.jpg', text: 'Größtes Hochalm-Plateau Europas, nur 10 Minuten entfernt' },
           { title: 'Kastelruth', image: '/images/hof/Kastelruth Kirche.jpg', text: 'Malerisches Dorf mit historischem Ortskern, 15 Minuten entfernt' },
-          { title: 'Südtirol', image: '/images/hof/Südtirol Weinberg.jpeg', text: 'Weinberge, Dolomiten, Kultur und Kulinarik rund um den Hof' },
+          { title: 'Südtirol', image: '/images/hof/Suedtirol Weinberg.jpeg', text: 'Weinberge, Dolomiten, Kultur und Kulinarik rund um den Hof' },
         ].map(item => (
           <div class="fade-in bg-white shadow-sm overflow-hidden">
             <img src={item.image} alt={item.title} class="w-full aspect-video object-cover" loading="lazy" />
