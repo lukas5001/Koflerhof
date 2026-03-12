@@ -1,0 +1,316 @@
+================================================================================
+KOFLERHOF WEBSITE – PROJEKTÜBERSICHT FÜR KI-KONTEXT
+================================================================================
+Stand: März 2026
+Erstellt für: nahtlose Übergabe an neue KI-Session ohne Kontextverlust
+
+
+--------------------------------------------------------------------------------
+1. PROJEKT-BASICS
+--------------------------------------------------------------------------------
+Projekt:      Website für Koflerhof – Familiengeführter Bauernhof mit
+              Ferienwohnungen in Kastelruth, Südtirol (Italien)
+Betreiber:    Familie Griesser
+Kontakt:      +39 340 4191634 | info@koflerhof.bz
+Sprache:      Deutsch (primär). Italienisch & Englisch geplant, noch nicht umgesetzt.
+
+Lokaler Pfad: /home/lukas/Documents/Projects/Koflerhof/
+GitHub Repo:  https://github.com/lukas5001/Koflerhof  (Branch: main)
+Push-Token:   GITHUB_TOKEN_HIER_EINFUEGEN
+Push-Command: git push https://GITHUB_TOKEN_HIER_EINFUEGEN@github.com/lukas5001/Koflerhof.git main
+
+Hosting:      IONOS VPS (noch nicht konfiguriert – Deployment-Setup steht aus)
+Dev-Server:   npm run dev  →  http://localhost:4321  (Port kann variieren)
+Build:        npm run build  →  dist/  (statische HTML-Ausgabe)
+
+
+--------------------------------------------------------------------------------
+2. TECH-STACK
+--------------------------------------------------------------------------------
+Framework:    Astro 4.5.18  (NICHT Astro 5/6 – der VPS läuft auf Node 18.19.1,
+              Astro 5+ benötigt Node >=22. Astro 4 ist die richtige Version!)
+CSS:          Tailwind CSS 3.4.19
+Fonts:        Google Fonts CDN – Playfair Display (serif), Lato (sans)
+Slider:       Swiper.js 11 (CDN, in Layout.astro eingebunden)
+Lightbox:     Eigene vanilla-JS Implementierung (in Layout.astro)
+Animationen:  Intersection Observer + .fade-in / .fade-in.visible CSS-Klassen
+Sprache:      TypeScript-Unterstützung über Astro, aber kaum verwendet
+
+Wichtige package.json-Abhängigkeiten:
+  astro: ^4.5.18
+  @astrojs/tailwind: ^6.0.2
+  tailwindcss: ^3.4.19
+
+
+--------------------------------------------------------------------------------
+3. FARBPALETTE (tailwind.config.mjs)
+--------------------------------------------------------------------------------
+forest-700:  #2C4A1E  (Dunkelgrün – Primärfarbe, Header, Buttons, Akzente)
+forest-600:  #3e7228  (etwas heller)
+gold:        #C8A95B  (Gold – Akzente, Unterstriche, aktive Nav-Links)
+cream:       #F5F0E8  (Helles Beige – Hintergrund für Karten/Sektionen)
+linen:       #FAF7F2  (Sehr helles Beige – Seiten-Hintergrund)
+earth-700:   #6B3D2E  (Braun – selten verwendet)
+sage:        #8FAF7B  (Salbeigrün – dekorativ)
+stone-*:     Tailwind-Standard (stone-800 für Text, stone-900 für dunkle Bg)
+
+Design-Prinzipien:
+- Warm, alpin, familiär – kein kalter Minimalismus
+- Serif-Headings (Playfair Display), Sans-Body (Lato)
+- Gold-Akzente sparsam einsetzen
+- Sections alternieren zwischen bg-linen, bg-white, bg-cream, bg-forest-700
+
+
+--------------------------------------------------------------------------------
+4. GLOBALE CSS-KLASSEN (src/styles/global.css)
+--------------------------------------------------------------------------------
+.btn-primary     – Grüner Vollbutton (bg-forest-700, weiße Schrift)
+.btn-outline     – Grüner Rahmenbutton
+.btn-gold        – Goldener Vollbutton (bg-gold, dunkle Schrift)
+.section-title   – Großer Serif-Titel (text-4xl/5xl, text-forest-700)
+.section-subtitle– Kleine Beschriftung über Titeln (gold, tracking-widest,
+                   uppercase). ACHTUNG: gold auf weißem Hintergrund ist schlecht
+                   lesbar! In ApartmentCard.astro wurde deshalb stattdessen
+                   text-forest-600 direkt verwendet.
+.prose-kofler    – Fließtext-Stil (text-stone-700, text-lg, leading-relaxed)
+.deco-line       – Goldene horizontale Linie (w-16, h-0.5, bg-gold, mx-auto)
+.nav-link        – Nav-Link-Stil mit Underline-Animation bei Hover
+.fade-in         – Scroll-Animation (opacity:0 → 1, translateY 24px → 0)
+.fade-in.visible – Aktiviert durch IntersectionObserver in Layout.astro
+
+
+--------------------------------------------------------------------------------
+5. DATEISTRUKTUR
+--------------------------------------------------------------------------------
+src/
+├── layouts/
+│   ├── Layout.astro          – Basis-Layout (Head, Header, Footer, Swiper CDN,
+│   │                           Lightbox, IntersectionObserver)
+│   └── ApartmentLayout.astro – Wiederverwendbares Layout für alle 5
+│                               Wohnungs-Detailseiten. Props: title, subtitle,
+│                               description, headerImage, persons, floor,
+│                               bedrooms, extra, badge, beds[], features[],
+│                               inclusions[], gallery[], floorPlan,
+│                               prevApt, nextApt
+├── components/
+│   ├── Header.astro     – Fixierter Header, transparent → dunkel beim Scrollen.
+│   │                      Enthält: Top-Bar (Telefon + Sprachschalter, Desktop
+│   │                      + Mobile-Version), Nav mit Dropdowns, CTA-Button,
+│   │                      Hamburger-Menü für Mobile.
+│   ├── Footer.astro     – 4-spaltig: Brand, Navigation, Wohnungsliste, Kontakt
+│   ├── ApartmentCard.astro – Karte mit Bild, Hover-Zoom, Badge, Stats
+│   │                         Subtitle verwendet text-forest-600 (nicht gold!)
+│   ├── ReviewCard.astro – Bewertungskarte mit Zitat, Sterne, Autor
+│   ├── Gallery.astro    – Grid-Galerie mit Lightbox-Anbindung (onclick)
+│   └── Hero.astro       – (existiert, wird aber derzeit nicht verwendet –
+│                           Hero ist direkt in index.astro eingebaut via Swiper)
+├── pages/
+│   ├── index.astro              – Homepage (siehe Sektion 6)
+│   ├── anfrage.astro            – Kontaktformular (Frontend-only, kein Backend)
+│   ├── angebote.astro           – 3 Angebote mit Preisen
+│   ├── bewertungen.astro        – Gästebewertungen
+│   ├── datenschutz.astro        – Datenschutzerklärung
+│   ├── hofleben.astro           – Hofseite mit Tieren, Garten, Aktivitäten
+│   ├── impressum.astro          – Impressum
+│   ├── lage.astro               – Lage & Anfahrt (Google Maps Embed)
+│   ├── preise.astro             – Preistabelle pro Wohnung
+│   ├── ferienwohnungen/
+│   │   ├── index.astro          – Übersicht aller 5 Wohnungen
+│   │   ├── ost.astro            – Wohnung Ost (EG, 4–5 P., 2 SZ)
+│   │   ├── west.astro           – Wohnung West (EG, 3–4 P., 2 SZ)
+│   │   ├── west2.astro          – Wohnung West 2 (OG, 4 P., 2 SZ)
+│   │   ├── suedost.astro        – Wohnung Südost (OG, 6 P., 3 SZ)
+│   │   └── suedwest.astro       – Wohnung Südwest (EG, 4–5 P., 2 SZ)
+│   └── jahreszeiten/
+│       ├── index.astro          – Übersicht 4 Jahreszeiten
+│       ├── fruehling.astro
+│       ├── sommer.astro
+│       ├── herbst.astro
+│       └── winter.astro
+└── styles/
+    └── global.css               – Tailwind-Imports + Komponenten-Klassen
+
+
+--------------------------------------------------------------------------------
+6. HOMEPAGE (src/pages/index.astro) – SEKTIONEN IN REIHENFOLGE
+--------------------------------------------------------------------------------
+1. HERO SLIDER
+   - Swiper.js mit fade-Effekt, 5 Folien
+   - Jede Folie: Vollbild-Foto + Subtitle + Titel + CTA-Button
+   - Foto 1: Koflerhof Hausansicht Sommer 1.JPG
+   - Foto 2: Garten Pool und Spielbereich.jpg
+   - Foto 3: Seiser Alm.jpg
+   - Foto 4: Suedtirol Sommer Rittner Horn.jpeg
+   - Foto 5: Koflerhof Winter 1.jpg
+   - Overlay: radial-gradient für Text-Lesbarkeit + top-gradient h-48
+   - Text-Schatten: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7)...
+
+2. INTRO – 50/50 Split
+   - Links: Koflerhof Hofumgebung Sommer.jpg (object-center)
+   - Rechts: Willkommens-Text + floating Badge "Seit Generationen / Familie Griesser · Kastelruth"
+   - Überschrift: "Urlaub auf dem Bauernhof – Unvergesslich"
+
+3. HIGHLIGHTS STRIP (bg-forest-700)
+   - 4 Kacheln mit Emoji: 🏔️ Seiser Alm / 🏠 5 Wohnungen / 🐐 Bauernhofleben / 🎿 Skigebiete
+   - Emoji-Version ist GEWOLLT (nicht die Zahlen-Version!)
+
+4. FULL-BLEED PANORAMA
+   - Koflerhof Sommer.JPG, h-[55vh]
+
+5. APARTMENTS GRID
+   - 5 ApartmentCards in md:grid-cols-2 lg:grid-cols-3
+
+6. FARM LIFE – 2×2 Foto-Grid links, Text rechts
+   - Fotos: Tiere Ziegen fuettern.jpeg, Tiere Katzen.jpg,
+            Garten Pool Hund.jpeg, Garten Trampolin.jpeg
+
+7. AMENITIES – Text links, Pool-Bild rechts (full-bleed in Hälfte)
+   - Bild: Garten Pool und Trampolin.jpg
+
+8. SEASONS – "Das ganze Jahr" – 4 Kacheln mit Bild+Text
+   - Diese Sektion ist gut – nicht verändern ohne Rückfrage
+
+9. ANGEBOTE – 3 Karten mit Bild-Overlay
+   - Frühlingserwachen, Törggelezeit, Winterwochen
+
+10. REVIEWS – 3 ReviewCards nebeneinander
+
+11. FAMILY CTA – Split-Section
+    - Links: Familie Griesser 2.jpg (object-top)
+    - Rechts: "Wir freuen uns auf Ihren Besuch!" + CTA-Buttons
+
+
+--------------------------------------------------------------------------------
+7. HEADER (src/components/Header.astro)
+--------------------------------------------------------------------------------
+Struktur:
+- Top-Bar (id="top-bar"):
+  - Mobile: bg-black/20 backdrop-blur-sm, Telefon links, Sprache rechts
+  - Desktop: flex, Telefon + Email links, Sprache rechts
+  - Beim Scrollen (>60px) wird top-bar mit class "hidden" ausgeblendet
+- Main Nav (id="main-nav"):
+  - Logo: "Koflerhof" Playfair Display text-3xl/4xl + Untertitel
+  - Desktop: Nav-Links mit Dropdown für "Ferienwohnungen" & "Südtirol erleben"
+  - Dropdown-Style: gradient background (forest-grün Verlauf), rounded-b-lg,
+    border-top gold, Text weiß/75, hover:gold, hover:pl-8 (slide-Effekt)
+  - CTA-Button: btn-gold "Anfrage senden"
+  - Mobile: Hamburger → Mobile-Menü mit <details> für Dropdowns
+- Scroll-Verhalten: header bekommt bg-stone-900/95 backdrop-blur-md shadow-xl
+- KEIN Gradient auf der Nav selbst (wurde entfernt – war "hässlicher Schatten")
+  Stattdessen: Gradient direkt auf dem Hero-Bild (h-48 top-gradient)
+
+Kontakt im Header:
+  - Telefon: +39 340 4191634 (NUR diese – 0471-Nummer wurde entfernt!)
+  - Email: info@koflerhof.bz (nur Desktop-Top-Bar)
+
+
+--------------------------------------------------------------------------------
+8. BILDER
+--------------------------------------------------------------------------------
+Pfade:
+  public/images/hof/           – Hofbilder, Natur, Jahreszeiten, Familie
+  public/images/ferienwohnungen/  – Wohnungsfotos
+
+WICHTIG – Dateinamen-Konvention:
+  Alle Bilder wurden von macOS-NFD-Encoding auf NFC umbenannt.
+  Umlaute sind AUSGESCHRIEBEN (nicht ä/ö/ü/ß):
+    Südost  → Suedost
+    Südwest → Suedwest
+    Küche   → Kueche
+    Liegestühle → Liegestuehle
+    Kräuter → Kraeuter
+    Nüsse   → Nuesse
+    Gartenhütte → Gartenhuette
+    Törggelen → Toerggelen
+    höhere  → hoehere
+    Groß    → Gross
+
+  Diese Konvention MUSS bei allen neuen Bildreferenzen eingehalten werden!
+
+Wichtige Bilder (hof/):
+  Familie Griesser.jpg          – Familienfoto (in Intro-Sektion NICHT mehr verwendet)
+  Familie Griesser 2.jpg        – Familienfoto 2 (Family CTA, object-top)
+  Koflerhof Hofumgebung Sommer.jpg  – Intro-Sektion links
+  Koflerhof Hausansicht Sommer 1.JPG – Hero Slide 1 + OG-Bild default
+  Koflerhof Sommer.JPG          – Panorama-Strip
+  Seiser Alm.jpg                – Hero Slide 3 + Sommer-Sektion
+  Tiere Ziegen fuettern.jpeg    – Farm Life Grid
+  Garten Pool und Trampolin.jpg – Amenities-Sektion
+
+
+--------------------------------------------------------------------------------
+9. NAV-STRUKTUR (Menu-Items)
+--------------------------------------------------------------------------------
+- Ferienwohnungen (Dropdown):
+    Wohnung Ost      → /ferienwohnungen/ost
+    Wohnung West     → /ferienwohnungen/west
+    Wohnung West 2   → /ferienwohnungen/west2
+    Wohnung Südost   → /ferienwohnungen/suedost
+    Wohnung Südwest  → /ferienwohnungen/suedwest
+- Hofleben          → /hofleben
+- Südtirol erleben (Dropdown):
+    Frühling → /jahreszeiten/fruehling
+    Sommer   → /jahreszeiten/sommer
+    Herbst   → /jahreszeiten/herbst
+    Winter   → /jahreszeiten/winter
+- Angebote          → /angebote
+- Preise            → /preise
+- Lage              → /lage
+- Bewertungen       → /bewertungen
+CTA: "Anfrage senden" → /anfrage
+
+
+--------------------------------------------------------------------------------
+10. OFFENE AUFGABEN / BEKANNTE TODOS
+--------------------------------------------------------------------------------
+AUSSTEHEND:
+- [ ] Deployment auf IONOS VPS konfigurieren (Nginx, Node, CI/CD oder manuell)
+- [ ] Backend für Kontaktformular (/anfrage) – aktuell nur Frontend
+- [ ] Buchungskalender – noch nicht entschieden/implementiert
+- [ ] Mehrsprachigkeit (IT, EN) – Struktur steht, Übersetzungen fehlen
+- [ ] Favicon erstellen (aktuell Platzhalter /favicon.ico)
+- [ ] SEO: Sitemap, robots.txt (Astro hat @astrojs/sitemap Plugin)
+- [ ] Google Analytics oder ähnliches (falls gewünscht)
+- [ ] Bewertungen-Seite: echte Bewertungen ergänzen (aktuell Platzhalter)
+- [ ] Preise-Seite: echte Preistabelle ergänzen (aktuell Platzhalter)
+
+DESIGN-ENTSCHEIDUNGEN (nicht rückgängig machen ohne Rückfrage):
+- Highlights-Strip MUSS Emoji-Version sein (🏔️🏠🐐🎿)
+- Kein Gradient/Schatten auf der Header-Nav selbst
+- Dropdown: grüner Verlauf, weiche Kanten (rounded-b-lg) – nicht zu dunkel/monochrom
+- ApartmentCard Subtitle: text-forest-600, NICHT section-subtitle (gold wäre
+  auf weiß zu schlecht lesbar)
+- Familienfoto: object-top damit alle Personen sichtbar
+
+
+--------------------------------------------------------------------------------
+11. GIT / DEPLOYMENT
+--------------------------------------------------------------------------------
+Git-Config (lokal):
+  user.name  = Lukas
+  user.email = lukas@koflerhof.bz
+
+Workflow:
+  1. npm run dev           – lokale Entwicklung
+  2. npm run build         – build testen (dist/ Ordner)
+  3. git add [files]
+  4. git commit -m "..."
+  5. git push https://GITHUB_TOKEN_HIER_EINFUEGEN@github.com/lukas5001/Koflerhof.git main
+
+ACHTUNG: Das Token im Push-Befehl direkt angeben (kein git remote set-url nötig)
+
+
+--------------------------------------------------------------------------------
+12. BEKANNTE PROBLEME / GELÖSTE BUGS
+--------------------------------------------------------------------------------
+- Astro 5/6 läuft NICHT auf Node 18 → deshalb Astro 4.5.18 (nicht upgraden!)
+- 48 Bilddateien hatten macOS-NFD-Unicode-Kodierung → alle zu NFC umbenannt
+  (Skript: Python unicodedata.normalize('NFC', filename))
+- Garten Pool 1 ist eine .png Datei (nicht .jpg) – Referenz entsprechend
+- Großbuchstaben in Dateiendungen (.JPG, .JPG) – Linux ist case-sensitive!
+  Immer exakte Schreibweise prüfen: ls public/images/hof/ | grep -i "..."
+
+
+================================================================================
+ENDE DER PROJEKTDOKUMENTATION
+================================================================================
