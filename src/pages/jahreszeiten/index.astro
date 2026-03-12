@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const seasons = [
+  {
+    name: 'Frühling',
+    href: '/jahreszeiten/fruehling',
+    dates: 'März – Mai',
+    image: '/images/hof/Blumen 1.jpg',
+    desc: 'Erwachende Natur, blühende Wiesen und erste warme Sonnenstrahlen. Ideal für Wanderungen, Radtouren und Stadtbesichtigungen.',
+    highlights: ['Frühlingsblüte in den Tälern', 'Wanderungen ohne Sommerhitze', 'Städte & Kultur erkunden', 'Ruhe vor dem Hauptansturm'],
+  },
+  {
+    name: 'Sommer',
+    href: '/jahreszeiten/sommer',
+    dates: 'Juni – August',
+    image: '/images/hof/Seiser Alm.jpg',
+    desc: 'Wandern auf der Seiser Alm, Baden im Koflerhof-Pool, Fahrradtouren durch die Täler und Bergpanoramen, die den Atem verschlagen.',
+    highlights: ['Seiser Alm Wanderungen', 'Pool & Liegewiese', 'E-Bike-Touren', 'Badeseen in der Nähe'],
+  },
+  {
+    name: 'Herbst',
+    href: '/jahreszeiten/herbst',
+    dates: 'September – November',
+    image: '/images/hof/Herbst Törggelen.jpeg',
+    desc: 'Golden gefärbte Weinberge, traditionelles Törggelen mit Rotwein und Kastanien und klare Herbstluft für perfekte Wandertage.',
+    highlights: ['Törggelen-Tradition', 'Kastanien-Spazierwege', 'Herbstwanderungen', 'Kulturstädte besuchen'],
+  },
+  {
+    name: 'Winter',
+    href: '/jahreszeiten/winter',
+    dates: 'Dezember – März',
+    image: '/images/hof/Winter Skifahren.jpeg',
+    desc: 'Weltklasse-Skigebiete direkt vor der Haustür: Seiser Alm (10 Min.) und Gröden (20 Min.) für Ski, Langlauf und Winterwandern.',
+    highlights: ['Skifahren auf der Seiser Alm', 'Gröden & Dolomiti Superski', 'Winterwandern & Schneeschuh', 'Weihnachtsmärkte'],
+  },
+];
+---
+
+<Layout title="Südtirol in jeder Jahreszeit" description="Entdecken Sie Südtirol rund ums Jahr – Frühling, Sommer, Herbst und Winter bieten einzigartige Erlebnisse direkt vom Koflerhof aus.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Südtirol Täler.HEIC" alt="Südtirol" class="absolute inset-0 w-full h-full object-cover opacity-30 hidden" />
+    <img src="/images/hof/Seiser Alm.jpg" alt="Südtirol" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Das ganze Jahr</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Südtirol erleben</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        In jeder Jahreszeit hat Südtirol Einzigartiges zu bieten – entdecken Sie es vom Koflerhof aus
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-8">
+        {seasons.map((season) => (
+          <a href={season.href} class="group block bg-white overflow-hidden shadow-md card-hover fade-in">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={season.image} alt={season.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <p class="text-xs tracking-widest uppercase text-gold mb-1">{season.dates}</p>
+                <h2 class="font-serif text-3xl text-white">{season.name}</h2>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-stone-600 mb-6 leading-relaxed">{season.desc}</p>
+              <ul class="grid grid-cols-2 gap-2">
+                {season.highlights.map(h => (
+                  <li class="flex items-center gap-2 text-sm text-stone-600">
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full shrink-0"></span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-6 text-forest-700 text-sm font-medium tracking-wider flex items-center gap-2">
+                {season.name} entdecken
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Mit der Mobilcard kostenlos unterwegs</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-8">
+        Bei vielen unserer Angebote ist die <strong class="text-gold">Südtirol Mobilcard</strong> inklusive –
+        damit fahren Sie mit allen öffentlichen Verkehrsmitteln in ganz Südtirol kostenlos.
+        Ideal für Ausflüge nach Bozen, Klausen, Brixen und Meran.
+      </p>
+      <a href="/angebote" class="btn-gold">Angebote mit Mobilcard ansehen</a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ApartmentCard from '../../components/ApartmentCard.astro';
+
+const apartments = [
+  {
+    name: 'Wohnung Ost',
+    slug: 'ost',
+    persons: '4–5',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Geräumige Wohnung mit privater Terrasse und direktem Gartenzugang. Ideal für Familien mit Kindern.',
+    image: '/images/ferienwohnungen/Ost Wohnbereich höhere Pixel.jpg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung West',
+    slug: 'west',
+    persons: '3–4',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Gemütliche Wohnung im Erdgeschoss mit großer Wohnküche und direktem Gartenzugang.',
+    image: '/images/ferienwohnungen/West Wohnraum 2.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung West 2',
+    slug: 'west2',
+    persons: '4',
+    floor: '1. Obergeschoss',
+    bedrooms: '2',
+    highlight: 'Helle Wohnung im Obergeschoss mit eigenem Balkon und schönem Ausblick in die Umgebung.',
+    image: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung Südost',
+    slug: 'suedost',
+    persons: '6',
+    floor: '1. Obergeschoss',
+    bedrooms: '3',
+    highlight: 'Unsere größte Wohnung mit hellem Wohnraum und Wintergarten – ideal für größere Familien.',
+    image: '/images/ferienwohnungen/Südost Wintergarten.jpg',
+    badge: 'Bis 6 Personen',
+  },
+  {
+    name: 'Wohnung Südwest',
+    slug: 'suedwest',
+    persons: '4–5',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Sonnige Wohnung mit Wintergarten und eigenem Außenbereich mit Grill.',
+    image: '/images/ferienwohnungen/Südwest Wintergarten 1.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+];
+
+const inclusions = [
+  'Bettwäsche und Handtücher',
+  'Kinderausstattung (Kinderbett, Hochstuhl, Trybike)',
+  'Frisches Gemüse & Kräuter aus dem Garten (saisonal)',
+  'Himbeermarmelade (hausgemacht)',
+  'Tischfußball, Ping Pong & Trampolin',
+  'Wanderbücher & Gesellschaftsspiele',
+  'Grill (je nach Wohnung privat oder gemeinsam)',
+  'Liegestühle & Liegewiese',
+  'Pool (saisonal)',
+  'Parkplatz & Motorradgarage',
+  'Brötchenservice (auf Wunsch)',
+  'E-Bike-Verleih vor Ort',
+  'Kostenloses WLAN',
+  'TV/Sat in allen Zimmern',
+  'Klimaanlage & kontrollierte Lüftung',
+  'Waschmaschine',
+];
+---
+
+<Layout title="Ferienwohnungen am Koflerhof" description="Fünf liebevoll eingerichtete Ferienwohnungen am Bauernhof in Südtirol – für 3 bis 6 Personen, kinderfreundlich und komfortabel ausgestattet.">
+
+  <!-- PAGE HEADER -->
+  <div class="relative pt-32 pb-20 md:pt-48 md:pb-28 overflow-hidden bg-stone-900">
+    <img
+      src="/images/ferienwohnungen/Koflerhof Sommer.JPG"
+      alt="Koflerhof Ferienwohnungen"
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+    />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Komfort & Gemütlichkeit</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Ferienwohnungen</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Fünf liebevoll eingerichtete Wohnungen für unvergessliche Urlaube in Südtirol
+      </p>
+    </div>
+  </div>
+
+  <!-- APARTMENTS GRID -->
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {apartments.map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div class="fade-in">
+          <p class="section-subtitle">In allen Wohnungen inklusive</p>
+          <h2 class="section-title mb-6">Alles für einen perfekten Urlaub</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-8">
+            Wir möchten, dass Sie sich auf dem Koflerhof rundum wohlfühlen.
+            Daher ist in jeder Wohnung eine umfangreiche Ausstattung für Ihren
+            Komfort inklusive.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {inclusions.map(item => (
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="fade-in space-y-6">
+          <img src="/images/hof/Garten Pool 2.jpg" alt="Pool im Garten" class="w-full aspect-[4/3] object-cover shadow-xl" />
+          <img src="/images/hof/Garten Liegestühle.jpeg" alt="Liegestühle" class="w-full aspect-video object-cover shadow-xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Ihre Wohnung gefunden?</h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">Senden Sie uns eine unverbindliche Anfrage und wir melden uns umgehend bei Ihnen.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/anfrage" class="btn-gold">Jetzt anfragen</a>
+        <a href="/preise" class="inline-block border-2 border-white/40 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors">Preise ansehen</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

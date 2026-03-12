@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West Wohnraum 2.jpeg', alt: 'Wohnraum' },
+  { src: '/images/ferienwohnungen/West Wohnraum 3.jpg', alt: 'Wohnraum 2' },
+  { src: '/images/ferienwohnungen/West Küche 1.jpg', alt: 'Küche' },
+  { src: '/images/ferienwohnungen/West Küche 2.jpg', alt: 'Küche 2' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 1.jpeg', alt: 'Schlafzimmer 1' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 2.jpeg', alt: 'Schlafzimmer 2' },
+  { src: '/images/ferienwohnungen/West Bad.jpeg', alt: 'Badezimmer' },
+  { src: '/images/ferienwohnungen/West Eingangsbereich.jpg', alt: 'Eingangsbereich' },
+];
+---
+
+<ApartmentLayout
+  title="Wohnung West"
+  subtitle="Ferienwohnung · Erdgeschoss"
+  description="Die <strong>Wohnung West</strong> liegt im Erdgeschoss auf der Nordseite des Koflerhofs und bietet gemütlichen Wohnraum für 3 bis 4 Personen. Die große Wohnküche mit modernem Küchenbereich lädt zum gemeinsamen Kochen und Beisammensein ein.<br/><br/>Zwei Schlafzimmer sowie eine Schlafcouch im Wohnbereich bieten flexible Schlafmöglichkeiten. Der direkte Gartenzugang macht diese Wohnung besonders attraktiv für Familien, die den Garten, den Pool und die Spielgeräte des Koflerhofs genießen möchten."
+  headerImage="/images/ferienwohnungen/West Wohnraum 2.jpeg"
+  persons="3–4"
+  floor="Erdgeschoss, Nordseite"
+  bedrooms="2"
+  badge="Besonders kinderfreundlich"
+  beds={[
+    '1× Doppelbett',
+    '1× Einzelbett',
+    'Schlafcouch für 1–2 Personen (Wohnküche)',
+  ]}
+  features={[
+    'Vollausgestattete Küche',
+    'Direkter Gartenzugang',
+    'TV/Sat in allen Zimmern',
+    'Kostenloses WLAN',
+    'Waschmaschine',
+    'Kontrollierte Lüftung',
+    'Klimaanlage',
+    'Badezimmer',
+  ]}
+  inclusions={[
+    'Bettwäsche & Handtücher',
+    'Kinderausstattung auf Anfrage',
+    'Gemüse & Kräuter aus dem Garten',
+    'Himbeermarmelade (hausgemacht)',
+    'Brötchenservice (auf Wunsch)',
+    'Endreinigung separat buchbar',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Wohnung-west-plan.jpg"
+  prevApt={{ name: 'Wohnung Ost', href: '/ferienwohnungen/ost' }}
+  nextApt={{ name: 'Wohnung West 2', href: '/ferienwohnungen/west2' }}
+/>

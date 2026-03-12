@@ -1,0 +1,451 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ApartmentCard from '../components/ApartmentCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+
+const heroSlides = [
+  {
+    image: '/images/hof/Koflerhof Hausansicht Sommer 1.JPG',
+    subtitle: 'Willkommen auf dem',
+    title: 'Koflerhof in Südtirol',
+  },
+  {
+    image: '/images/hof/Garten Pool und Spielbereich.jpg',
+    subtitle: 'Entspannung & Natur',
+    title: 'Urlaub wie zu Hause',
+  },
+  {
+    image: '/images/hof/Seiser Alm.jpg',
+    subtitle: 'Direkt vor der Tür',
+    title: 'Die Seiser Alm wartet auf Sie',
+  },
+  {
+    image: '/images/hof/Südtirol Sommer Rittner Horn.jpeg',
+    subtitle: 'Berge, Täler & Kultur',
+    title: 'Südtirol entdecken',
+  },
+  {
+    image: '/images/hof/Koflerhof Winter 1.jpg',
+    subtitle: 'In jeder Jahreszeit',
+    title: 'Ein Ort zum Wiederkommen',
+  },
+];
+
+const apartments = [
+  {
+    name: 'Wohnung Ost',
+    slug: 'ost',
+    persons: '4–5',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Geräumige Wohnung mit privater Terrasse, perfekt für Familien mit Kindern.',
+    image: '/images/ferienwohnungen/Ost Wohnbereich höhere Pixel.jpg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung West',
+    slug: 'west',
+    persons: '3–4',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Gemütliche Wohnung im Erdgeschoss mit direktem Gartenzugang.',
+    image: '/images/ferienwohnungen/West Wohnraum 2.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung West 2',
+    slug: 'west2',
+    persons: '4',
+    floor: '1. Obergeschoss',
+    bedrooms: '2',
+    highlight: 'Helle Wohnung im Obergeschoss mit eigenem Balkon und schönem Ausblick.',
+    image: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+  {
+    name: 'Wohnung Südost',
+    slug: 'suedost',
+    persons: '6',
+    floor: '1. Obergeschoss',
+    bedrooms: '3',
+    highlight: 'Unsere größte Wohnung mit Wintergarten – ideal für größere Familien oder Gruppen.',
+    image: '/images/ferienwohnungen/Südost Wintergarten.jpg',
+    badge: 'Bis 6 Personen',
+  },
+  {
+    name: 'Wohnung Südwest',
+    slug: 'suedwest',
+    persons: '4–5',
+    floor: 'Erdgeschoss',
+    bedrooms: '2',
+    highlight: 'Sonnige Wohnung mit Wintergarten und eigenem Außenbereich mit Grill.',
+    image: '/images/ferienwohnungen/Südwest Wintergarten 1.jpeg',
+    badge: 'Besonders kinderfreundlich',
+  },
+];
+
+const featuredReviews = [
+  {
+    headline: 'Wir waren überwältigt',
+    text: 'Der Koflerhof hat unsere Erwartungen bei weitem übertroffen. Die Wohnung war wunderschön, die Gastgeber herzlich und das Gesamtpaket einfach perfekt. Wir kommen definitiv wieder!',
+    author: 'Familie aus Deutschland',
+    source: 'Google',
+    date: 'Sommer 2025',
+    stars: 5,
+  },
+  {
+    headline: 'Wunderschöne Lage und wirklich tolle Gastgeber!',
+    text: 'Traumhafte Ferienwohnung in herrlicher Lage. Die Familie Griesser ist außerordentlich aufmerksam und herzlich. Man fühlt sich sofort willkommen.',
+    author: 'Familie aus Deutschland',
+    source: 'Booking.com',
+    date: 'Frühjahr 2024',
+    stars: 5,
+  },
+  {
+    headline: 'Ich würde 6 Sterne geben, wenn ich könnte',
+    text: 'Absolut fantastischer Urlaub! Vom ersten Moment an haben wir uns wie zu Hause gefühlt. Die Tiere, der Garten, der Pool – einfach wunderbar.',
+    author: 'Familie aus Deutschland',
+    source: 'Google',
+    date: 'Sommer 2022',
+    stars: 5,
+  },
+];
+---
+
+<Layout title="Urlaub am Bauernhof in Südtirol">
+
+  <!-- HERO SLIDER -->
+  <div class="hero-slider relative h-screen overflow-hidden">
+    <div class="swiper h-full" id="hero-swiper">
+      <div class="swiper-wrapper">
+        {heroSlides.map((slide) => (
+          <div class="swiper-slide relative">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-hero-gradient"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+              <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gold mb-4 font-sans">{slide.subtitle}</p>
+              <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-tight">{slide.title}</h2>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination absolute bottom-8 z-10"></div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-white animate-bounce">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Familie Griesser · Kastelruth</p>
+          <h1 class="section-title mb-6">
+            Urlaub auf dem Bauernhof –<br/>
+            <em class="font-normal italic text-earth-700">herzlich &amp; unvergesslich</em>
+          </h1>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Willkommen auf dem Koflerhof! Inmitten des malerischen Eisacktals, nur wenige Kilometer
+            von Kastelruth entfernt, erwartet Sie unser Familienbetrieb mit fünf liebevoll eingerichteten
+            Ferienwohnungen.
+          </p>
+          <p class="prose-kofler mb-8">
+            Genießen Sie die Ruhe der Südtiroler Natur, frische Luft, herzliche Gastfreundschaft und
+            die ideale Lage für Wanderungen, Skifahren und Kulturausflüge. Die berühmte Seiser Alm
+            erreichen Sie in nur 10 Minuten mit dem Auto.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/ferienwohnungen" class="btn-primary">Wohnungen entdecken</a>
+            <a href="/anfrage" class="btn-outline">Anfrage senden</a>
+          </div>
+        </div>
+
+        <div class="fade-in grid grid-cols-2 gap-3">
+          <div class="space-y-3">
+            <img src="/images/hof/Familie Griesser.jpg" alt="Familie Griesser" class="w-full aspect-[3/4] object-cover object-top" />
+            <img src="/images/hof/Tiere Ziegen füttern.jpeg" alt="Ziegen füttern" class="w-full aspect-square object-cover" />
+          </div>
+          <div class="space-y-3 mt-8">
+            <img src="/images/hof/Garten Pool 1.jpg" alt="Pool im Garten" class="w-full aspect-square object-cover" />
+            <img src="/images/hof/Garten Gartenhütte.jpg" alt="Gartenhütte" class="w-full aspect-[3/4] object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS STRIP -->
+  <section class="bg-forest-700 text-white py-16">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { icon: '🏔️', label: 'Seiser Alm', sub: '10 Minuten entfernt' },
+          { icon: '🏠', label: '5 Wohnungen', sub: 'Für 3–6 Personen' },
+          { icon: '🐐', label: 'Bauernhofleben', sub: 'Tiere & frische Natur' },
+          { icon: '🎿', label: 'Skigebiete', sub: '10–20 Minuten entfernt' },
+        ].map(item => (
+          <div class="fade-in">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <div class="font-serif text-xl text-gold mb-1">{item.label}</div>
+            <div class="text-sm text-white/70 tracking-wider">{item.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- APARTMENTS -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Komfortabel &amp; gemütlich</p>
+        <h2 class="section-title">Unsere Ferienwohnungen</h2>
+        <div class="deco-line"></div>
+        <p class="prose-kofler max-w-2xl mx-auto mt-6">
+          Jede unserer fünf Wohnungen ist liebevoll eingerichtet und mit allem ausgestattet,
+          was Sie für einen erholsamen Urlaub benötigen.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {apartments.map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 fade-in">
+        <a href="/ferienwohnungen" class="btn-outline">Alle Wohnungen vergleichen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="py-24 md:py-32 bg-cream">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in order-2 lg:order-1">
+          <p class="section-subtitle">Alles inklusive</p>
+          <h2 class="section-title mb-6">Was wir für Sie bereithalten</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {[
+              { icon: '🛏️', text: 'Bettwäsche & Handtücher' },
+              { icon: '👶', text: 'Babyausstattung auf Anfrage' },
+              { icon: '🥗', text: 'Gemüse & Kräuter aus dem Garten' },
+              { icon: '🎯', text: 'Tischfußball, Ping Pong & Trampolin' },
+              { icon: '📚', text: 'Wanderbücher & Gesellschaftsspiele' },
+              { icon: '🔥', text: 'Grill & Liegestühle im Garten' },
+              { icon: '🏊', text: 'Pool (saisonal)' },
+              { icon: '🚗', text: 'Parkplatz & Motorradgarage' },
+              { icon: '🥐', text: 'Brötchenservice (auf Wunsch)' },
+              { icon: '🚲', text: 'E-Bike-Verleih vor Ort' },
+              { icon: '📶', text: 'Kostenloses WLAN' },
+              { icon: '❄️', text: 'Klimaanlage & Lüftung' },
+            ].map(item => (
+              <div class="flex items-center gap-3 bg-white p-3 shadow-sm">
+                <span class="text-xl">{item.icon}</span>
+                <span class="text-sm text-stone-700">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="fade-in order-1 lg:order-2">
+          <img
+            src="/images/hof/Garten Pool und Trampolin.jpg"
+            alt="Garten mit Pool und Trampolin"
+            class="w-full aspect-[4/5] object-cover shadow-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARM LIFE -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <div class="grid grid-cols-2 gap-3">
+            <img src="/images/hof/Tiere Ziege.jpg" alt="Ziege" class="w-full aspect-[4/3] object-cover" />
+            <img src="/images/hof/Tiere Katzen.jpg" alt="Katzen" class="w-full aspect-[4/3] object-cover" />
+            <img src="/images/hof/Tiere Hasen.jpg" alt="Hasen" class="w-full aspect-[4/3] object-cover" />
+            <img src="/images/hof/Tiere Bidu.JPG" alt="Hund Bidu" class="w-full aspect-[4/3] object-cover" />
+          </div>
+        </div>
+        <div class="fade-in">
+          <p class="section-subtitle">Echter Bauernhof</p>
+          <h2 class="section-title mb-6">Das Hofleben genießen</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Auf dem Koflerhof erwartet Sie echtes Bauernhofleben: Streichelzoo mit Ziegen, Hasen
+            und Katzen, unser freundlicher Hofhund Bidu, frische Kräuter und Gemüse aus dem
+            eigenen Garten und die selbstgemachte Himbeermarmelade.
+          </p>
+          <p class="prose-kofler mb-8">
+            Kinder lieben es, die Tiere zu füttern und im großen Garten zu spielen.
+            Für Eltern bietet der Koflerhof die richtige Mischung aus Abenteuer und Erholung.
+          </p>
+          <a href="/hofleben" class="btn-primary">Hofleben entdecken</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONS -->
+  <section class="py-24 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+    <img
+      src="/images/hof/Seiser Alm Winter 1.jpeg"
+      alt="Seiser Alm"
+      class="absolute inset-0 w-full h-full object-cover opacity-20"
+    />
+    <div class="relative container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Das ganze Jahr</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">Südtirol in jeder Jahreszeit</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { season: 'Frühling', href: '/jahreszeiten/fruehling', image: '/images/hof/Blumen 1.jpg', text: 'Erwachende Natur, erste Wanderungen und frische Bergluft.' },
+          { season: 'Sommer', href: '/jahreszeiten/sommer', image: '/images/hof/Seiser Alm.jpg', text: 'Wandern, Radfahren, Pool und unvergessliche Bergpanoramen.' },
+          { season: 'Herbst', href: '/jahreszeiten/herbst', image: '/images/hof/Herbst Törggelen.jpeg', text: 'Goldene Weinberge, Törggelen und bunte Herbstpracht.' },
+          { season: 'Winter', href: '/jahreszeiten/winter', image: '/images/hof/Winter Skifahren.jpeg', text: 'Skifahren, Winterwandern und Weihnachtsmärkte.' },
+        ].map(item => (
+          <a href={item.href} class="group block fade-in">
+            <div class="relative aspect-[3/4] overflow-hidden mb-4">
+              <img src={item.image} alt={item.season} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3 class="font-serif text-2xl text-white mb-2">{item.season}</h3>
+                <p class="text-white/70 text-sm leading-relaxed">{item.text}</p>
+              </div>
+            </div>
+            <div class="text-gold text-xs tracking-widest uppercase group-hover:text-yellow-400 transition-colors">
+              Mehr erfahren →
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ANGEBOTE -->
+  <section class="py-24 md:py-32 bg-cream">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Spezielle Pakete</p>
+        <h2 class="section-title">Unsere Angebote</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { title: 'Frühlingserwachen', dates: '14. März – 28. März 2026', price: 'ab 495 €', desc: 'Frühlingswanderungen und die erwachende Natur Südtirols erleben.', image: '/images/hof/Blumen 2.jpg' },
+          { title: 'Blütezeit', dates: '11. April – 9. Mai 2026', price: 'ab 505 €', desc: '7 Nächte für 2 Personen inkl. Mobilcard – alle Verkehrsmittel kostenlos.', image: '/images/hof/Blumen 3.jpg' },
+          { title: 'Törggelezeit', dates: '24. Okt. – 14. Nov. 2026', price: 'ab 495 €', desc: 'Kastanienwege, Rotwein und Speck – die Südtiroler Törggele-Zeit.', image: '/images/hof/Herbst Törggelen 1.jpeg' },
+          { title: 'Kultur & Kulinarikwoche', dates: '14. Nov. – 5. Dez. 2026', price: 'ab 380 €', desc: 'Städte, Weihnachtsmärkte und erste Advent-Momente in Südtirol.', image: '/images/hof/Weihnachten Adventskranz.jpeg' },
+          { title: 'Winterwander- & Skiwochen', dates: '9. Jan. – 30. Jan. 2027', price: 'ab 460 €', desc: '7 Nächte inkl. Mobilcard – Skifahren, Winterwandern und Schneeschuh.', image: '/images/hof/Seiser Alm Winter 2.jpeg' },
+          { title: 'Last Minute', dates: 'Bis 7 Tage vor Anreise', price: '–30% Rabatt', desc: 'Spontan entschlossen? Bis zu 30% Rabatt auf den regulären Preis.', image: '/images/hof/Sonnenuntergang.jpg' },
+        ].map(offer => (
+          <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 fade-in">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={offer.image} alt={offer.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute top-4 right-4 bg-gold text-stone-900 font-serif text-lg px-4 py-1.5 shadow">{offer.price}</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs tracking-widest uppercase text-stone-400 mb-2">{offer.dates}</p>
+              <h3 class="font-serif text-xl text-stone-800 mb-3">{offer.title}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{offer.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="/angebote" class="btn-primary">Alle Angebote ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Was unsere Gäste sagen</p>
+        <h2 class="section-title">Bewertungen</h2>
+        <div class="deco-line"></div>
+        <p class="text-stone-500 text-sm mt-4 tracking-wider">Echte Bewertungen von Google, Booking.com, TripAdvisor & Co.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {featuredReviews.map(review => (
+          <div class="fade-in">
+            <ReviewCard {...review} />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="/bewertungen" class="btn-outline">Alle Bewertungen lesen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY CTA -->
+  <section class="py-24 md:py-32 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="text-xs tracking-[0.35em] uppercase text-gold mb-3">Persönlich &amp; herzlich</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
+            Wir freuen uns auf<br/>
+            <em class="italic font-normal text-gold">Ihren Besuch!</em>
+          </h2>
+          <div class="w-16 h-0.5 bg-gold mb-8"></div>
+          <p class="text-white/80 text-lg leading-relaxed mb-8">
+            Als Gastgeberfamilie liegt uns das Wohlbefinden unserer Gäste am Herzen.
+            Bei Fragen zur Anreise, zu Ausflugszielen oder zum Hof selbst steht Ihnen
+            Bäuerin Verena gerne persönlich zur Verfügung.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/anfrage" class="btn-gold">Unverbindlich anfragen</a>
+            <a href="/lage" class="inline-block border-2 border-white/40 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors">Lage ansehen</a>
+          </div>
+        </div>
+        <div class="fade-in">
+          <img
+            src="/images/hof/Familie Griesser 2.jpg"
+            alt="Familie Griesser – Ihre Gastgeber"
+            class="w-full aspect-[4/3] object-cover object-top shadow-2xl"
+          />
+          <p class="text-white/60 text-sm mt-4 text-center tracking-wider italic">Familie Griesser – Ihre Gastgeber auf dem Koflerhof</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if ((window as any).Swiper) {
+      new (window as any).Swiper('#hero-swiper', {
+        loop: true,
+        autoplay: { delay: 5500, disableOnInteraction: false },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 1200,
+        pagination: { el: '.swiper-pagination', clickable: true },
+      });
+    }
+  });
+</script>

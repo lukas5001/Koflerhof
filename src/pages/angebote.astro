@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const offers = [
+  {
+    id: 'fruehling',
+    title: 'Frühlingserwachen',
+    tagline: 'Die Natur erwacht',
+    dates: '14. März – 28. März 2026',
+    price: 'ab 495 €',
+    image: '/images/hof/Blumen 1.jpg',
+    highlights: ['7 Nächte für 2 Personen', 'Frische Frühlingsluft', 'Erste Wanderungen', 'Blühende Täler'],
+    desc: 'Erleben Sie das Frühlingserwachen in Südtirol – wenn die Natur nach dem Winter erwacht, blühen die Obstgärten und die ersten warmen Sonnenstrahlen laden zu Spaziergängen und Wanderungen ein. Ein Urlaub für die Seele.',
+    season: 'Frühling',
+    href: '/jahreszeiten/fruehling',
+  },
+  {
+    id: 'bluetezeit',
+    title: 'Blütezeit',
+    tagline: 'Südtirol in voller Pracht',
+    dates: '11. April – 9. Mai 2026',
+    price: 'ab 505 €',
+    image: '/images/hof/Blumen 3.jpg',
+    highlights: ['7 Nächte für 2 Personen', 'Mobilcard inklusive', 'Endreinigung inklusive', 'Blüte & Wandern'],
+    desc: '7 Nächte für 2 Personen inkl. Mobilcard – nutzen Sie alle öffentlichen Verkehrsmittel Südtirols kostenlos und entdecken Sie Städte, Kultur und Natur während der schönsten Blütezeit.',
+    season: 'Frühling',
+    href: '/jahreszeiten/fruehling',
+  },
+  {
+    id: 'toergelle',
+    title: 'Törggelezeit',
+    tagline: 'Tradition & Genuss',
+    dates: '24. Oktober – 14. November 2026',
+    price: 'ab 495 €',
+    image: '/images/hof/Herbst Törggelen.jpeg',
+    highlights: ['7 Nächte für 2 Personen', 'Mobilcard inklusive', 'Kastanienwege', 'Südtiroler Weinkultur'],
+    desc: 'Wandern Sie auf goldenen Kastanienspazierwegen, erleben Sie die Weinberge in Herbstfarben und genießen Sie das traditionelle Törggelen mit Rotwein, Kastanien und deftigen Köstlichkeiten auf lokalen Bauernhöfen.',
+    season: 'Herbst',
+    href: '/jahreszeiten/herbst',
+  },
+  {
+    id: 'kultur',
+    title: 'Kultur & Kulinarikwoche',
+    tagline: 'Entschleunigung & Genuss',
+    dates: '14. November – 5. Dezember 2026',
+    price: 'ab 380 €',
+    image: '/images/hof/Weihnachten Adventskranz.jpeg',
+    highlights: ['7 Nächte', 'Günstigste Jahreszeit', 'Weihnachtsmärkte', 'Kulinarische Entdeckungen'],
+    desc: 'Entspannen Sie sich in der Ruhe des Spätherbstes, erkunden Sie die kulturellen Schätze Südtirols und erleben Sie die ersten Adventmomente auf den wunderschönen Weihnachtsmärkten in Bozen, Brixen und Klausen.',
+    season: 'Herbst/Winter',
+    href: '/jahreszeiten/herbst',
+  },
+  {
+    id: 'ski',
+    title: 'Winterwander- & Skiwochen',
+    tagline: 'Schnee & Abenteuer',
+    dates: '9. Januar – 30. Januar 2027',
+    price: 'ab 460 €',
+    image: '/images/hof/Winter Skifahren.jpeg',
+    highlights: ['7 Nächte für 2 Personen', 'Mobilcard inklusive', 'Endreinigung inklusive', 'Seiser Alm (10 Min.)'],
+    desc: '7 Nächte für 2 Personen inkl. Mobilcard und Endreinigung. Der Koflerhof ist der ideale Ausgangspunkt für Skifahren auf der Seiser Alm (10 Min.), Gröden (20 Min.) und Winterwanderungen in verschneiter Landschaft.',
+    season: 'Winter',
+    href: '/jahreszeiten/winter',
+  },
+  {
+    id: 'lastminute',
+    title: 'Last Minute',
+    tagline: 'Spontan & günstig',
+    dates: 'Bis 7 Tage vor Anreise',
+    price: '–30% Rabatt',
+    image: '/images/hof/Sonnenuntergang.jpg',
+    highlights: ['Bis 7 Tage vor Anreise', 'Bis zu 30% Rabatt', 'Spontan entschieden', 'Alle Jahreszeiten'],
+    desc: 'Haben Sie sich spontan entschlossen und der Koflerhof hat noch freie Kapazitäten? Profitieren Sie von bis zu 30% Rabatt auf den regulären Preis. Einfach anfragen und Verfügbarkeit prüfen!',
+    season: 'Ganzjährig',
+    href: '/anfrage',
+  },
+];
+---
+
+<Layout title="Angebote & Specials" description="Spezielle Angebote für Ihren Urlaub in Südtirol auf dem Koflerhof – Frühjahr, Sommer, Herbst, Winter und Last-Minute-Angebote.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm.jpg" alt="Koflerhof Angebote" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Spezielle Pakete</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Unsere Angebote</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Entdecken Sie unsere Sonderpakete für jeden Geschmack und jede Jahreszeit
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="space-y-12">
+        {offers.map((offer, idx) => (
+          <div class={`grid lg:grid-cols-2 gap-0 overflow-hidden shadow-xl fade-in ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div class={`relative aspect-video lg:aspect-auto ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <img src={offer.image} alt={offer.title} class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+              <div class="absolute top-6 left-6">
+                <span class="bg-gold text-stone-900 text-xs tracking-widest uppercase px-3 py-1.5">{offer.season}</span>
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span class="font-serif text-3xl md:text-4xl text-white">{offer.price}</span>
+              </div>
+            </div>
+            <div class={`bg-white p-8 md:p-12 flex flex-col justify-center ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <p class="section-subtitle text-left">{offer.dates}</p>
+              <h2 class="font-serif text-3xl text-stone-800 mb-1">{offer.title}</h2>
+              <p class="text-gold italic font-serif text-lg mb-4">{offer.tagline}</p>
+              <div class="deco-line mx-0 mb-6"></div>
+              <p class="text-stone-600 leading-relaxed mb-6">{offer.desc}</p>
+              <ul class="grid grid-cols-2 gap-2 mb-8">
+                {offer.highlights.map(h => (
+                  <li class="flex items-center gap-2 text-sm text-stone-600">
+                    <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div class="flex flex-wrap gap-3">
+                <a href="/anfrage" class="btn-primary">Jetzt anfragen</a>
+                <a href={offer.href} class="btn-outline">Mehr erfahren</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Individuelles Angebot gewünscht?</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        Kein passendes Angebot dabei? Sprechen Sie uns an – wir finden gemeinsam den
+        idealen Urlaub auf dem Koflerhof.
+      </p>
+      <a href="/anfrage" class="btn-gold">Persönliche Anfrage senden</a>
+    </div>
+  </section>
+
+</Layout>

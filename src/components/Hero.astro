@@ -1,0 +1,77 @@
+---
+interface Props {
+  slides: {
+    image: string;
+    title?: string;
+    subtitle?: string;
+  }[];
+  height?: string;
+  showScrollIndicator?: boolean;
+}
+
+const {
+  slides,
+  height = 'h-screen',
+  showScrollIndicator = false,
+} = Astro.props;
+---
+
+<div class={`hero-swiper relative ${height} overflow-hidden`}>
+  <div class="swiper h-full">
+    <div class="swiper-wrapper">
+      {slides.map((slide) => (
+        <div class="swiper-slide relative">
+          <img
+            src={slide.image}
+            alt={slide.title ?? 'Koflerhof'}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-hero-gradient"></div>
+          {(slide.title || slide.subtitle) && (
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+              {slide.subtitle && (
+                <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gold mb-4 font-sans animate-fade-in">{slide.subtitle}</p>
+              )}
+              {slide.title && (
+                <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-tight animate-fade-in">{slide.title}</h2>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  {showScrollIndicator && (
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white animate-bounce">
+      <span class="text-[9px] tracking-[0.3em] uppercase mb-2 text-white/70">Entdecken</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  )}
+</div>
+
+<script>
+  document.querySelectorAll('.hero-swiper').forEach(el => {
+    const swiperEl = el.querySelector('.swiper');
+    if (swiperEl && (window as any).Swiper) {
+      new (window as any).Swiper(swiperEl, {
+        loop: true,
+        autoplay: {
+          delay: 5500,
+          disableOnInteraction: false,
+        },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 1200,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    }
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Südost Wintergarten.jpg', alt: 'Wintergarten' },
+  { src: '/images/ferienwohnungen/Südost Wintergarten 2.jpg', alt: 'Wintergarten 2' },
+  { src: '/images/ferienwohnungen/Südost Wohnraum.jpeg', alt: 'Wohnraum' },
+  { src: '/images/ferienwohnungen/Südost Küche.jpeg', alt: 'Küche' },
+  { src: '/images/ferienwohnungen/Südost Schlafzimmer 1.jpeg', alt: 'Schlafzimmer 1' },
+  { src: '/images/ferienwohnungen/Südost Schlafzimmer 2.jpeg', alt: 'Schlafzimmer 2' },
+  { src: '/images/ferienwohnungen/Südost Schlafzimmer 3.jpeg', alt: 'Schlafzimmer 3' },
+  { src: '/images/ferienwohnungen/Südost Bad.jpeg', alt: 'Badezimmer' },
+  { src: '/images/ferienwohnungen/Südost Bad TagesWC.jpeg', alt: 'Tages-WC' },
+  { src: '/images/ferienwohnungen/Südost Eingang 1.jpeg', alt: 'Eingang' },
+];
+---
+
+<ApartmentLayout
+  title="Wohnung Südost"
+  subtitle="Ferienwohnung · 1. Obergeschoss"
+  description="Die <strong>Wohnung Südost</strong> ist unsere größte und geräumigste Ferienwohnung – ideal für größere Familien oder Gruppen von bis zu 6 Personen. Im ersten Obergeschoss gelegen, verfügt sie über drei Schlafzimmer, einen hellen Wohnraum sowie einen charmanten Wintergarten, der als gemütlicher Aufenthaltsraum dient.<br/><br/>Der großzügige Grundriss bietet ausreichend Platz für alle, ohne dass man aufeinander sitzt. Eine vollausgestattete Küche, zwei Badezimmer (Vollbad + Tages-WC) und moderne Ausstattung sorgen für höchsten Komfort während Ihres Urlaubs."
+  headerImage="/images/ferienwohnungen/Südost Wintergarten.jpg"
+  persons="6"
+  floor="1. Obergeschoss, Ostseite"
+  bedrooms="3"
+  extra="Wintergarten"
+  badge="Bis 6 Personen"
+  beds={[
+    '2× Doppelbett',
+    '2× Einzelbett',
+    'Schlafcouch im Wohnraum',
+  ]}
+  features={[
+    'Vollausgestattete Küche',
+    'Heller Wintergarten',
+    'TV/Sat in allen Zimmern',
+    'Kostenloses WLAN',
+    'Waschmaschine',
+    'Kontrollierte Lüftung',
+    'Klimaanlage',
+    'Vollbad + Tages-WC',
+  ]}
+  inclusions={[
+    'Bettwäsche & Handtücher',
+    'Kinderausstattung auf Anfrage',
+    'Gemüse & Kräuter aus dem Garten',
+    'Himbeermarmelade (hausgemacht)',
+    'Brötchenservice (auf Wunsch)',
+    'Endreinigung separat buchbar',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Südost Skizze.png"
+  prevApt={{ name: 'Wohnung West 2', href: '/ferienwohnungen/west2' }}
+  nextApt={{ name: 'Wohnung Südwest', href: '/ferienwohnungen/suedwest' }}
+/>

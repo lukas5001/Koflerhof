@@ -1,0 +1,261 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Unverbindliche Anfrage" description="Senden Sie uns eine unverbindliche Anfrage für Ihren Urlaub auf dem Koflerhof in Südtirol. Wir melden uns schnellstmöglich bei Ihnen.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Familie Griesser.jpg" alt="Familie Griesser" class="absolute inset-0 w-full h-full object-cover opacity-30 object-top" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Wir freuen uns auf Sie</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Anfrage senden</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-xl mx-auto">
+        Unverbindliche Anfrage – wir bestätigen Verfügbarkeit und Preis in Kürze
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-3 gap-16">
+
+        <!-- Form -->
+        <div class="lg:col-span-2 fade-in">
+          <form
+            id="inquiry-form"
+            class="bg-white p-8 md:p-12 shadow-sm"
+            onsubmit="handleSubmit(event)"
+            novalidate
+          >
+            <h2 class="font-serif text-2xl text-stone-800 mb-8">Ihre Anfrage</h2>
+
+            <!-- Dates & Guests -->
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Anreise *</label>
+                <input type="date" name="anreise" required
+                  class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream" />
+              </div>
+              <div>
+                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Abreise *</label>
+                <input type="date" name="abreise" required
+                  class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream" />
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div>
+                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Erwachsene *</label>
+                <select name="erwachsene" required
+                  class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream">
+                  <option value="">Bitte wählen</option>
+                  {[1,2,3,4,5,6].map(n => <option value={n}>{n}</option>)}
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Kinder</label>
+                <select name="kinder"
+                  class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream">
+                  <option value="0">0</option>
+                  {[1,2,3,4].map(n => <option value={n}>{n}</option>)}
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Haustier</label>
+                <select name="haustier"
+                  class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream">
+                  <option value="nein">Kein Haustier</option>
+                  <option value="hund">1 Hund</option>
+                  <option value="hunde2">2 Hunde</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Alter der Kinder bei Anreise</label>
+              <input type="text" name="kinderalter" placeholder="z.B. 3, 7, 10 Jahre"
+                class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream placeholder-stone-400" />
+            </div>
+
+            <div class="mb-8">
+              <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Gewünschte Wohnung</label>
+              <select name="wohnung"
+                class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream">
+                <option value="">Keine Präferenz / nach Verfügbarkeit</option>
+                <option value="ost">Wohnung Ost (4–5 Personen)</option>
+                <option value="west">Wohnung West (3–4 Personen)</option>
+                <option value="west2">Wohnung West 2 (4 Personen)</option>
+                <option value="suedost">Wohnung Südost (6 Personen)</option>
+                <option value="suedwest">Wohnung Südwest (4–5 Personen)</option>
+              </select>
+            </div>
+
+            <div class="mb-8">
+              <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Angebot</label>
+              <select name="angebot"
+                class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream">
+                <option value="">Kein spezielles Angebot</option>
+                <option value="fruehling">Frühlingserwachen (ab 495 €)</option>
+                <option value="bluete">Blütezeit (ab 505 €)</option>
+                <option value="toergele">Törggelezeit (ab 495 €)</option>
+                <option value="kultur">Kultur & Kulinarikwoche (ab 380 €)</option>
+                <option value="ski">Winterwander- & Skiwochen (ab 460 €)</option>
+                <option value="lastminute">Last Minute (–30%)</option>
+              </select>
+            </div>
+
+            <div class="border-t border-stone-100 pt-8 mb-6">
+              <h3 class="font-serif text-xl text-stone-800 mb-6">Ihre Kontaktdaten</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Name *</label>
+                  <input type="text" name="name" required
+                    class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream" />
+                </div>
+                <div>
+                  <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">E-Mail *</label>
+                  <input type="email" name="email" required
+                    class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream" />
+                </div>
+                <div>
+                  <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Telefon</label>
+                  <input type="tel" name="telefon"
+                    class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream" />
+                </div>
+                <div>
+                  <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Land</label>
+                  <input type="text" name="land" placeholder="z.B. Deutschland"
+                    class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream placeholder-stone-400" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Besondere Wünsche & Anmerkungen</label>
+              <textarea name="wuensche" rows={5}
+                class="w-full border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-forest-700 transition-colors bg-cream resize-none"
+                placeholder="Haben Sie besondere Wünsche oder Fragen? Wir helfen gerne..."></textarea>
+            </div>
+
+            <div class="mb-8">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" name="datenschutz" required class="mt-1 accent-forest-700" />
+                <span class="text-sm text-stone-600">
+                  Ich habe die <a href="/datenschutz" class="text-forest-700 hover:underline">Datenschutzbestimmungen</a> gelesen und stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage verwendet werden. *
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary w-full text-center text-base py-4 tracking-widest">
+              Anfrage absenden
+            </button>
+
+            <!-- Success message (hidden by default) -->
+            <div id="success-msg" class="hidden mt-6 bg-forest-700/10 border border-forest-700 p-6 text-center">
+              <svg class="w-12 h-12 text-forest-700 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <h3 class="font-serif text-xl text-forest-700 mb-2">Vielen Dank für Ihre Anfrage!</h3>
+              <p class="text-stone-600 text-sm">Wir melden uns so schnell wie möglich bei Ihnen. Normalerweise antworten wir innerhalb von 24 Stunden.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="fade-in space-y-6">
+          <div class="bg-white p-8 shadow-sm">
+            <h3 class="font-serif text-xl text-stone-800 mb-5">Direkt kontaktieren</h3>
+            <div class="space-y-4">
+              <a href="tel:+390471706038" class="flex items-center gap-4 group">
+                <div class="w-10 h-10 bg-forest-700/10 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-forest-700" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-stone-400 tracking-wider">Festnetz</div>
+                  <div class="text-stone-700 group-hover:text-forest-700 transition-colors">+39 0471 706 038</div>
+                </div>
+              </a>
+              <a href="tel:+393404191634" class="flex items-center gap-4 group">
+                <div class="w-10 h-10 bg-forest-700/10 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-forest-700" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-stone-400 tracking-wider">Mobil</div>
+                  <div class="text-stone-700 group-hover:text-forest-700 transition-colors">+39 340 4191634</div>
+                </div>
+              </a>
+              <a href="mailto:info@koflerhof.bz" class="flex items-center gap-4 group">
+                <div class="w-10 h-10 bg-forest-700/10 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-forest-700" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-stone-400 tracking-wider">E-Mail</div>
+                  <div class="text-stone-700 group-hover:text-forest-700 transition-colors">info@koflerhof.bz</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-forest-700 text-white p-8">
+            <h3 class="font-serif text-xl text-white mb-4">Gut zu wissen</h3>
+            <ul class="space-y-3 text-white/80 text-sm">
+              {[
+                'Antwort in der Regel innerhalb von 24 h',
+                'Unverbindlich – keine Buchungspflicht',
+                'Mindestaufenthalt: 5 Nächte',
+                'Check-in: ab 14:00 Uhr',
+                'Check-out: bis 09:30 Uhr',
+                'Hunde herzlich willkommen (6 € / Tag)',
+                'Motorradgarage vorhanden',
+              ].map(item => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-cream p-8">
+            <img src="/images/hof/Familie Griesser.jpg" alt="Familie Griesser" class="w-full aspect-video object-cover object-top mb-4" />
+            <p class="text-sm text-stone-600 italic text-center">Familie Griesser freut sich auf Ihren Besuch</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  function handleSubmit(e: Event) {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const successMsg = document.getElementById('success-msg');
+
+    // Basic validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Simulate submission (frontend only)
+    btn.textContent = 'Wird gesendet...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      form.querySelectorAll('input, select, textarea').forEach((el: any) => el.value = '');
+      (form.querySelector('[name="datenschutz"]') as HTMLInputElement).checked = false;
+      successMsg?.classList.remove('hidden');
+      btn.textContent = 'Anfrage absenden';
+      btn.disabled = false;
+      successMsg?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1200);
+  }
+
+  (window as any).handleSubmit = handleSubmit;
+</script>

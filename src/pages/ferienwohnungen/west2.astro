@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg', alt: 'Wohn-Essbereich' },
+  { src: '/images/ferienwohnungen/West 2 Wohn- Essbereich.jpeg', alt: 'Wohn-Essbereich 2' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer.jpeg', alt: 'Schlafzimmer' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer 1.jpeg', alt: 'Schlafzimmer 2' },
+  { src: '/images/ferienwohnungen/West 2 Bad.jpeg', alt: 'Badezimmer' },
+  { src: '/images/ferienwohnungen/West 2 Balkon.jpeg', alt: 'Privater Balkon' },
+  { src: '/images/ferienwohnungen/West 2 Eingangsbereich.jpg', alt: 'Eingangsbereich' },
+];
+---
+
+<ApartmentLayout
+  title="Wohnung West 2"
+  subtitle="Ferienwohnung · 1. Obergeschoss"
+  description="Die <strong>Wohnung West 2</strong> befindet sich im ersten Obergeschoss auf der Westseite des Koflerhofs. Ein heller, freundlicher Wohn-Essbereich empfängt Sie, und der private Balkon lädt zum Entspannen mit Ausblick in die Südtiroler Landschaft ein.<br/><br/>Mit zwei Schlafzimmern und insgesamt vier Schlafplätzen ist diese Wohnung ideal für Familien oder zwei befreundete Paare. Der Zugang erfolgt über die Westseite des Hauses über eine eigene Treppe."
+  headerImage="/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg"
+  persons="4"
+  floor="1. Obergeschoss, Westseite"
+  bedrooms="2"
+  extra="Privater Balkon"
+  badge="Besonders kinderfreundlich"
+  beds={[
+    '1× Doppelbett',
+    '2× Einzelbett',
+  ]}
+  features={[
+    'Vollausgestattete Küche',
+    'Privater Balkon',
+    'TV/Sat in allen Zimmern',
+    'Kostenloses WLAN',
+    'Waschmaschine',
+    'Kontrollierte Lüftung',
+    'Klimaanlage',
+    'Badezimmer',
+  ]}
+  inclusions={[
+    'Bettwäsche & Handtücher',
+    'Kinderausstattung auf Anfrage',
+    'Gemüse & Kräuter aus dem Garten',
+    'Himbeermarmelade (hausgemacht)',
+    'Gartenhütte mit Grill (direkte Nähe)',
+    'Brötchenservice (auf Wunsch)',
+    'Endreinigung separat buchbar',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/West 2 Grundriss.jpeg"
+  prevApt={{ name: 'Wohnung West', href: '/ferienwohnungen/west' }}
+  nextApt={{ name: 'Wohnung Südost', href: '/ferienwohnungen/suedost' }}
+/>

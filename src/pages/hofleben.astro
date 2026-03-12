@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+
+const gardenGallery = [
+  { src: '/images/hof/Garten Pool 1.jpg', alt: 'Pool im Garten' },
+  { src: '/images/hof/Garten Pool und Spielbereich.jpg', alt: 'Pool und Spielbereich' },
+  { src: '/images/hof/Garten Pool und Trampolin.jpg', alt: 'Pool und Trampolin' },
+  { src: '/images/hof/Garten Liegewiese.jpeg', alt: 'Liegewiese' },
+  { src: '/images/hof/Garten Liegestühle.jpeg', alt: 'Liegestühle' },
+  { src: '/images/hof/Garten Trampolin.jpeg', alt: 'Trampolin' },
+  { src: '/images/hof/Garten Ping Pong.jpeg', alt: 'Ping Pong' },
+  { src: '/images/hof/Garten Gartenhütte.jpg', alt: 'Gartenhütte' },
+  { src: '/images/hof/Gartenhütte Tisch.jpg', alt: 'Gartenhütte Tisch' },
+  { src: '/images/hof/Garten Liegewiese Spielplatz.jpg', alt: 'Spielplatz' },
+];
+
+const animalsGallery = [
+  { src: '/images/hof/Tiere Ziege.jpg', alt: 'Ziege' },
+  { src: '/images/hof/Tiere Ziegen füttern.jpeg', alt: 'Ziegen füttern' },
+  { src: '/images/hof/Tiere Ziegen Hund.jpg', alt: 'Ziegen und Hund Bidu' },
+  { src: '/images/hof/Tiere Hasen.jpg', alt: 'Hasen' },
+  { src: '/images/hof/Tiere Hasen Kopie.jpg', alt: 'Hasen 2' },
+  { src: '/images/hof/Tiere Katzen.jpg', alt: 'Katzen' },
+  { src: '/images/hof/Tiere Bidu.JPG', alt: 'Hofhund Bidu' },
+];
+
+const gardenProduce = [
+  { src: '/images/hof/Garten Gemüse.JPG', alt: 'Gemüse aus dem Garten' },
+  { src: '/images/hof/Garten Kräuter.jpeg', alt: 'Kräuter' },
+  { src: '/images/hof/Garten Pfirsiche.JPG', alt: 'Pfirsiche' },
+  { src: '/images/hof/Garten Nüsse.jpg', alt: 'Nüsse' },
+  { src: '/images/hof/Himbeeren.jpg', alt: 'Himbeeren' },
+  { src: '/images/hof/Apfelstrudel.png', alt: 'Hausgemachter Apfelstrudel' },
+];
+---
+
+<Layout title="Hofleben am Koflerhof" description="Erleben Sie echtes Bauernhofleben auf dem Koflerhof: Tiere, Garten, Pool, Spielplatz und viel Natur für die ganze Familie.">
+
+  <!-- HEADER -->
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Koflerhof Sommer.JPG" alt="Koflerhof im Sommer" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Echtes Landleben</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Das Hofleben</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Natur, Tiere, frische Luft und viel Platz zum Spielen und Entspannen
+      </p>
+    </div>
+  </div>
+
+  <!-- GARDEN SECTION -->
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div class="fade-in">
+          <p class="section-subtitle">Für alle Gäste</p>
+          <h2 class="section-title mb-6">Garten & Freizeitmöglichkeiten</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Der großzügige Garten des Koflerhofs steht allen unseren Gästen zur freien Verfügung.
+            Ob Sie am Pool entspannen, auf der Liegewiese lesen, am Grill brutzeln oder mit
+            den Kindern auf dem Spielplatz toben möchten – hier ist für jeden etwas dabei.
+          </p>
+          <p class="prose-kofler mb-8">
+            Die gemütliche Gartenhütte mit Grill ist der perfekte Ort für gesellige Abende.
+            Kinder lieben das große Trampolin, den Sandkasten, die Schaukel und die Kinderrutsche.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {[
+              'Schwimmbad (saisonal)',
+              'Liegewiese & Liegestühle',
+              'Gartenhütte mit Grill',
+              'Großes Trampolin',
+              'Spielplatz (Schaukel, Rutsche, Sandkasten)',
+              'Ping-Pong-Tisch',
+              'Tischfußball',
+              'Scooter & Kinderfahrzeuge',
+              'Trybike',
+            ].map(item => (
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Garten Pool Hund.jpeg" alt="Pool mit Hofhund" class="w-full aspect-[4/5] object-cover shadow-2xl" />
+        </div>
+      </div>
+
+      <!-- Garden Gallery -->
+      <div class="fade-in">
+        <Gallery images={gardenGallery} columns={4} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ANIMALS SECTION -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Bauernhof-Erlebnis</p>
+        <h2 class="section-title">Unsere Tiere</h2>
+        <div class="deco-line"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+        <div class="fade-in">
+          <Gallery images={animalsGallery} columns={3} />
+        </div>
+        <div class="fade-in">
+          <p class="prose-kofler mb-6">
+            Zum Koflerhof gehört echtes Bauernhofleben – und das bedeutet Tiere! Unsere Gäste,
+            besonders die Kleinen, lieben es, die Ziegen zu füttern, mit den Hasen zu spielen
+            und unsere zwei Katzen zu streicheln.
+          </p>
+          <p class="prose-kofler mb-8">
+            Unser Hofhund <strong>Bidu</strong> ist ebenfalls ein treuer Begleiter auf dem Hof
+            und freut sich über jeden Besuch. Hunde unserer Gäste sind auf dem Koflerhof
+            übrigens herzlich willkommen!
+          </p>
+          <div class="bg-cream p-6 border-l-4 border-gold">
+            <p class="font-serif text-lg text-stone-800 italic">
+              "Die Kinder wollten gar nicht mehr nach Hause –
+              vor allem wegen der Ziegen und des Hundes Bidu!"
+            </p>
+            <p class="text-sm text-stone-500 mt-2">— Gastfamilie, Sommer 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARDEN PRODUCE -->
+  <section class="py-24 md:py-32 bg-cream">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Frisch & Regional</p>
+          <h2 class="section-title mb-6">Aus dem eigenen Garten</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Im Sommer erwartet Sie in Ihrem Apartment frisches Gemüse und aromatische Kräuter
+            direkt aus unserem Garten. Tomaten, Zucchini, Kräuter und je nach Saison noch
+            viel mehr – alles ohne Pestizide, mit viel Liebe angebaut.
+          </p>
+          <p class="prose-kofler mb-6">
+            Unsere selbstgemachte <strong>Himbeermarmelade</strong> ist bei den Gästen besonders
+            beliebt und der perfekte Start in den Urlaubsmorgen.
+          </p>
+          <p class="prose-kofler mb-8">
+            Auf Wunsch liefern wir Ihnen morgens frische Brötchen direkt in die Wohnung –
+            der perfekte Start in einen erlebnisreichen Südtirol-Tag.
+          </p>
+          <a href="/anfrage" class="btn-primary">Anfrage senden</a>
+        </div>
+        <div class="fade-in">
+          <Gallery images={gardenProduce} columns={3} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIENTATION -->
+  <section class="py-24 md:py-32 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 fade-in">
+          <p class="text-xs tracking-[0.35em] uppercase text-gold mb-3">Orientierung auf dem Hof</p>
+          <h2 class="font-serif text-4xl text-white mb-4">Wegbeschreibung auf dem Koflerhof</h2>
+          <div class="deco-line"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 fade-in">
+          {[
+            { apt: 'Wohnung Ost & West', desc: 'Erdgeschoss auf der Nordseite des Hauses. Parkplatz links von der Zufahrt.' },
+            { apt: 'Wohnung West 2', desc: 'Zugang über die Westseite des Hauses, Treppe hinauf in das erste Obergeschoss.' },
+            { apt: 'Wohnung Südost', desc: 'Zugang über die Ostseite des Hauses, Treppe hinauf in das erste Obergeschoss.' },
+            { apt: 'Wohnung Südwest', desc: 'Zugang über die Westseite des Hauses, Erdgeschoss.' },
+          ].map(item => (
+            <div class="bg-white/10 p-6 border border-white/20">
+              <h3 class="font-serif text-xl text-gold mb-2">{item.apt}</h3>
+              <p class="text-white/80 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 bg-white/10 p-6 border border-white/20 fade-in">
+          <p class="text-white/80 text-sm leading-relaxed">
+            <strong class="text-gold">Hinweis:</strong> Unsere Wohnung als Gastgeberfamilie befindet sich auf der Westseite.
+            Für den Kompost steht eine Holztür hinter dem Kräutergarten auf der Westseite zur Verfügung.
+            Die Mülltrennung (sonstiger Abfall) erfolgt auf der Ostseite des Hauses.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURROUNDINGS -->
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Direkt vor der Tür</p>
+        <h2 class="section-title">Die Umgebung des Koflerhofs</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: 'Wanderwege', image: '/images/hof/Südtirol Sommer Rittner Horn.jpeg', text: 'Waldwege direkt vom Hof, Tipps im Hofmappen-Guide' },
+          { title: 'Seiser Alm', image: '/images/hof/Seiser Alm.jpg', text: 'Größtes Hochalm-Plateau Europas, nur 10 Minuten entfernt' },
+          { title: 'Kastelruth', image: '/images/hof/Kastelruth Kirche.jpg', text: 'Malerisches Dorf mit historischem Ortskern, 15 Minuten entfernt' },
+          { title: 'Südtirol', image: '/images/hof/Südtirol Weinberg.jpeg', text: 'Weinberge, Dolomiten, Kultur und Kulinarik rund um den Hof' },
+        ].map(item => (
+          <div class="fade-in bg-white shadow-sm overflow-hidden">
+            <img src={item.image} alt={item.title} class="w-full aspect-video object-cover" loading="lazy" />
+            <div class="p-5">
+              <h3 class="font-serif text-lg text-stone-800 mb-2">{item.title}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="/jahreszeiten" class="btn-primary">Südtirol entdecken</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

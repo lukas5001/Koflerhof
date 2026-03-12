@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Winter Skifahren.jpeg', alt: 'Skifahren' },
+  { src: '/images/hof/Winter Skifahren 2.jpeg', alt: 'Skifahren 2' },
+  { src: '/images/hof/Seiser Alm Winter 1.jpeg', alt: 'Seiser Alm Winter' },
+  { src: '/images/hof/Seiser Alm Winter 2.jpeg', alt: 'Seiser Alm Winter 2' },
+  { src: '/images/hof/Winter Wandern.JPG', alt: 'Winterwandern' },
+  { src: '/images/hof/Weihnachten Adventskranz.jpeg', alt: 'Weihnachtsmarkt' },
+  { src: '/images/hof/Weihnachten Kirche.jpeg', alt: 'Weihnachten in Südtirol' },
+  { src: '/images/hof/Koflerhof Winter 1.jpg', alt: 'Koflerhof im Schnee' },
+];
+---
+
+<Layout title="Winter in Südtirol – Skifahren & Weihnachten" description="Winter in Südtirol – Skifahren auf der Seiser Alm und in Gröden, Winterwandern, Weihnachtsmärkte und gemütliche Abende auf dem Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm Winter 1.jpeg" alt="Winter in Südtirol" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Dezember – März</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Südtiroler Winter</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/" class="hover:text-gold transition-colors">Startseite</a><span>/</span>
+      <a href="/jahreszeiten" class="hover:text-gold transition-colors">Südtirol erleben</a><span>/</span>
+      <span class="text-stone-700">Winter</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Ski & Schnee</p>
+          <h2 class="section-title mb-6">Weltklasse-Skigebiete vor der Tür</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Der Koflerhof ist ein perfekter Ausgangspunkt für Skiurlauber. Gleich zwei
+            weltbekannte Skigebiete sind in wenigen Minuten erreichbar:
+            die familienfreundliche <strong>Seiser Alm</strong> und das legendäre <strong>Gröden</strong>
+            mit dem berühmten Sasslongrennen.
+          </p>
+          <p class="prose-kofler mb-8">
+            Aber auch für Winterwanderer, Langläufer, Rodelfahrer und Schneeschuhgeher
+            bietet die Region ein umfangreiches Angebot. Und wenn der Schnee auf dem Hof liegt,
+            hat der Koflerhof seinen ganz eigenen Winterzauber.
+          </p>
+          <a href="/anfrage" class="btn-primary">Winter-Urlaub anfragen</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Winter Skifahren.jpeg" alt="Skifahren in Südtirol" class="w-full aspect-[4/5] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 mb-16">
+        <!-- Seiser Alm -->
+        <div class="fade-in bg-stone-50 p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">🎿</span>
+            <div>
+              <h3 class="font-serif text-2xl text-stone-800">Seiser Alm</h3>
+              <p class="text-xs tracking-widest uppercase text-gold">10 Minuten entfernt</p>
+            </div>
+          </div>
+          <ul class="space-y-3 text-stone-600 text-sm">
+            {[
+              '60 km Pistenkilometer',
+              'Für alle Könnerstufen, besonders familienfreundlich',
+              'Snowpark mit über 70 Elementen, 1,5 km lang',
+              'Top 10 Snowparks in Europa',
+              '80 km Langlaufloipen',
+              'Mehrere Rodelbahnen',
+              'February Moonlight Classic (Rennen)',
+            ].map(item => (
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Gröden -->
+        <div class="fade-in bg-stone-50 p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">⛷️</span>
+            <div>
+              <h3 class="font-serif text-2xl text-stone-800">Gröden</h3>
+              <p class="text-xs tracking-widest uppercase text-gold">20 Minuten entfernt</p>
+            </div>
+          </div>
+          <ul class="space-y-3 text-stone-600 text-sm">
+            {[
+              '195 km Pistenkilometer',
+              'FIS Weltcup Sasslongrennen (Dezember)',
+              'Teil des Dolomiti Superski',
+              '500 km zusammenhängende Pisten',
+              '1.220 km Pisten in 12 Regionen',
+              'Für alle Niveaus von flach bis extrem',
+              'Moderne Liftanlagen & gemütliche Hütten',
+            ].map(item => (
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Other winter activities -->
+      <div class="grid md:grid-cols-4 gap-6 mb-16">
+        {[
+          { title: 'Winterwandern', icon: '🥾', text: 'Präparierte Winterwanderwege mit herrlicher Aussicht auf die verschneite Landschaft.' },
+          { title: 'Schneeschuhtouren', icon: '🌨️', text: 'Abseits der Skipisten die winterliche Stille genießen – ruhige Alternative für Naturliebhaber.' },
+          { title: 'Langlauf', icon: '🎿', text: '80 km gepflegte Loipen auf der Seiser Alm für Einsteiger und Fortgeschrittene.' },
+          { title: 'Weihnachtsmärkte', icon: '🎄', text: 'Bozen, Brixen, Klausen – die schönsten Weihnachtsmärkte Südtirols, kostenlos mit Mobilcard erreichbar.' },
+        ].map(item => (
+          <div class="fade-in text-center bg-cream p-6">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <h3 class="font-serif text-lg text-stone-800 mb-2">{item.title}</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="fade-in">
+        <Gallery images={gallery} columns={4} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-stone-900 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-serif text-3xl text-white mb-4">Winter-Angebote buchen</h2>
+          <p class="text-white/80 mb-6">7 Nächte inkl. Mobilcard – ideale Basis für Skiurlaub und Wintererlebnisse in Südtirol.</p>
+          <a href="/angebote" class="btn-gold">Alle Winter-Angebote</a>
+        </div>
+        <div class="bg-white/10 p-8 border border-white/20">
+          <p class="font-serif text-3xl text-gold mb-2">ab 460 €</p>
+          <p class="font-medium text-white text-xl mb-1">Winterwander- & Skiwochen</p>
+          <p class="text-white/60 text-sm">9. Januar – 30. Januar 2027</p>
+          <p class="text-white/70 text-sm mt-3">7 Nächte für 2 Personen · Mobilcard inklusive · Endreinigung inklusive</p>
+          <a href="/anfrage" class="btn-gold mt-6 inline-block">Jetzt anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="/jahreszeiten/herbst" class="text-white/60 text-sm hover:text-gold transition-colors">← Herbst</a>
+      <a href="/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors">Übersicht</a>
+      <a href="/jahreszeiten/fruehling" class="text-white/60 text-sm hover:text-gold transition-colors">Frühling →</a>
+    </div>
+  </div>
+
+</Layout>

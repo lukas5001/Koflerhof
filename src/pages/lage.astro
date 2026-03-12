@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lage & Anfahrt" description="So finden Sie den Koflerhof in Kastelruth, Südtirol – Anfahrtsbeschreibung, GPS-Hinweise und Entfernungen zu Skigebieten und Sehenswürdigkeiten.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Koflerhof Ostansicht Sommer.jpg" alt="Koflerhof" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Mitten in Südtirol</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Lage & Anfahrt</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16">
+
+        <!-- Map embed -->
+        <div class="fade-in">
+          <div class="bg-stone-200 aspect-[4/3] relative overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.5!2d11.5627!3d46.5707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47829e2a47f31b01%3A0x4f7a4c7c5f7c0000!2sKoflerhof%2C%20Kastelruth%2C%20Südtirol!5e0!3m2!1sde!2sit!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0"
+              title="Koflerhof auf der Karte"
+            ></iframe>
+          </div>
+          <p class="text-xs text-stone-500 mt-2 tracking-wider">GPS: Waidbruck / Ponte Gardena 39040 eingeben</p>
+        </div>
+
+        <!-- Directions -->
+        <div class="fade-in">
+          <div class="bg-amber-50 border border-amber-200 p-5 mb-8">
+            <div class="flex gap-3">
+              <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <p class="font-medium text-amber-800 text-sm">Wichtiger GPS-Hinweis</p>
+                <p class="text-amber-700 text-sm mt-1">Geben Sie <strong>"Waidbruck 39040"</strong> oder <strong>"Ponte Gardena 39040"</strong> ein – nicht "Tisens", da es ein gleichnamiges Dorf bei Meran gibt!</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="font-serif text-2xl text-stone-800 mb-6">Anfahrt ohne Navigation</h2>
+
+          <div class="space-y-4">
+            {[
+              { step: '1', text: 'Autobahn-Ausfahrt Klausen/Kastelruth nehmen' },
+              { step: '2', text: 'Auf der Hauptstraße Richtung Bozen fahren (9 km)' },
+              { step: '3', text: 'Bei Waidbruck/Ponte Gardena links abbiegen, Brücke überqueren' },
+              { step: '4', text: 'Am Kreisverkehr rechts in Richtung Kastelruth/Schlerngebiet' },
+              { step: '5', text: 'Nach 1,5 km: Rechts bei der ersten Bushaltestelle (Schild "KOFLERHOF App.")' },
+              { step: '6', text: 'Der Koflerhof ist das erste Haus – Einfahrt hinter dem Haus, klingeln' },
+            ].map(item => (
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center shrink-0 font-medium text-sm">{item.step}</div>
+                <p class="text-stone-700 pt-1">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Distances -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Zentraler geht es kaum</p>
+        <h2 class="section-title">Entfernungen & Umgebung</h2>
+        <div class="deco-line"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          { dest: 'Seiser Alm', dist: '10 Min.', icon: '🏔️', sub: 'Größtes Hochalm-Plateau Europas' },
+          { dest: 'Kastelruth', dist: '15 Min.', icon: '🏘️', sub: 'Malerisches Bergdorf' },
+          { dest: 'Klausen', dist: '10 Min.', icon: '🏰', sub: 'Mittelalterliche Altstadt' },
+          { dest: 'Gröden', dist: '20 Min.', icon: '⛷️', sub: '195 km Pistenkilometer' },
+          { dest: 'Brixen', dist: '20 Min.', icon: '⛪', sub: 'Kulturstadt im Eisacktal' },
+          { dest: 'Bozen', dist: '25 Min.', icon: '🏙️', sub: 'Landeshauptstadt Südtirols' },
+          { dest: 'Meran', dist: '45 Min.', icon: '🌿', sub: 'Kurstadt & Genussmetropole' },
+          { dest: 'Sterzing', dist: '40 Min.', icon: '🏔️', sub: 'Tor zum Brenner' },
+          { dest: 'Villnöss', dist: '25 Min.', icon: '🦅', sub: 'Naturpark mit Geislerspitzen' },
+        ].map(item => (
+          <div class="fade-in flex items-center gap-4 bg-cream p-5">
+            <div class="text-3xl">{item.icon}</div>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between">
+                <span class="font-medium text-stone-800">{item.dest}</span>
+                <span class="text-gold font-serif text-lg">{item.dist}</span>
+              </div>
+              <p class="text-xs text-stone-500 mt-0.5">{item.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Public transport -->
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-serif text-3xl text-white mb-4">Mit öffentlichen Verkehrsmitteln</h2>
+          <p class="text-white/80 mb-6 leading-relaxed">
+            Bei vielen unserer Angebote ist die <strong class="text-gold">Südtirol Mobilcard</strong> inklusive.
+            Mit dieser Karte fahren Sie in ganz Südtirol mit Bus und Bahn kostenlos.
+          </p>
+          <p class="text-white/80 mb-6 leading-relaxed">
+            Der nächste Bushalt ist nur ca. 300 m vom Koflerhof entfernt und bietet
+            regelmäßige Verbindungen nach Kastelruth, Waidbruck/Klausen (Bahnhof) und in die Umgebung.
+          </p>
+        </div>
+        <div class="bg-white/10 p-8 border border-white/20">
+          <h3 class="font-serif text-xl text-gold mb-4">Mit dem Zug</h3>
+          <ul class="space-y-3 text-white/80 text-sm">
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Anreise bis Waidbruck/Klausen (Bahn)</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Weiterfahrt mit Bus Richtung Kastelruth</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Abholung möglich – bitte bei Buchung anfragen</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

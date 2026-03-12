@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Südwest Wintergarten 1.jpeg', alt: 'Wintergarten' },
+  { src: '/images/ferienwohnungen/Südwest Wintergarten 2.jpeg', alt: 'Wintergarten 2' },
+  { src: '/images/ferienwohnungen/Südwest Wintergarten 3.jpeg', alt: 'Wintergarten 3' },
+  { src: '/images/ferienwohnungen/Südwest Küche.png', alt: 'Küche' },
+  { src: '/images/ferienwohnungen/Südwest Schlafzimmer.png', alt: 'Schlafzimmer' },
+  { src: '/images/ferienwohnungen/Südwest Schlafzimmer 2.jpg', alt: 'Schlafzimmer 2' },
+  { src: '/images/ferienwohnungen/Südwest Bad.png', alt: 'Badezimmer' },
+  { src: '/images/ferienwohnungen/Südwest Terrasse.png', alt: 'Private Terrasse' },
+  { src: '/images/ferienwohnungen/Südwest Eingang.jpg', alt: 'Eingang' },
+];
+---
+
+<ApartmentLayout
+  title="Wohnung Südwest"
+  subtitle="Ferienwohnung · Erdgeschoss"
+  description="Die <strong>Wohnung Südwest</strong> liegt im Erdgeschoss auf der Südwestseite des Koflerhofs und ist eine sonnige, freundliche Wohnung für 4 bis 5 Personen. Ein besonderer Charme liegt im hellen Wintergarten, der als zusätzlicher Wohnraum genutzt werden kann und herrliches Tageslicht hereinlässt.<br/><br/>Der private Außenbereich mit eigenem Grill lädt zu gemütlichen Abenden unter freiem Himmel ein. Zwei Schlafzimmer mit insgesamt zwei Doppelbetten sowie eine Schlafcouch bieten ausreichend Platz für die ganze Familie."
+  headerImage="/images/ferienwohnungen/Südwest Wintergarten 1.jpeg"
+  persons="4–5"
+  floor="Erdgeschoss, Südwestseite"
+  bedrooms="2"
+  extra="Wintergarten & Grillterrasse"
+  badge="Besonders kinderfreundlich"
+  beds={[
+    '2× Doppelbett',
+    'Schlafcouch für 1–2 Personen (Wohnraum)',
+  ]}
+  features={[
+    'Vollausgestattete Küche',
+    'Heller Wintergarten',
+    'Privater Außenbereich mit Grill',
+    'TV/Sat in allen Zimmern',
+    'Kostenloses WLAN',
+    'Waschmaschine',
+    'Kontrollierte Lüftung',
+    'Klimaanlage',
+    'Badezimmer',
+  ]}
+  inclusions={[
+    'Bettwäsche & Handtücher',
+    'Kinderausstattung auf Anfrage',
+    'Gemüse & Kräuter aus dem Garten',
+    'Himbeermarmelade (hausgemacht)',
+    'Privater Grill im Außenbereich',
+    'Brötchenservice (auf Wunsch)',
+    'Endreinigung separat buchbar',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Südwest Skizze.png"
+  prevApt={{ name: 'Wohnung Südost', href: '/ferienwohnungen/suedost' }}
+  nextApt={{ name: 'Wohnung Ost', href: '/ferienwohnungen/ost' }}
+/>

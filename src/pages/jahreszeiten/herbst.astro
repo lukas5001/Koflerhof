@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Herbst Törggelen.jpeg', alt: 'Törggelen' },
+  { src: '/images/hof/Herbst Törggelen 1.jpeg', alt: 'Kastanien' },
+  { src: '/images/hof/Südtirol Weinberg.jpeg', alt: 'Weinberge im Herbst' },
+  { src: '/images/hof/Kastelruth Kirche.jpg', alt: 'Kastelruth' },
+  { src: '/images/hof/Sonnenuntergang.jpg', alt: 'Herbstlicher Sonnenuntergang' },
+];
+---
+
+<Layout title="Herbst in Südtirol" description="Herbst in Südtirol – goldene Weinberge, traditionelles Törggelen, Kastanienwege und klare Herbstluft rund um den Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Herbst Törggelen.jpeg" alt="Herbst in Südtirol" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">September – November</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Goldener Herbst</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/" class="hover:text-gold transition-colors">Startseite</a><span>/</span>
+      <a href="/jahreszeiten" class="hover:text-gold transition-colors">Südtirol erleben</a><span>/</span>
+      <span class="text-stone-700">Herbst</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Genuss & Tradition</p>
+          <h2 class="section-title mb-6">Kultur & Genuss im Herbst</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Der Herbst in Südtirol ist eine besonders stimmungsvolle Jahreszeit. Goldgelbe Weinberge,
+            klare Luft und kühlere Temperaturen schaffen ideale Bedingungen für ausgedehnte
+            Wanderungen ohne Sommerhitze.
+          </p>
+          <p class="prose-kofler mb-8">
+            Highlight des Südtiroler Herbstes ist das <strong>Törggelen</strong> – eine uralte Tradition,
+            bei der nach der Weinlese auf Bauernhöfen gefeiert wird. Es werden Sauerkraut, Knödel,
+            Speck, Wurst, Käse und als Nachtisch Krapfen oder geröstete Kastanien serviert.
+            Ein unvergessliches Erlebnis!
+          </p>
+          <a href="/anfrage" class="btn-primary">Herbst-Urlaub anfragen</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Herbst Törggelen 1.jpeg" alt="Kastanienspazierweg" class="w-full aspect-[4/5] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 mb-16">
+        <div class="fade-in">
+          <h3 class="font-serif text-2xl text-stone-800 mb-4">Das Törggelen</h3>
+          <p class="text-stone-600 leading-relaxed mb-4">
+            Das Törggelen ist eine jahrhundertealte südtirolerische Tradition. Nach dem Keltern
+            des Weins werden auf Bauernhöfen und in Gasthäusern deftige Gerichte serviert:
+          </p>
+          <ul class="space-y-2">
+            {['Sauerkraut & Knödel', 'Hausspeck & Wurst', 'Südtiroler Käse', 'Geröstete Kastanien', 'Krapfen & süße Leckereien', 'Neuer Wein (Nuier)'].map(item => (
+              <li class="flex items-center gap-3 text-stone-600">
+                <span class="w-2 h-2 bg-gold rounded-full shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="text-stone-600 leading-relaxed mt-4">
+            Im Hofmappe-Guide finden Sie eine Liste lokaler Höfe, die Törggelen anbieten.
+          </p>
+        </div>
+        <div class="fade-in">
+          <h3 class="font-serif text-2xl text-stone-800 mb-4">Herbstwanderungen</h3>
+          <p class="text-stone-600 leading-relaxed mb-4">
+            Der Herbst bietet ideale Wanderbedingungen: angenehme Temperaturen, klare Luft
+            mit weiter Sicht, geringeres Gewitterrisiko und wunderschöne Herbstfarben.
+          </p>
+          <p class="text-stone-600 leading-relaxed mb-4">
+            Kastanienspazierwege, Weinbergwege und Panoramawege auf der Seiser Alm
+            zeigen Südtirol im goldenen Herbstlicht.
+          </p>
+          <div class="bg-cream p-5 mt-4">
+            <p class="text-sm text-stone-600 italic">
+              "Herbst ist unsere liebste Jahreszeit in Südtirol – weniger Touristen,
+              bessere Sicht und das Törggelen ist unvergesslich!"
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={3} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-earth-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-serif text-3xl text-white mb-4">Herbst-Angebote</h2>
+          <p class="text-white/80 mb-6">Erleben Sie den goldenen Herbst in Südtirol mit unseren speziellen Herbst-Angeboten – inkl. Mobilcard für kostenlose Ausflüge in die Städte.</p>
+          <a href="/angebote" class="btn-gold">Angebote ansehen</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { label: 'Törggelezeit', price: 'ab 495 €', dates: '24. Okt. – 14. Nov. 2026' },
+            { label: 'Kultur & Kulinarik', price: 'ab 380 €', dates: '14. Nov. – 5. Dez. 2026' },
+          ].map(offer => (
+            <div class="bg-white/10 p-6 border border-white/20">
+              <p class="font-serif text-2xl text-gold mb-1">{offer.price}</p>
+              <p class="font-medium text-white mb-1">{offer.label}</p>
+              <p class="text-xs text-white/60 tracking-wider">{offer.dates}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="/jahreszeiten/sommer" class="text-white/60 text-sm hover:text-gold transition-colors">← Sommer</a>
+      <a href="/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors">Übersicht</a>
+      <a href="/jahreszeiten/winter" class="text-white/60 text-sm hover:text-gold transition-colors">Winter →</a>
+    </div>
+  </div>
+
+</Layout>
