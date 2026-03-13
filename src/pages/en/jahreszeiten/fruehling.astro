@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Blumen 1.jpg', alt: 'Spring flowers' },
+  { src: '/images/hof/Blumen 2.jpg', alt: 'Blossoming trees' },
+  { src: '/images/hof/Blumen 3.jpg', alt: 'Spring meadow' },
+  { src: '/images/hof/Blumen 4.jpg', alt: 'Flowers 4' },
+  { src: '/images/hof/Garten Pfirsiche.JPG', alt: 'Peaches in the garden' },
+  { src: '/images/hof/Kastelruth Kirche.jpg', alt: 'Kastelruth in spring' },
+];
+---
+
+<Layout title="Spring in South Tyrol" description="Spring in South Tyrol – blossoming valleys, first hikes and pleasant cultural excursions in the surroundings of Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Blumen 1.jpg" alt="Spring in South Tyrol" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">March – May</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Spring Awakening</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/en/" class="hover:text-gold transition-colors">Home</a><span>/</span>
+      <a href="/en/jahreszeiten" class="hover:text-gold transition-colors">Discover South Tyrol</a><span>/</span>
+      <span class="text-stone-700">Spring</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Nature comes alive</p>
+          <h2 class="section-title mb-6">Spring in the South Tyrolean valleys</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            When spring awakens in South Tyrol from its winter slumber, the landscape transforms
+            into a sea of colour. Apple and apricot orchards burst into blossom in the valleys,
+            meadows fill with wild flowers and the first mountain hikes
+            await you in peaceful tranquillity.
+          </p>
+          <p class="prose-kofler mb-8">
+            Spring is the ideal season for those seeking calm, affordable prices
+            and pleasant temperatures. The trails are not yet crowded, but are already
+            accessible up to the higher alpine altitudes.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Apple blossom (April/May)',
+              'Hiking without the crowds',
+              'Low-season prices',
+              'Towns to explore at leisure',
+              'Cycling through the valleys',
+              'E-Bike tours',
+            ].map(item => (
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/en/anfrage" class="btn-primary">Plan your spring holiday</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Blumen 2.jpg" alt="Blossom in South Tyrol" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12 fade-in">
+        <p class="section-subtitle">Gallery</p>
+        <h2 class="section-title">Spring in South Tyrol</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={3} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Spring offer from €495</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        7 nights for 2 persons during the spring awakening – immerse yourself in South Tyrol's blossoming nature.
+      </p>
+      <a href="/en/anfrage" class="btn-gold">Inquire now</a>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 grid grid-cols-3 items-center">
+      <span></span>
+      <a href="/en/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors text-center">Overview</a>
+      <a href="/en/jahreszeiten/sommer" class="text-white/60 text-sm hover:text-gold transition-colors text-right">Summer →</a>
+    </div>
+  </div>
+
+</Layout>

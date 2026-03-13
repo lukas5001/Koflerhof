@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
+
+const reviews = [
+  {
+    headline: 'Eravamo entusiasti',
+    text: "Il Koflerhof ha superato di gran lunga le nostre aspettative. L'appartamento era bellissimo, i gestori cordiali e il pacchetto complessivo semplicemente perfetto. Torneremo sicuramente! I bambini hanno vissuto le due settimane più belle della loro storia di vacanze.",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2025',
+    stars: 5,
+  },
+  {
+    headline: 'Posizione meravigliosa e ottimi host!',
+    text: "Appartamento da sogno in una posizione magnifica. La famiglia Griesser è straordinariamente attenta e cordiale. Ci si sente immediatamente i benvenuti. Le dotazioni dell'appartamento sono di prima classe, la pulizia impeccabile.",
+    author: 'Famiglia dalla Germania',
+    source: 'Booking.com',
+    date: 'Primavera 2024',
+    stars: 5,
+  },
+  {
+    headline: 'Un luogo dove stare bene',
+    text: "Ci siamo sentiti incredibilmente a nostro agio dal primo all'ultimo giorno. Il giardino con piscina e trampolino era il paradiso per i nostri bambini. La posizione per escursioni sull'Alpe di Siusi è perfetta.",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2023',
+    stars: 5,
+  },
+  {
+    headline: 'Straordinario',
+    text: "Un alloggio straordinario in un contesto da sogno. I gestori vanno ben oltre il normale livello di ospitalità. Torneremo l'anno prossimo!",
+    author: 'Famiglia dalla Germania',
+    source: 'Booking.com',
+    date: 'Primavera 2022',
+    stars: 5,
+  },
+  {
+    headline: 'Ospitalità, attenzione e cordialità',
+    text: "Ciò che ci ha colpito di più è stata la cordialità della famiglia ospitante. Verdura fresca dal giardino, la marmellata fatta in casa a colazione – piccoli gesti che significano molto.",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2022',
+    stars: 5,
+  },
+  {
+    headline: 'Darei 6 stelle se potessi',
+    text: "Vacanza assolutamente fantastica! Fin dal primo momento ci siamo sentiti come a casa. Gli animali, il giardino, la piscina – semplicemente meravigliosi. I dintorni offrono qualcosa per tutti: escursioni, sci, cultura.",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2022',
+    stars: 5,
+  },
+  {
+    headline: 'Molto soddisfatti',
+    text: "Appartamento bello, pulito e ben attrezzato con gestori gentili. Il giardino e la posizione sono ottimi. Molto consigliato per famiglie con bambini!",
+    author: 'Famiglia dalla Germania',
+    source: 'FeWo-direkt',
+    date: 'Estate 2022',
+    stars: 5,
+  },
+  {
+    headline: 'Appartamenti grandi, puliti e con molti comfort',
+    text: "Molto belle le stanze, pulite e con tutti i comfort. I proprietari sono molto gentili e disponibili. Il giardino con la piscina è fantastico per le famiglie.",
+    author: 'Ospiti dall\'Italia',
+    source: 'Google',
+    date: 'Inverno 2022',
+    stars: 5,
+  },
+  {
+    headline: 'Posizione strategica',
+    text: "Posizione strategica per visitare tutta la zona. Casa pulita e accogliente. Host disponibili e gentili. Torneremo sicuramente!",
+    author: 'Famiglia dall\'Italia',
+    source: 'Google',
+    date: 'Estate 2021',
+    stars: 5,
+  },
+];
+---
+
+<Layout title="Recensioni dei nostri ospiti" description="Leggete le recensioni autentiche dei nostri ospiti su Google, Booking.com, TripAdvisor e FeWo-direkt sul Koflerhof in Alto Adige.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Familie Griesser 2.jpg" alt="Famiglia Griesser" class="absolute inset-0 w-full h-full object-cover opacity-30 object-top" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Cosa dicono i nostri ospiti</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Recensioni</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-white border-b border-stone-100">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
+        {[
+          { platform: 'Google', rating: '5.0', stars: 5, count: '8 recensioni' },
+          { platform: 'Booking.com', rating: '9.8', stars: 5, count: 'Eccellente' },
+          { platform: 'FeWo-direkt', rating: '5.0', stars: 5, count: '4 recensioni' },
+          { platform: 'TripAdvisor', rating: '5.0', stars: 5, count: 'Eccellente' },
+        ].map(item => (
+          <div class="fade-in">
+            <div class="font-serif text-4xl text-forest-700 mb-1">{item.rating}</div>
+            <div class="flex justify-center gap-0.5 mb-1">
+              {Array.from({ length: item.stars }).map(() => (
+                <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <div class="text-sm font-medium text-stone-700">{item.platform}</div>
+            <div class="text-xs text-stone-400 mt-0.5">{item.count}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {reviews.map(review => (
+          <div class="fade-in">
+            <ReviewCard {...review} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-2xl text-stone-800 mb-4">Lascia la tua recensione</h2>
+      <p class="text-stone-600 mb-8">Il vostro soggiorno al Koflerhof è stato indimenticabile? Siamo lieti di leggere la vostra recensione!</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        {[
+          { name: 'Google', href: '#' },
+          { name: 'Booking.com', href: '#' },
+          { name: 'TripAdvisor', href: '#' },
+          { name: 'FeWo-direkt', href: '#' },
+        ].map(p => (
+          <a href={p.href} target="_blank" rel="noopener" class="btn-outline text-sm py-2 px-6">{p.name} →</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Scrivete anche voi la vostra storia</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">Diventate parte della famiglia Koflerhof. Richiedete oggi stesso la vostra vacanza.</p>
+      <a href="/it/anfrage" class="btn-gold">Richiedi ora</a>
+    </div>
+  </section>
+
+</Layout>

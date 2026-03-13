@@ -1,0 +1,385 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ApartmentCard from '../../components/ApartmentCard.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
+
+const apartments = [
+  {
+    name: 'Appartamento Est',
+    slug: 'ost',
+    persons: '4–5',
+    floor: 'Piano terra',
+    bedrooms: '2',
+    highlight: 'Appartamento spazioso con terrazza privata e accesso diretto al giardino. Ideale per famiglie con bambini.',
+    image: '/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg',
+    badge: 'Particolarmente adatto ai bambini',
+  },
+  {
+    name: 'Appartamento Ovest',
+    slug: 'west',
+    persons: '3–4',
+    floor: 'Piano terra',
+    bedrooms: '2',
+    highlight: 'Accogliente appartamento al piano terra con ampia cucina-soggiorno e accesso diretto al giardino.',
+    image: '/images/ferienwohnungen/West Wohnraum 2.jpeg',
+    badge: 'Particolarmente adatto ai bambini',
+  },
+  {
+    name: 'Appartamento Ovest 2',
+    slug: 'west2',
+    persons: '4',
+    floor: '1° piano',
+    bedrooms: '2',
+    highlight: 'Appartamento luminoso al primo piano con balcone privato e bella vista sulla zona circostante.',
+    image: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg',
+    badge: 'Particolarmente adatto ai bambini',
+  },
+  {
+    name: 'Appartamento Sud-Est',
+    slug: 'suedost',
+    persons: '6',
+    floor: '1° piano',
+    bedrooms: '3',
+    highlight: "Il nostro appartamento più grande con luminoso soggiorno e giardino d'inverno – ideale per famiglie numerose.",
+    image: '/images/ferienwohnungen/Suedost Wintergarten.jpg',
+    badge: 'Fino a 6 persone',
+  },
+  {
+    name: 'Appartamento Sud-Ovest',
+    slug: 'suedwest',
+    persons: '4–5',
+    floor: 'Piano terra',
+    bedrooms: '2',
+    highlight: "Appartamento soleggiato con giardino d'inverno e spazio esterno privato con barbecue.",
+    image: '/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg',
+    badge: 'Particolarmente adatto ai bambini',
+  },
+];
+
+const reviews = [
+  {
+    headline: 'Eravamo entusiasti',
+    text: "Il Koflerhof ha superato di gran lunga le nostre aspettative. L'appartamento era bellissimo, i gestori cordiali e il pacchetto complessivo semplicemente perfetto. Torneremo sicuramente!",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2025',
+    stars: 5,
+  },
+  {
+    headline: 'Posizione meravigliosa e ottimi host!',
+    text: "Appartamento da sogno in una posizione magnifica. La famiglia Griesser è straordinariamente attenta e cordiale. Ci si sente immediatamente i benvenuti. Dotazioni dell'appartamento di prima classe.",
+    author: 'Famiglia dalla Germania',
+    source: 'Booking.com',
+    date: 'Primavera 2024',
+    stars: 5,
+  },
+  {
+    headline: 'Un luogo dove stare bene',
+    text: "Ci siamo sentiti incredibilmente a nostro agio dal primo all'ultimo giorno. Il giardino con piscina e trampolino era il paradiso per i nostri bambini. La posizione per escursioni sull'Alpe di Siusi è perfetta.",
+    author: 'Famiglia dalla Germania',
+    source: 'Google',
+    date: 'Estate 2023',
+    stars: 5,
+  },
+];
+---
+
+<Layout title="Koflerhof – Appartamenti in agriturismo in Alto Adige" description="Benvenuti al Koflerhof a Castelrotto: cinque appartamenti arredati con cura in un autentico agriturismo dell'Alto Adige, vicino all'Alpe di Siusi.">
+
+  <!-- HERO SLIDER -->
+  <div class="hero-slider relative h-screen overflow-hidden">
+    <div class="swiper h-full" id="hero-swiper">
+      <div class="swiper-wrapper">
+        {[
+          { img: '/images/hof/Koflerhof Hausansicht Sommer 1.JPG', title: 'Benvenuti al Koflerhof', sub: 'Il vostro angolo di paradiso in Alto Adige' },
+          { img: '/images/hof/Garten Pool Hund.jpeg', title: 'Vacanze a contatto con la natura', sub: 'Il nostro giardino vi aspetta' },
+          { img: '/images/hof/Seiser Alm.jpg', title: "L'Alpe di Siusi a portata di mano", sub: "Il più grande altopiano alpino d'Europa" },
+          { img: '/images/hof/Suedtirol Sommer Rittner Horn.jpeg', title: 'Alto Adige – natura senza confini', sub: "Vivete l'autenticità" },
+          { img: '/images/hof/Koflerhof Winter.JPG', title: 'Inverno al Koflerhof', sub: 'Neve fresca, aria pulita e calore' },
+        ].map(slide => (
+          <div class="swiper-slide relative">
+            <img src={slide.img} alt={slide.title} class="w-full h-full object-cover" loading="eager" />
+            <div class="absolute inset-0" style="background:radial-gradient(ellipse at center,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.2) 60%,rgba(0,0,0,0.45) 100%)"></div>
+            <div class="absolute inset-x-0 top-0 h-48" style="background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%)"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+              <p class="text-xs md:text-sm tracking-[0.4em] uppercase text-gold mb-4 font-sans" style="text-shadow:0 1px 8px rgba(0,0,0,0.8),0 0 30px rgba(0,0,0,0.5)">{slide.sub}</p>
+              <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl max-w-4xl leading-tight" style="text-shadow:0 2px 4px rgba(0,0,0,0.9),0 4px 20px rgba(0,0,0,0.7),0 8px 40px rgba(0,0,0,0.5)">{slide.title}</h1>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination absolute bottom-10 z-10"></div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-white/70 animate-bounce">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="bg-white">
+    <div class="grid lg:grid-cols-2 min-h-[70vh]">
+      <div class="relative overflow-hidden min-h-[400px]">
+        <img src="/images/hof/Koflerhof Hofumgebung Sommer.jpg" alt="Koflerhof" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm px-6 py-4 shadow-lg">
+          <p class="text-xs tracking-[0.25em] uppercase text-forest-700 font-sans">Da generazioni</p>
+          <p class="font-serif text-lg text-stone-800 mt-0.5">Famiglia Griesser · Castelrotto</p>
+        </div>
+      </div>
+      <div class="flex items-center px-8 md:px-16 py-16 md:py-24 bg-white">
+        <div class="max-w-lg fade-in">
+          <p class="section-subtitle">Benvenuti</p>
+          <h2 class="section-title mb-8">Vacanze in agriturismo con la famiglia Griesser</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-5">
+            Nel pittoresco Eisacktal, a pochi chilometri da Castelrotto, il Koflerhof vi accoglie
+            con cinque appartamenti arredati con cura, l'autentica vita in fattoria e tutta
+            la cordialità della nostra famiglia.
+          </p>
+          <p class="prose-kofler mb-8">
+            Godetevi la tranquillità della campagna altoatesina, lasciate che i vostri bambini
+            scoprano la vita contadina e partite ogni mattina alla scoperta delle Dolomiti,
+            dell'Alpe di Siusi e dei pittoreschi borghi medievali.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/it/ferienwohnungen" class="btn-primary">Scopri gli appartamenti</a>
+            <a href="/it/anfrage" class="btn-outline">Invia richiesta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS STRIP -->
+  <section class="bg-forest-700 text-white py-14">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20">
+        {[
+          { icon: '🏔️', label: 'Alpe di Siusi', sub: 'A 10 min.' },
+          { icon: '🏠', label: '5 Appartamenti', sub: 'per 3–6 persone' },
+          { icon: '🐐', label: 'Vita in fattoria', sub: 'Animali & natura' },
+          { icon: '🎿', label: 'Comprensori sciistici', sub: 'A 10–20 min.' },
+        ].map(item => (
+          <div class="fade-in text-center py-4 px-6">
+            <div class="text-4xl mb-2">{item.icon}</div>
+            <div class="font-serif text-lg text-gold leading-tight">{item.label}</div>
+            <div class="text-xs text-white/60 tracking-wider mt-1">{item.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PANORAMA -->
+  <div class="relative h-[55vh] overflow-hidden">
+    <img src="/images/hof/Seiser Alm.jpg" alt="Alto Adige" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 60%)"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="container mx-auto px-6 md:px-12">
+        <p class="font-serif text-3xl md:text-5xl text-white max-w-lg leading-snug fade-in">
+          "Dove le montagne<br/>toccano il cielo"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- APARTMENTS -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Confortevoli & accoglienti</p>
+        <h2 class="section-title">I nostri appartamenti</h2>
+        <div class="deco-line"></div>
+        <p class="prose-kofler max-w-2xl mx-auto mt-6">
+          Cinque appartamenti arredati con cura – ognuno con il proprio carattere,
+          tutti con il comfort che meritate per una vacanza rilassante.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {apartments.slice(0, 3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 mt-8 lg:w-2/3 lg:mx-auto">
+        {apartments.slice(3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-14 fade-in">
+        <a href="/it/ferienwohnungen" class="btn-outline">Confronta tutti gli appartamenti</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARM LIFE -->
+  <section class="bg-cream">
+    <div class="grid lg:grid-cols-2 min-h-[70vh]">
+      <div class="grid grid-cols-2 min-h-[400px]">
+        <img src="/images/hof/Tiere Ziege.jpg" alt="Capre" class="w-full h-full object-cover" />
+        <img src="/images/hof/Garten Pool 2.JPG" alt="Piscina" class="w-full h-full object-cover" />
+        <img src="/images/hof/Garten Trampolin.jpeg" alt="Trampolino" class="w-full h-full object-cover" />
+        <img src="/images/hof/Garten Spielplatz.jpg" alt="Area giochi" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex items-center px-8 md:px-16 py-16 md:py-24">
+        <div class="max-w-lg fade-in">
+          <p class="section-subtitle">Autentica vita contadina</p>
+          <h2 class="section-title mb-8">La vita in fattoria al Koflerhof</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Al Koflerhof troverete autentica vita di fattoria: capre, conigli, gatti e
+            il cane di casa Bidu vi daranno il benvenuto. I bambini possono nutrire
+            gli animali e vivere esperienze uniche a contatto con la natura.
+          </p>
+          <p class="prose-kofler mb-8">
+            Il grande giardino con piscina, trampolino, area giochi e il gazebo con
+            barbecue è il luogo perfetto per rilassarsi e trascorrere serate in
+            compagnia.
+          </p>
+          <a href="/it/hofleben" class="btn-primary">Scopri la vita in fattoria</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in lg:order-2">
+          <img src="/images/hof/Garten Pool und Trampolin.jpg" alt="Giardino con piscina" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+        <div class="fade-in lg:order-1">
+          <p class="section-subtitle">Tutto incluso</p>
+          <h2 class="section-title mb-8">Il comfort che meritate</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-8">
+            Ogni appartamento è dotato di tutto il necessario per le vostre vacanze.
+            Godetevi la piscina stagionale, il trampolino, il calcio balilla e
+            molto altro – il tutto nel verde dell'Alto Adige.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {[
+              'Piscina (stagionale)', 'Wi-Fi gratuito', 'Noleggio E-Bike', 'TV/Sat',
+              'Trampolino & calcio balilla', 'Parcheggio gratuito', 'Verdure dal giardino',
+              'Marmellata fatta in casa', 'Barbecue', 'Biancheria inclusa',
+              'Attrezzatura per bambini', 'Garage per moto',
+            ].map(item => (
+              <div class="flex items-center gap-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONS -->
+  <section class="py-24 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+    <img
+      src="/images/hof/Seiser Alm Winter 1.jpeg"
+      alt="Alto Adige"
+      class="absolute inset-0 w-full h-full object-cover opacity-20"
+    />
+    <div class="relative container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Tutto l'anno</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">L'Alto Adige in ogni stagione</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { name: 'Primavera', href: '/it/jahreszeiten/fruehling', img: '/images/hof/Blumen 1.jpg', text: 'Prati fioriti, prime escursioni e temperature piacevoli.' },
+          { name: 'Estate', href: '/it/jahreszeiten/sommer', img: '/images/hof/Seiser Alm.jpg', text: "Escursioni sull'Alpe di Siusi, piscina e panorami mozzafiato." },
+          { name: 'Autunno', href: '/it/jahreszeiten/herbst', img: '/images/hof/Herbst Toerggelen.jpeg', text: 'Vigneti dorati e tradizionale Törggelen con vino e castagne.' },
+          { name: 'Inverno', href: '/it/jahreszeiten/winter', img: '/images/hof/Winter Skifahren.jpeg', text: "Sci di classe mondiale sull'Alpe di Siusi (10 min.) e in Val Gardena (20 min.)." },
+        ].map(item => (
+          <a href={item.href} class="group block fade-in">
+            <div class="relative aspect-[3/4] overflow-hidden mb-4">
+              <img src={item.img} alt={item.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3 class="font-serif text-2xl text-white mb-2">{item.name}</h3>
+                <p class="text-white/70 text-sm leading-relaxed">{item.text}</p>
+              </div>
+            </div>
+            <div class="text-gold text-xs tracking-widest uppercase group-hover:text-yellow-400 transition-colors">
+              Scopri di più →
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Cosa dicono i nostri ospiti</p>
+        <h2 class="section-title">Recensioni</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {reviews.map(review => (
+          <div class="fade-in">
+            <ReviewCard {...review} />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="/it/bewertungen" class="btn-outline">Tutte le recensioni</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY CTA -->
+  <section class="bg-forest-700">
+    <div class="grid lg:grid-cols-2 min-h-[60vh]">
+      <div class="relative min-h-[400px] overflow-hidden">
+        <img src="/images/hof/Familie Griesser 2.jpg" alt="Famiglia Griesser" class="absolute inset-0 w-full h-full object-cover object-top" />
+        <div class="absolute inset-0 bg-black/20"></div>
+      </div>
+      <div class="flex items-center px-8 md:px-16 py-16 md:py-24">
+        <div class="max-w-lg fade-in">
+          <p class="section-subtitle">La famiglia Griesser</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">
+            Non vediamo l'ora di<br/>
+            <span class="text-gold">accogliervi!</span>
+          </h2>
+          <div class="w-16 h-0.5 bg-gold/50 mb-8"></div>
+          <p class="text-white/80 leading-relaxed mb-10">
+            Che sia per una vacanza estiva o uno ski trip invernale – al Koflerhof
+            troverete un luogo accogliente dove sentirsi a casa. Vi aspettiamo!
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/it/anfrage" class="btn-gold">Invia richiesta</a>
+            <a href="/it/ferienwohnungen" class="btn-outline border-white/40 text-white hover:bg-white/10">Scopri gli appartamenti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if ((window as any).Swiper) {
+      new (window as any).Swiper('#hero-swiper', {
+        loop: true,
+        autoplay: { delay: 5500, disableOnInteraction: false },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 1200,
+        pagination: { el: '.swiper-pagination', clickable: true },
+      });
+    }
+  });
+</script>

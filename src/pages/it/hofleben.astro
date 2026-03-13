@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+
+const gardenGallery = [
+  { src: '/images/hof/Garten Pool 1.png', alt: 'Piscina nel giardino' },
+  { src: '/images/hof/Garten Pool und Spielbereich.jpg', alt: 'Piscina e area giochi' },
+  { src: '/images/hof/Garten Pool und Trampolin.jpg', alt: 'Piscina e trampolino' },
+  { src: '/images/hof/Garten Liegewiese.jpeg', alt: 'Prato per prendere il sole' },
+  { src: '/images/hof/Garten Liegestuehle.jpeg', alt: 'Sdraio' },
+  { src: '/images/hof/Garten Trampolin.jpeg', alt: 'Trampolino' },
+  { src: '/images/hof/Garten Ping Pong.jpeg', alt: 'Ping pong' },
+  { src: '/images/hof/Garten Gartenhuette.jpg', alt: 'Gazebo' },
+  { src: '/images/hof/Gartenhuette Tisch.jpg', alt: 'Tavolo nel gazebo' },
+  { src: '/images/hof/Garten Liegewiese Spielplatz.jpg', alt: 'Area giochi' },
+];
+
+const animalsGallery = [
+  { src: '/images/hof/Tiere Ziege.jpg', alt: 'Capra' },
+  { src: '/images/hof/Tiere Ziegen fuettern.jpeg', alt: 'Nutrire le capre' },
+  { src: '/images/hof/Tiere Ziegen Hund.jpg', alt: 'Capre e cane Bidu' },
+  { src: '/images/hof/Tiere Hasen.jpg', alt: 'Conigli' },
+  { src: '/images/hof/Tiere Hasen Kopie.jpg', alt: 'Conigli 2' },
+  { src: '/images/hof/Tiere Katzen.jpg', alt: 'Gatti' },
+  { src: '/images/hof/Tiere Bidu.JPG', alt: 'Il cane di fattoria Bidu' },
+];
+
+const gardenProduce = [
+  { src: '/images/hof/Garten Gemuese.JPG', alt: 'Verdure dal giardino' },
+  { src: '/images/hof/Garten Kraeuter.jpeg', alt: 'Erbe aromatiche' },
+  { src: '/images/hof/Garten Pfirsiche.JPG', alt: 'Pesche' },
+  { src: '/images/hof/Garten Nuesse.jpg', alt: 'Noci' },
+  { src: '/images/hof/Himbeeren.jpg', alt: 'Lamponi' },
+  { src: '/images/hof/Apfelstrudel.png', alt: 'Strudel di mele fatto in casa' },
+];
+---
+
+<Layout title="Vita in fattoria al Koflerhof" description="Scoprite la vera vita in fattoria al Koflerhof: animali, giardino, piscina, area giochi e tanta natura per tutta la famiglia.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Koflerhof Sommer.JPG" alt="Koflerhof in estate" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Vita autentica in campagna</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">La vita in fattoria</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Natura, animali, aria fresca e tanto spazio per giocare e rilassarsi
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div class="fade-in">
+          <p class="section-subtitle">Per tutti gli ospiti</p>
+          <h2 class="section-title mb-6">Giardino & attività ricreative</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Il generoso giardino del Koflerhof è a disposizione di tutti i nostri ospiti.
+            Che vogliate rilassarvi in piscina, leggere sul prato, cucinare alla griglia o
+            giocare con i bambini nell'area giochi – qui c'è qualcosa per tutti.
+          </p>
+          <p class="prose-kofler mb-8">
+            Il gazebo con barbecue è il luogo perfetto per serate conviviali.
+            I bambini adorano il grande trampolino, la sandbox, l'altalena e lo scivolo.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {[
+              'Piscina (stagionale)',
+              'Prato & sdraio',
+              'Gazebo con barbecue',
+              'Grande trampolino',
+              'Area giochi (altalena, scivolo, sandbox)',
+              'Tavolo da ping pong',
+              'Calcio balilla',
+              'Scooter & giochi per bambini',
+              'Trybike',
+            ].map(item => (
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Garten Pool Hund.jpeg" alt="Piscina con il cane di fattoria" class="w-full aspect-[4/5] object-cover shadow-2xl" />
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <Gallery images={gardenGallery} columns={4} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Esperienza in fattoria</p>
+        <h2 class="section-title">I nostri animali</h2>
+        <div class="deco-line"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+        <div class="fade-in">
+          <Gallery images={animalsGallery} columns={3} />
+        </div>
+        <div class="fade-in">
+          <p class="prose-kofler mb-6">
+            Al Koflerhof la vita in fattoria è autentica – e questo significa animali!
+            I nostri ospiti, soprattutto i più piccoli, adorano nutrire le capre, giocare
+            con i conigli e accarezzare i nostri due gatti.
+          </p>
+          <p class="prose-kofler mb-8">
+            Il nostro cane di fattoria <strong>Bidu</strong> è anche lui un fedele compagno
+            in fattoria e si rallegra di ogni visita. I cani dei nostri ospiti sono
+            naturalmente i benvenuti al Koflerhof!
+          </p>
+          <div class="bg-cream p-6 border-l-4 border-gold">
+            <p class="font-serif text-lg text-stone-800 italic">
+              "I bambini non volevano più tornare a casa –
+              soprattutto per le capre e il cane Bidu!"
+            </p>
+            <p class="text-sm text-stone-500 mt-2">— Famiglia ospite, estate 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-cream">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Fresco & locale</p>
+          <h2 class="section-title mb-6">Dal nostro giardino</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            In estate troverete nel vostro appartamento verdura fresca ed erbe aromatiche
+            direttamente dal nostro giardino. Pomodori, zucchine, erbe e, a seconda della stagione,
+            molto altro ancora – tutto senza pesticidi, coltivato con amore.
+          </p>
+          <p class="prose-kofler mb-6">
+            La nostra <strong>marmellata di lamponi</strong> fatta in casa è particolarmente
+            apprezzata dagli ospiti ed è il perfetto inizio per una mattina di vacanza.
+          </p>
+          <p class="prose-kofler mb-8">
+            Su richiesta portiamo ogni mattina panini freschi direttamente in appartamento –
+            il perfetto avvio per una ricca giornata in Alto Adige.
+          </p>
+          <a href="/it/anfrage" class="btn-primary">Invia richiesta</a>
+        </div>
+        <div class="fade-in">
+          <Gallery images={gardenProduce} columns={3} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 fade-in">
+          <p class="text-xs tracking-[0.35em] uppercase text-gold mb-3">Orientamento in fattoria</p>
+          <h2 class="font-serif text-4xl text-white mb-4">Come orientarsi al Koflerhof</h2>
+          <div class="deco-line"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 fade-in">
+          {[
+            { apt: 'App. Est & Ovest', desc: 'Piano terra sul lato nord dell\'edificio. Parcheggio a sinistra dell\'accesso.' },
+            { apt: 'App. Ovest 2', desc: 'Accesso dal lato ovest dell\'edificio, salire al primo piano.' },
+            { apt: 'App. Sud-Est', desc: 'Accesso dal lato est dell\'edificio, salire al primo piano.' },
+            { apt: 'App. Sud-Ovest', desc: 'Accesso dal lato ovest dell\'edificio, piano terra.' },
+          ].map(item => (
+            <div class="bg-white/10 p-6 border border-white/20">
+              <h3 class="font-serif text-xl text-gold mb-2">{item.apt}</h3>
+              <p class="text-white/80 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Proprio fuori dalla porta</p>
+        <h2 class="section-title">I dintorni del Koflerhof</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: 'Sentieri', image: '/images/hof/Suedtirol Sommer Rittner Horn.jpeg', text: 'Sentieri nel bosco direttamente dalla fattoria, consigli nella guida informativa' },
+          { title: 'Alpe di Siusi', image: '/images/hof/Seiser Alm.jpg', text: "Il più grande altopiano alpino d'Europa, a soli 10 minuti" },
+          { title: 'Castelrotto', image: '/images/hof/Kastelruth Kirche.jpg', text: 'Pittoresco villaggio con centro storico, a 15 minuti' },
+          { title: 'Alto Adige', image: '/images/hof/Suedtirol Weinberg.jpeg', text: 'Vigneti, Dolomiti, cultura e gastronomia nei dintorni' },
+        ].map(item => (
+          <div class="fade-in bg-white shadow-sm overflow-hidden">
+            <img src={item.image} alt={item.title} class="w-full aspect-video object-cover" loading="lazy" />
+            <div class="p-5">
+              <h3 class="font-serif text-lg text-stone-800 mb-2">{item.title}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-in">
+        <a href="/it/jahreszeiten" class="btn-primary">Scopri l'Alto Adige</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

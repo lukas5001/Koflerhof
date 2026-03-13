@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -14,10 +15,12 @@ const {
   description = 'Ferienwohnungen am Bauernhof in Südtirol – Koflerhof bei Kastelruth in der Nähe der Seiser Alm. Familienfreundlich, authentisch, herzlich.',
   image = '/images/hof/Koflerhof Hausansicht Sommer 1.JPG',
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +31,6 @@ const {
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title} | Koflerhof Südtirol</title>
-    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   </head>
   <body class="overflow-x-hidden">
@@ -38,19 +40,16 @@ const {
     </main>
     <Footer />
 
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
       <button onclick="lightboxNav(-1)" class="absolute left-4 text-white text-4xl hover:text-gold transition-colors z-10 bg-black/30 w-12 h-12 flex items-center justify-center">&#8249;</button>
       <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[90vh] object-contain" onclick="event.stopPropagation()" />
       <button onclick="lightboxNav(1)" class="absolute right-4 text-white text-4xl hover:text-gold transition-colors z-10 bg-black/30 w-12 h-12 flex items-center justify-center">&#8250;</button>
-      <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-2xl hover:text-gold transition-colors bg-black/30 w-10 h-10 flex items-center justify-center">✕</button>
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-2xl hover:text-gold transition-colors bg-black/30 w-10 h-10 flex items-center justify-center">&#x2715;</button>
     </div>
 
     <script>
-      // Lightbox
       let lightboxImages: string[] = [];
       let lightboxIndex = 0;
 
@@ -80,7 +79,6 @@ const {
         if (img) img.src = lightboxImages[lightboxIndex];
       }
 
-      // Keyboard navigation
       document.addEventListener('keydown', (e) => {
         if (document.getElementById('lightbox')?.classList.contains('active')) {
           if (e.key === 'Escape') closeLightbox();
@@ -89,12 +87,10 @@ const {
         }
       });
 
-      // Make functions global
       (window as any).openLightbox = openLightbox;
       (window as any).closeLightbox = closeLightbox;
       (window as any).lightboxNav = lightboxNav;
 
-      // Intersection Observer for fade-in
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {

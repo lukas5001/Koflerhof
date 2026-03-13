@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Posizione & Come arrivarci" description="Come raggiungere il Koflerhof a Castelrotto, Alto Adige – indicazioni stradali, informazioni GPS e distanze dai comprensori sciistici e dalle attrazioni.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Koflerhof Ostansicht Sommer.jpg" alt="Koflerhof" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Nel cuore dell'Alto Adige</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Posizione & Come arrivarci</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16">
+
+        <div class="fade-in">
+          <div class="bg-stone-200 aspect-[4/3] relative overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.5!2d11.5627!3d46.5707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47829e2a47f31b01%3A0x4f7a4c7c5f7c0000!2sKoflerhof%2C%20Kastelruth%2C%20Südtirol!5e0!3m2!1sit!2sit!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0"
+              title="Koflerhof sulla mappa"
+            ></iframe>
+          </div>
+          <p class="text-xs text-stone-500 mt-2 tracking-wider">GPS: inserire Waidbruck / Ponte Gardena 39040</p>
+        </div>
+
+        <div class="fade-in">
+          <div class="bg-amber-50 border border-amber-200 p-5 mb-8">
+            <div class="flex gap-3">
+              <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>
+                <p class="font-medium text-amber-800 text-sm">Importante avviso GPS</p>
+                <p class="text-amber-700 text-sm mt-1">Inserire <strong>"Waidbruck 39040"</strong> o <strong>"Ponte Gardena 39040"</strong> – non "Tisens", perché esiste un omonimo paese vicino a Merano!</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="font-serif text-2xl text-stone-800 mb-6">Indicazioni senza navigatore</h2>
+
+          <div class="space-y-4">
+            {[
+              { step: '1', text: 'Prendere l\'uscita autostradale Chiusa/Castelrotto' },
+              { step: '2', text: 'Percorrere la strada principale in direzione Bolzano (9 km)' },
+              { step: '3', text: 'A Ponte Gardena girare a sinistra e attraversare il ponte' },
+              { step: '4', text: 'Alla rotonda girare a destra in direzione Castelrotto/Zona dello Sciliar' },
+              { step: '5', text: 'Dopo 1,5 km: girare a destra alla prima fermata del bus (cartello "KOFLERHOF App.")' },
+              { step: '6', text: 'Il Koflerhof è la prima casa – ingresso dietro la casa, suonare il campanello' },
+            ].map(item => (
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center shrink-0 font-medium text-sm">{item.step}</div>
+                <p class="text-stone-700 pt-1">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-16 fade-in">
+        <p class="section-subtitle">Una posizione centralissima</p>
+        <h2 class="section-title">Distanze & dintorni</h2>
+        <div class="deco-line"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          { dest: 'Alpe di Siusi', dist: '10 min.', icon: '🏔️', sub: "Il più grande altopiano alpino d'Europa" },
+          { dest: 'Castelrotto', dist: '15 min.', icon: '🏘️', sub: 'Pittoresco villaggio di montagna' },
+          { dest: 'Chiusa', dist: '10 min.', icon: '🏰', sub: 'Centro storico medievale' },
+          { dest: 'Val Gardena', dist: '20 min.', icon: '⛷️', sub: '195 km di piste' },
+          { dest: 'Bressanone', dist: '20 min.', icon: '⛪', sub: 'Città d\'arte in Valle Isarco' },
+          { dest: 'Bolzano', dist: '25 min.', icon: '🏙️', sub: 'Capoluogo dell\'Alto Adige' },
+          { dest: 'Merano', dist: '45 min.', icon: '🌿', sub: 'Città termale & gastronomica' },
+          { dest: 'Vipiteno', dist: '40 min.', icon: '🏔️', sub: 'Porta del Brennero' },
+          { dest: 'Val di Funes', dist: '25 min.', icon: '🦅', sub: 'Parco naturale con le Odle' },
+        ].map(item => (
+          <div class="fade-in flex items-center gap-4 bg-cream p-5">
+            <div class="text-3xl">{item.icon}</div>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between">
+                <span class="font-medium text-stone-800">{item.dest}</span>
+                <span class="text-gold font-serif text-lg">{item.dist}</span>
+              </div>
+              <p class="text-xs text-stone-500 mt-0.5">{item.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-serif text-3xl text-white mb-4">Con i mezzi pubblici</h2>
+          <p class="text-white/80 mb-6 leading-relaxed">
+            In molte nostre offerte è inclusa la <strong class="text-gold">Mobilcard Alto Adige</strong>.
+            Con questa card potete viaggiare gratuitamente in tutto l'Alto Adige con autobus e treno.
+          </p>
+          <p class="text-white/80 mb-6 leading-relaxed">
+            La fermata del bus più vicina si trova a soli 300 m dal Koflerhof e offre
+            collegamenti regolari verso Castelrotto, Ponte Gardena/Chiusa (stazione) e i dintorni.
+          </p>
+        </div>
+        <div class="bg-white/10 p-8 border border-white/20">
+          <h3 class="font-serif text-xl text-gold mb-4">In treno</h3>
+          <ul class="space-y-3 text-white/80 text-sm">
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Arrivare a Ponte Gardena/Chiusa (treno)</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Proseguire con l'autobus in direzione Castelrotto</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-gold">→</span>
+              <span>Ritiro possibile – chiedere al momento della prenotazione</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

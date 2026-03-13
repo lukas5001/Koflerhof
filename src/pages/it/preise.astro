@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Prezzi & Condizioni" description="Prezzi per gli appartamenti al Koflerhof in Alto Adige – per giorno, stagione, condizioni di cancellazione e modalità di pagamento.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Koflerhof Hausansicht Sommer 2.jpg" alt="Koflerhof" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Trasparenza & correttezza</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Prezzi</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-16 fade-in">
+          <p class="section-subtitle">Panoramica prezzi</p>
+          <h2 class="section-title">Prezzi per giorno</h2>
+          <div class="deco-line"></div>
+          <p class="text-stone-600 mt-4">Per appartamento · Soggiorno minimo 5 notti · Prezzi per 2 persone</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16 fade-in">
+          {[
+            {
+              label: 'Bassa stagione',
+              range: '65 – 90 €',
+              color: 'bg-sage/20 border-sage',
+              textColor: 'text-forest-700',
+              months: 'Primavera & tardo autunno',
+              desc: 'Stagioni tranquille con temperature piacevoli e meno affollamento.',
+            },
+            {
+              label: 'Mezza stagione',
+              range: '90 – 135 €',
+              color: 'bg-gold/20 border-gold',
+              textColor: 'text-earth-700',
+              months: 'Pre e post stagione',
+              desc: 'Il perfetto compromesso tra vivacità e tranquillità.',
+            },
+            {
+              label: 'Alta stagione',
+              range: '135 – 180 €',
+              color: 'bg-forest-700/10 border-forest-700',
+              textColor: 'text-forest-700',
+              months: 'Estate & inverno',
+              desc: "Alta stagione con programma completo – sci, escursioni, bagni.",
+            },
+          ].map(tier => (
+            <div class={`border-2 ${tier.color} p-8 text-center`}>
+              <p class="text-xs tracking-widest uppercase text-stone-500 mb-2">{tier.months}</p>
+              <h3 class={`font-serif text-2xl ${tier.textColor} mb-2`}>{tier.label}</h3>
+              <div class={`font-serif text-4xl ${tier.textColor} my-4`}>{tier.range}</div>
+              <p class="text-xs text-stone-400 mb-3">per giorno / per appartamento</p>
+              <p class="text-stone-600 text-sm leading-relaxed">{tier.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <div class="fade-in bg-white p-8 shadow-sm">
+            <h3 class="font-serif text-xl text-stone-800 mb-6">Costi aggiuntivi</h3>
+            <div class="space-y-4">
+              {[
+                { item: 'Ogni persona in più', price: '10 € / giorno' },
+                { item: 'Animale domestico (cane)', price: '6 € / giorno' },
+                { item: 'Pulizia finale', price: '48 €' },
+                { item: 'Tassa di soggiorno (da 14 anni)', price: '2,50 € / persona / giorno' },
+              ].map(cost => (
+                <div class="flex items-center justify-between py-2 border-b border-stone-100 last:border-0">
+                  <span class="text-stone-700">{cost.item}</span>
+                  <span class="font-medium text-forest-700">{cost.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="fade-in bg-white p-8 shadow-sm">
+            <h3 class="font-serif text-xl text-stone-800 mb-6">Arrivo e partenza</h3>
+            <div class="space-y-4">
+              {[
+                { label: 'Arrivo', val: 'Dalle ore 14:00' },
+                { label: 'Partenza', val: 'Entro le ore 09:30' },
+                { label: 'Deposito bagagli', val: 'Possibile su richiesta' },
+                { label: 'Soggiorno minimo', val: '5 notti' },
+              ].map(item => (
+                <div class="flex items-center justify-between py-2 border-b border-stone-100 last:border-0">
+                  <span class="text-stone-700">{item.label}</span>
+                  <span class="font-medium text-stone-600">{item.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 fade-in">
+          <div class="bg-forest-700 text-white p-8">
+            <h3 class="font-serif text-xl text-white mb-6">Modalità di pagamento</h3>
+            <ul class="space-y-3 text-white/80 text-sm">
+              <li class="flex gap-3">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Acconto del 30–40% del totale alla conferma della prenotazione</span>
+              </li>
+              <li class="flex gap-3">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Saldo all'arrivo</span>
+              </li>
+              <li class="flex gap-3">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Prenotazione confermata solo al ricevimento dell'acconto</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-cream p-8">
+            <h3 class="font-serif text-xl text-stone-800 mb-6">Condizioni di cancellazione</h3>
+            <div class="space-y-3">
+              {[
+                { cond: '29–14 giorni prima dell\'arrivo', pct: '60% del totale' },
+                { cond: 'Meno di 14 giorni', pct: '80% del totale' },
+                { cond: 'Nessuna comunicazione', pct: '100% del totale' },
+                { cond: 'Partenza anticipata', pct: '100% del totale' },
+              ].map(s => (
+                <div class="py-2 border-b border-stone-200 last:border-0">
+                  <div class="text-sm text-stone-500 mb-0.5">{s.cond}</div>
+                  <div class="text-sm font-medium text-earth-700">{s.pct}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 bg-stone-100 p-6 text-sm text-stone-600 leading-relaxed fade-in">
+          <strong>Nota:</strong> In caso di controversie è possibile utilizzare la piattaforma europea per la risoluzione online delle controversie:
+          <a href="http://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" class="text-forest-700 hover:underline ml-1">
+            ec.europa.eu/consumers/odr
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-stone-800 mb-4">Pronti per la vostra vacanza?</h2>
+      <p class="text-stone-600 mb-8 max-w-xl mx-auto">Inviateci una richiesta senza impegno – confermeremo disponibilità e prezzo il prima possibile.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/it/anfrage" class="btn-primary">Richiedi ora senza impegno</a>
+        <a href="/it/angebote" class="btn-outline">Le nostre offerte</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -63,7 +63,7 @@ const apartments = [
     badge: 'Besonders kinderfreundlich',
   },
   {
-    name: 'Wohnung Suedost',
+    name: 'Wohnung Südost',
     slug: 'suedost',
     persons: '6',
     floor: '1. Obergeschoss',
@@ -73,7 +73,7 @@ const apartments = [
     badge: 'Bis 6 Personen',
   },
   {
-    name: 'Wohnung Suedwest',
+    name: 'Wohnung Südwest',
     slug: 'suedwest',
     persons: '4–5',
     floor: 'Erdgeschoss',
@@ -236,7 +236,14 @@ const featuredReviews = [
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {apartments.map((apt) => (
+        {apartments.slice(0, 3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 mt-8 lg:w-2/3 lg:mx-auto">
+        {apartments.slice(3).map((apt) => (
           <div class="fade-in">
             <ApartmentCard {...apt} />
           </div>

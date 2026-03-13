@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg', alt: "Giardino d'inverno" },
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 2.jpeg', alt: "Giardino d'inverno 2" },
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 3.jpeg', alt: "Giardino d'inverno 3" },
+  { src: '/images/ferienwohnungen/Suedwest Küche.png', alt: 'Cucina' },
+  { src: '/images/ferienwohnungen/Suedwest Schlafzimmer.png', alt: 'Camera da letto' },
+  { src: '/images/ferienwohnungen/Suedwest Schlafzimmer 2.jpg', alt: 'Camera da letto 2' },
+  { src: '/images/ferienwohnungen/Suedwest Bad.png', alt: 'Bagno' },
+  { src: '/images/ferienwohnungen/Suedwest Terrasse.png', alt: 'Terrazza privata' },
+  { src: '/images/ferienwohnungen/Suedwest Eingang.jpg', alt: 'Ingresso' },
+];
+---
+
+<ApartmentLayout
+  title="Appartamento Sud-Ovest"
+  subtitle="Appartamento · Piano terra"
+  description="L'<strong>Appartamento Sud-Ovest</strong> si trova al piano terra sul lato sud-ovest del Koflerhof ed è un appartamento soleggiato e accogliente per 4–5 persone. Il fascino particolare sta nel luminoso giardino d'inverno, che può essere utilizzato come spazio soggiorno aggiuntivo e lascia entrare una luce meravigliosa.<br/><br/>Lo spazio esterno privato con barbecue invita a trascorrere serate piacevoli all'aria aperta. Due camere da letto con un totale di due letti matrimoniali e un divano letto offrono spazio sufficiente per tutta la famiglia."
+  headerImage="/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg"
+  persons="4–5"
+  floor="Piano terra, lato sud-ovest"
+  bedrooms="2"
+  extra="Giardino d'inverno & terrazza barbecue"
+  badge="Particolarmente adatto ai bambini"
+  beds={[
+    '2× letto matrimoniale',
+    'Divano letto per 1–2 persone (soggiorno)',
+  ]}
+  features={[
+    'Cucina completamente attrezzata',
+    "Luminoso giardino d'inverno",
+    'Spazio esterno privato con barbecue',
+    'TV/Sat in tutte le camere',
+    'Wi-Fi gratuito',
+    'Lavatrice',
+    'Ventilazione controllata',
+    'Aria condizionata',
+    'Bagno',
+  ]}
+  inclusions={[
+    'Biancheria da letto e asciugamani',
+    'Attrezzatura per bambini su richiesta',
+    'Verdura & erbe dal giardino',
+    'Marmellata di lamponi (fatta in casa)',
+    'Barbecue privato nello spazio esterno',
+    'Servizio panini (su richiesta)',
+    'Pulizia finale prenotabile separatamente',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Suedwest Skizze.png"
+  prevApt={{ name: 'Appartamento Sud-Est', href: '/it/ferienwohnungen/suedost' }}
+  nextApt={{ name: 'Appartamento Est', href: '/it/ferienwohnungen/ost' }}
+/>

@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Blumen 1.jpg', alt: 'Fiori primaverili' },
+  { src: '/images/hof/Blumen 2.jpg', alt: 'Fiori in boccio' },
+  { src: '/images/hof/Blumen 3.jpg', alt: 'Prato primaverile' },
+  { src: '/images/hof/Blumen 4.jpg', alt: 'Fiori 4' },
+  { src: '/images/hof/Garten Pfirsiche.JPG', alt: 'Pesche nel giardino' },
+  { src: '/images/hof/Kastelruth Kirche.jpg', alt: 'Castelrotto in primavera' },
+];
+---
+
+<Layout title="Primavera in Alto Adige" description="Primavera in Alto Adige – valli in fiore, prime escursioni e piacevoli visite culturali nei dintorni del Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Blumen 1.jpg" alt="Primavera in Alto Adige" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Marzo – Maggio</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Risveglio primaverile</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/it/" class="hover:text-gold transition-colors">Home</a><span>/</span>
+      <a href="/it/jahreszeiten" class="hover:text-gold transition-colors">Scopri l'Alto Adige</a><span>/</span>
+      <span class="text-stone-700">Primavera</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">La natura si risveglia</p>
+          <h2 class="section-title mb-6">Primavera nelle valli altoatesine</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Quando in primavera la natura si risveglia dal suo sonno invernale, l'Alto Adige si trasforma
+            in un mare di colori. I frutteti di mele e albicocche fioriscono nelle valli,
+            i prati si riempiono di fiori selvatici e le prime escursioni di montagna
+            vi aspettano in tutta tranquillità.
+          </p>
+          <p class="prose-kofler mb-8">
+            La primavera è la stagione ideale per chi cerca tranquillità, prezzi convenienti
+            e temperature piacevoli. I sentieri non sono ancora affollati, ma sono già
+            percorribili fino alle quote alpine più alte.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Fioritura dei meli (aprile/maggio)',
+              "Escursioni senza affollamento",
+              "Prezzi della bassa stagione",
+              'Città da visitare in tutta tranquillità',
+              'Gite in bicicletta nelle valli',
+              'Tour in E-Bike',
+            ].map(item => (
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/it/anfrage" class="btn-primary">Pianifica la tua vacanza primaverile</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Blumen 2.jpg" alt="Fioritura in Alto Adige" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12 fade-in">
+        <p class="section-subtitle">Galleria</p>
+        <h2 class="section-title">Primavera in Alto Adige</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={3} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Offerta primaverile da 495 €</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        7 notti per 2 persone durante il risveglio primaverile – immergetevi nella natura dell'Alto Adige in fiore.
+      </p>
+      <a href="/it/anfrage" class="btn-gold">Richiedi ora</a>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 grid grid-cols-3 items-center">
+      <span></span>
+      <a href="/it/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors text-center">Panoramica</a>
+      <a href="/it/jahreszeiten/sommer" class="text-white/60 text-sm hover:text-gold transition-colors text-right">Estate →</a>
+    </div>
+  </div>
+
+</Layout>

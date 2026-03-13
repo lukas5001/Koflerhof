@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Suedost Wintergarten.jpg', alt: "Giardino d'inverno" },
+  { src: '/images/ferienwohnungen/Suedost Wintergarten 2.jpg', alt: "Giardino d'inverno 2" },
+  { src: '/images/ferienwohnungen/Suedost Wohnraum.jpeg', alt: 'Soggiorno' },
+  { src: '/images/ferienwohnungen/Suedost Küche.jpeg', alt: 'Cucina' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 1.jpeg', alt: 'Camera da letto 1' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 2.jpeg', alt: 'Camera da letto 2' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 3.jpeg', alt: 'Camera da letto 3' },
+  { src: '/images/ferienwohnungen/Suedost Bad.jpeg', alt: 'Bagno' },
+  { src: '/images/ferienwohnungen/Suedost Bad TagesWC.jpeg', alt: 'WC di servizio' },
+  { src: '/images/ferienwohnungen/Suedost Eingang 1.jpeg', alt: 'Ingresso' },
+];
+---
+
+<ApartmentLayout
+  title="Appartamento Sud-Est"
+  subtitle="Appartamento · 1° piano"
+  description="L'<strong>Appartamento Sud-Est</strong> è il nostro appartamento più grande e spazioso – ideale per famiglie numerose o gruppi fino a 6 persone. Situato al primo piano, dispone di tre camere da letto, un luminoso soggiorno e un affascinante giardino d'inverno che funge da accogliente spazio relax.<br/><br/>La planimetria generosa offre spazio sufficiente per tutti senza stare stretti. Una cucina completamente attrezzata, due servizi igienici (bagno completo + WC di servizio) e arredi moderni garantiscono il massimo comfort durante la vostra vacanza."
+  headerImage="/images/ferienwohnungen/Suedost Wintergarten.jpg"
+  persons="6"
+  floor="1° piano, lato est"
+  bedrooms="3"
+  extra="Giardino d'inverno"
+  badge="Fino a 6 persone"
+  beds={[
+    '2× letto matrimoniale',
+    '2× letto singolo',
+    'Divano letto in soggiorno',
+  ]}
+  features={[
+    'Cucina completamente attrezzata',
+    "Luminoso giardino d'inverno",
+    'TV/Sat in tutte le camere',
+    'Wi-Fi gratuito',
+    'Lavatrice',
+    'Ventilazione controllata',
+    'Aria condizionata',
+    'Bagno completo + WC di servizio',
+  ]}
+  inclusions={[
+    'Biancheria da letto e asciugamani',
+    'Attrezzatura per bambini su richiesta',
+    'Verdura & erbe dal giardino',
+    'Marmellata di lamponi (fatta in casa)',
+    'Servizio panini (su richiesta)',
+    'Pulizia finale prenotabile separatamente',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Suedost Skizze.png"
+  prevApt={{ name: 'Appartamento Ovest 2', href: '/it/ferienwohnungen/west2' }}
+  nextApt={{ name: 'Appartamento Sud-Ovest', href: '/it/ferienwohnungen/suedwest' }}
+/>

@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg', alt: 'Living-dining area' },
+  { src: '/images/ferienwohnungen/West 2 Wohn- Essbereich.jpeg', alt: 'Living area 2' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer.jpeg', alt: 'Bedroom' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer 1.jpeg', alt: 'Bedroom 2' },
+  { src: '/images/ferienwohnungen/West 2 Bad.jpeg', alt: 'Bathroom' },
+  { src: '/images/ferienwohnungen/West 2 Balkon.jpeg', alt: 'Private balcony' },
+  { src: '/images/ferienwohnungen/West 2 Eingangsbereich.jpg', alt: 'Entrance' },
+];
+---
+
+<ApartmentLayout
+  title="Apartment West 2"
+  subtitle="Apartment · 1st floor"
+  description="<strong>Apartment West 2</strong> is located on the first floor on the west side of Koflerhof. A bright, welcoming living-dining room greets you on arrival, and the private balcony invites you to relax while taking in the South Tyrolean landscape.<br/><br/>With two bedrooms and four sleeping places in total, this apartment is ideal for families or two couples travelling together. Access is from the west side of the building via a dedicated staircase."
+  headerImage="/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg"
+  persons="4"
+  floor="1st floor, west side"
+  bedrooms="2"
+  extra="Private balcony"
+  badge="Especially family-friendly"
+  beds={[
+    '1× double bed',
+    '2× single beds',
+  ]}
+  features={[
+    'Fully equipped kitchen',
+    'Private balcony',
+    'TV/Sat in all rooms',
+    'Free Wi-Fi',
+    'Washing machine',
+    'Controlled ventilation',
+    'Air conditioning',
+    'Bathroom',
+  ]}
+  inclusions={[
+    'Bed linen & towels',
+    'Baby & toddler equipment on request',
+    'Vegetables & herbs from the garden',
+    'Home-made raspberry jam',
+    'Gazebo with barbecue (shared)',
+    'Roll service (on request)',
+    'Final cleaning bookable separately',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/West 2 Grundriss.jpeg"
+  prevApt={{ name: 'Apartment West', href: '/en/ferienwohnungen/west' }}
+  nextApt={{ name: 'Apartment South-East', href: '/en/ferienwohnungen/suedost' }}
+/>

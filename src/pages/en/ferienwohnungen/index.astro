@@ -1,0 +1,157 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ApartmentCard from '../../../components/ApartmentCard.astro';
+
+const apartments = [
+  {
+    name: 'Apartment East',
+    slug: 'ost',
+    persons: '4–5',
+    floor: 'Ground floor',
+    bedrooms: '2',
+    highlight: 'Spacious apartment with private terrace and direct garden access. Ideal for families with children.',
+    image: '/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg',
+    badge: 'Especially family-friendly',
+  },
+  {
+    name: 'Apartment West',
+    slug: 'west',
+    persons: '3–4',
+    floor: 'Ground floor',
+    bedrooms: '2',
+    highlight: 'Cosy ground-floor apartment with large open-plan kitchen-living room and direct garden access.',
+    image: '/images/ferienwohnungen/West Wohnraum 2.jpeg',
+    badge: 'Especially family-friendly',
+  },
+  {
+    name: 'Apartment West 2',
+    slug: 'west2',
+    persons: '4',
+    floor: '1st floor',
+    bedrooms: '2',
+    highlight: 'Bright first-floor apartment with private balcony and lovely panoramic views of the surrounding landscape.',
+    image: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg',
+    badge: 'Especially family-friendly',
+  },
+  {
+    name: 'Apartment South-East',
+    slug: 'suedost',
+    persons: '6',
+    floor: '1st floor',
+    bedrooms: '3',
+    highlight: 'Our largest apartment with bright living room and conservatory – ideal for larger families.',
+    image: '/images/ferienwohnungen/Suedost Wintergarten.jpg',
+    badge: 'Up to 6 persons',
+  },
+  {
+    name: 'Apartment South-West',
+    slug: 'suedwest',
+    persons: '4–5',
+    floor: 'Ground floor',
+    bedrooms: '2',
+    highlight: 'Sunny apartment with conservatory and private outdoor area with barbecue.',
+    image: '/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg',
+    badge: 'Especially family-friendly',
+  },
+];
+
+const inclusions = [
+  'Bed linen & towels',
+  'Baby & toddler equipment (cot, highchair, trybike)',
+  'Fresh vegetables & herbs from the garden (seasonal)',
+  'Home-made raspberry jam',
+  'Table football, ping pong & trampoline',
+  'Hiking guides & board games',
+  'Barbecue (private or shared depending on apartment)',
+  'Sunloungers & sunny lawn',
+  'Swimming pool (seasonal)',
+  'Parking & motorcycle garage',
+  'Roll service (on request)',
+  'E-Bike rental on site',
+  'Free Wi-Fi',
+  'TV/Sat in all rooms',
+  'Air conditioning & controlled ventilation',
+  'Washing machine',
+];
+---
+
+<Layout title="Apartments at Koflerhof" description="Five lovingly furnished farm apartments in South Tyrol – for 3–6 persons, family-friendly and fully equipped.">
+
+  <div class="relative pt-32 pb-20 md:pt-48 md:pb-28 overflow-hidden bg-stone-900">
+    <img
+      src="/images/ferienwohnungen/Koflerhof Sommer.JPG"
+      alt="Koflerhof Apartments"
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+    />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Comfort & homeliness</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Apartments</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Five lovingly furnished apartments for an unforgettable holiday in South Tyrol
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {apartments.slice(0, 3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 mt-8 lg:w-2/3 lg:mx-auto">
+        {apartments.slice(3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div class="fade-in">
+          <p class="section-subtitle">Included in every apartment</p>
+          <h2 class="section-title mb-6">Everything for the perfect holiday</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-8">
+            We want you to feel completely at home at Koflerhof.
+            That is why every apartment comes with a range of amenities
+            designed for your comfort.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {inclusions.map(item => (
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="fade-in space-y-6">
+          <img src="/images/hof/Garten Pool 2.JPG" alt="Garden pool" class="w-full aspect-[4/3] object-cover shadow-xl" />
+          <img src="/images/hof/Garten Liegestuehle.jpeg" alt="Sunloungers" class="w-full aspect-video object-cover shadow-xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Found your apartment?</h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">Send us a non-binding inquiry and we will get back to you as soon as possible.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/en/anfrage" class="btn-gold">Inquire now</a>
+        <a href="/en/preise" class="inline-block border-2 border-white/40 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white/10 transition-colors">View prices</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

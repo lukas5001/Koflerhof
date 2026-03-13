@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Winter Skifahren.jpeg', alt: 'Skiing in South Tyrol' },
+  { src: '/images/hof/Seiser Alm Winter 1.jpeg', alt: 'Seiser Alm in winter' },
+  { src: '/images/hof/Seiser Alm Winter 2.jpeg', alt: 'Seiser Alm snow' },
+  { src: '/images/hof/Koflerhof Winter.JPG', alt: 'Koflerhof in winter' },
+];
+---
+
+<Layout title="Winter in South Tyrol" description="Winter in South Tyrol – world-class skiing on the Seiser Alm and in the Grödnertal, snowshoe hikes and Christmas markets from Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Winter Skifahren.jpeg" alt="Winter in South Tyrol" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">December – March</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Winter in South Tyrol</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/en/" class="hover:text-gold transition-colors">Home</a><span>/</span>
+      <a href="/en/jahreszeiten" class="hover:text-gold transition-colors">Discover South Tyrol</a><span>/</span>
+      <span class="text-stone-700">Winter</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Snow & adventure</p>
+          <h2 class="section-title mb-6">World-class skiing in the Dolomites</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Koflerhof is the ideal base for a skiing holiday in the Dolomites.
+            The <strong>Seiser Alm</strong> is just 10 minutes away, the
+            <strong>Grödnertal</strong> with its dream pistes only 20 minutes.
+            Both are part of the Dolomiti Superski network.
+          </p>
+          <p class="prose-kofler mb-8">
+            For those who prefer snow without skis: snowshoe hikes through the snowy landscape,
+            ice skating and the Christmas markets in the picturesque South Tyrolean squares
+            are equally unforgettable experiences.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Seiser Alm (10 min.)',
+              'Grödnertal (20 min.)',
+              'Dolomiti Superski pass',
+              'Snowshoe hikes & cross-country',
+              'Ice skating',
+              'Christmas markets',
+            ].map(item => (
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/en/anfrage" class="btn-primary">Plan your winter holiday</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Seiser Alm Winter 1.jpeg" alt="Seiser Alm in winter" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-stone-900 text-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        {[
+          { label: 'Seiser Alm', dist: '10 min.', detail: 'Skiing, cross-country, snowshoe hikes' },
+          { label: 'Grödnertal', dist: '20 min.', detail: '195 km of pistes' },
+          { label: 'Plan de Corones', dist: '35 min.', detail: 'Downhill skiing' },
+        ].map(item => (
+          <div class="fade-in">
+            <div class="font-serif text-3xl text-gold mb-1">{item.dist}</div>
+            <div class="text-white font-medium mb-1">{item.label}</div>
+            <div class="text-white/60 text-sm">{item.detail}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12 fade-in">
+        <p class="section-subtitle">Gallery</p>
+        <h2 class="section-title">Winter in South Tyrol</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={2} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Ski weeks from €460</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        7 nights for 2 persons including Mobilcard and final cleaning – the ideal base for your skiing holiday.
+      </p>
+      <a href="/en/anfrage" class="btn-gold">Inquire now</a>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="/en/jahreszeiten/herbst" class="text-white/60 text-sm hover:text-gold transition-colors">← Autumn</a>
+      <a href="/en/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors">Overview</a>
+      <a href="/en/jahreszeiten/fruehling" class="text-white/60 text-sm hover:text-gold transition-colors">Spring →</a>
+    </div>
+  </div>
+
+</Layout>

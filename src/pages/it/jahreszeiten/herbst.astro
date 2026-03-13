@@ -1,0 +1,104 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Herbst Toerggelen.jpeg', alt: 'Törggelen in autunno' },
+  { src: '/images/hof/Herbst Toerggelen 1.jpeg', alt: 'Tradizione del Törggelen' },
+  { src: '/images/hof/Suedtirol Weinberg.jpeg', alt: 'Vigneti altoatesini' },
+  { src: '/images/hof/Weihnachten Adventskranz.jpeg', alt: 'Avvento' },
+];
+---
+
+<Layout title="Autunno in Alto Adige" description="Autunno in Alto Adige – Törggelen, vigneti dorati, castagneti e mercatini di Natale nel cuore delle Dolomiti.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Herbst Toerggelen.jpeg" alt="Autunno in Alto Adige" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Settembre – Novembre</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Autunno in Alto Adige</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/it/" class="hover:text-gold transition-colors">Home</a><span>/</span>
+      <a href="/it/jahreszeiten" class="hover:text-gold transition-colors">Scopri l'Alto Adige</a><span>/</span>
+      <span class="text-stone-700">Autunno</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Tradizione & colori</p>
+          <h2 class="section-title mb-6">L'autunno altoatesino nei suoi colori più belli</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            L'autunno in Alto Adige è un'esperienza sensoriale unica. I vigneti si tingono d'oro,
+            i castagneti profumano nell'aria frizzante e la tradizione del <strong>Törggelen</strong>
+            invita a degustare vino novello, castagne arrosto e le golose specialità dei masi locali.
+          </p>
+          <p class="prose-kofler mb-8">
+            Con l'avvicinarsi dell'Avvento, i pittoreschi mercatini di Natale di Bolzano, Bressanone
+            e Chiusa si animano – un'atmosfera magica che vale da sola il viaggio.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Tradizione del Törggelen',
+              'Sentieri dei castagneti dorati',
+              'Degustazioni di vino nelle cantine',
+              'Escursioni autunnali tranquille',
+              'Mercatini di Natale (novembre)',
+              'Prezzi convenienti della mezza stagione',
+            ].map(item => (
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/it/anfrage" class="btn-primary">Pianifica la tua vacanza autunnale</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Suedtirol Weinberg.jpeg" alt="Vigneti in autunno" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12 fade-in">
+        <p class="section-subtitle">Galleria</p>
+        <h2 class="section-title">Autunno in Alto Adige</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={2} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Offerta Törggelen da 495 €</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        7 notti per 2 persone con Mobilcard inclusa – vivete la tradizione del Törggelen in Alto Adige.
+      </p>
+      <a href="/it/anfrage" class="btn-gold">Richiedi ora</a>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="/it/jahreszeiten/sommer" class="text-white/60 text-sm hover:text-gold transition-colors">← Estate</a>
+      <a href="/it/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors">Panoramica</a>
+      <a href="/it/jahreszeiten/winter" class="text-white/60 text-sm hover:text-gold transition-colors">Inverno →</a>
+    </div>
+  </div>
+
+</Layout>

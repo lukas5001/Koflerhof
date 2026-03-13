@@ -98,7 +98,14 @@ const inclusions = [
   <section class="py-24 md:py-32 bg-linen">
     <div class="container mx-auto px-6 md:px-12">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {apartments.map((apt) => (
+        {apartments.slice(0, 3).map((apt) => (
+          <div class="fade-in">
+            <ApartmentCard {...apt} />
+          </div>
+        ))}
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 mt-8 lg:w-2/3 lg:mx-auto">
+        {apartments.slice(3).map((apt) => (
           <div class="fade-in">
             <ApartmentCard {...apt} />
           </div>

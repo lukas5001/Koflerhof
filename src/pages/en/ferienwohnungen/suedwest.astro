@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg', alt: 'Conservatory' },
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 2.jpeg', alt: 'Conservatory 2' },
+  { src: '/images/ferienwohnungen/Suedwest Wintergarten 3.jpeg', alt: 'Conservatory 3' },
+  { src: '/images/ferienwohnungen/Suedwest Küche.png', alt: 'Kitchen' },
+  { src: '/images/ferienwohnungen/Suedwest Schlafzimmer.png', alt: 'Bedroom' },
+  { src: '/images/ferienwohnungen/Suedwest Schlafzimmer 2.jpg', alt: 'Bedroom 2' },
+  { src: '/images/ferienwohnungen/Suedwest Bad.png', alt: 'Bathroom' },
+  { src: '/images/ferienwohnungen/Suedwest Terrasse.png', alt: 'Private terrace' },
+  { src: '/images/ferienwohnungen/Suedwest Eingang.jpg', alt: 'Entrance' },
+];
+---
+
+<ApartmentLayout
+  title="Apartment South-West"
+  subtitle="Apartment · Ground floor"
+  description="<strong>Apartment South-West</strong> is located on the ground floor on the south-west side of Koflerhof – a sunny and welcoming apartment for 4–5 people. The highlight is the bright conservatory, which can be used as an additional living space and fills the apartment with wonderful light.<br/><br/>The private outdoor area with barbecue invites you to spend pleasant evenings outside. Two bedrooms with a total of two double beds and a sofa bed provide ample space for the whole family."
+  headerImage="/images/ferienwohnungen/Suedwest Wintergarten 1.jpeg"
+  persons="4–5"
+  floor="Ground floor, south-west side"
+  bedrooms="2"
+  extra="Conservatory & barbecue terrace"
+  badge="Especially family-friendly"
+  beds={[
+    '2× double beds',
+    'Sofa bed for 1–2 (living room)',
+  ]}
+  features={[
+    'Fully equipped kitchen',
+    'Bright conservatory',
+    'Private outdoor area with barbecue',
+    'TV/Sat in all rooms',
+    'Free Wi-Fi',
+    'Washing machine',
+    'Controlled ventilation',
+    'Air conditioning',
+    'Bathroom',
+  ]}
+  inclusions={[
+    'Bed linen & towels',
+    'Baby & toddler equipment on request',
+    'Vegetables & herbs from the garden',
+    'Home-made raspberry jam',
+    'Private barbecue in outdoor area',
+    'Roll service (on request)',
+    'Final cleaning bookable separately',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Suedwest Skizze.png"
+  prevApt={{ name: 'Apartment South-East', href: '/en/ferienwohnungen/suedost' }}
+  nextApt={{ name: 'Apartment East', href: '/en/ferienwohnungen/ost' }}
+/>

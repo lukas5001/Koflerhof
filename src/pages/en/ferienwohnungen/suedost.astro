@@ -1,0 +1,55 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Suedost Wintergarten.jpg', alt: 'Conservatory' },
+  { src: '/images/ferienwohnungen/Suedost Wintergarten 2.jpg', alt: 'Conservatory 2' },
+  { src: '/images/ferienwohnungen/Suedost Wohnraum.jpeg', alt: 'Living room' },
+  { src: '/images/ferienwohnungen/Suedost Küche.jpeg', alt: 'Kitchen' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 1.jpeg', alt: 'Bedroom 1' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 2.jpeg', alt: 'Bedroom 2' },
+  { src: '/images/ferienwohnungen/Suedost Schlafzimmer 3.jpeg', alt: 'Bedroom 3' },
+  { src: '/images/ferienwohnungen/Suedost Bad.jpeg', alt: 'Bathroom' },
+  { src: '/images/ferienwohnungen/Suedost Bad TagesWC.jpeg', alt: 'Guest WC' },
+  { src: '/images/ferienwohnungen/Suedost Eingang 1.jpeg', alt: 'Entrance' },
+];
+---
+
+<ApartmentLayout
+  title="Apartment South-East"
+  subtitle="Apartment · 1st floor"
+  description="<strong>Apartment South-East</strong> is our largest and most spacious apartment – ideal for larger families or groups of up to 6 people. Located on the first floor, it features three bedrooms, a bright living room and a charming conservatory that serves as an additional relaxation space.<br/><br/>The generous floor plan gives everyone plenty of room without feeling crowded. A fully equipped kitchen, two bathroom facilities (full bathroom + guest WC) and modern furnishings ensure maximum comfort during your holiday."
+  headerImage="/images/ferienwohnungen/Suedost Wintergarten.jpg"
+  persons="6"
+  floor="1st floor, east side"
+  bedrooms="3"
+  extra="Conservatory"
+  badge="Up to 6 persons"
+  beds={[
+    '2× double beds',
+    '2× single beds',
+    'Sofa bed in living room',
+  ]}
+  features={[
+    'Fully equipped kitchen',
+    'Bright conservatory',
+    'TV/Sat in all rooms',
+    'Free Wi-Fi',
+    'Washing machine',
+    'Controlled ventilation',
+    'Air conditioning',
+    'Full bathroom + guest WC',
+  ]}
+  inclusions={[
+    'Bed linen & towels',
+    'Baby & toddler equipment on request',
+    'Vegetables & herbs from the garden',
+    'Home-made raspberry jam',
+    'Roll service (on request)',
+    'Final cleaning bookable separately',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Suedost Skizze.png"
+  prevApt={{ name: 'Apartment West 2', href: '/en/ferienwohnungen/west2' }}
+  nextApt={{ name: 'Apartment South-West', href: '/en/ferienwohnungen/suedwest' }}
+/>

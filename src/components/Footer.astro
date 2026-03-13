@@ -1,9 +1,14 @@
 ---
+import { getLangFromUrl, getLangPrefix } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang].footer;
+const prefix = getLangPrefix(lang);
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-stone-900 text-white">
-  <!-- Main footer content -->
   <div class="container mx-auto px-6 md:px-12 py-16 md:py-20">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
@@ -11,12 +16,7 @@ const year = new Date().getFullYear();
       <div class="lg:col-span-1">
         <div class="font-serif text-3xl text-white mb-1">Koflerhof</div>
         <div class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Familie Griesser</div>
-        <p class="text-stone-400 text-sm leading-relaxed mb-6">
-          Herzlich willkommen auf unserem Hof in Kastelruth,
-          mitten im Herzen Südtirols – umgeben von Natur,
-          Wärme und Gastfreundschaft.
-        </p>
-        <!-- Social / booking platforms -->
+        <p class="text-stone-400 text-sm leading-relaxed mb-6">{t.tagline}</p>
         <div class="flex flex-wrap gap-3">
           <a href="https://www.traum-ferienwohnungen.de" target="_blank" rel="noopener" class="text-[10px] tracking-widest uppercase text-stone-500 hover:text-gold transition-colors border border-stone-700 hover:border-gold px-2 py-1">Traum-FW</a>
           <a href="https://www.booking.com" target="_blank" rel="noopener" class="text-[10px] tracking-widest uppercase text-stone-500 hover:text-gold transition-colors border border-stone-700 hover:border-gold px-2 py-1">Booking</a>
@@ -26,17 +26,17 @@ const year = new Date().getFullYear();
 
       <!-- Navigation -->
       <div>
-        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Navigation</h3>
+        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">{t.navHeading}</h3>
         <ul class="space-y-3">
           {[
-            { label: 'Startseite', href: '/' },
-            { label: 'Ferienwohnungen', href: '/ferienwohnungen' },
-            { label: 'Hofleben', href: '/hofleben' },
-            { label: 'Südtirol erleben', href: '/jahreszeiten' },
-            { label: 'Angebote', href: '/angebote' },
-            { label: 'Preise', href: '/preise' },
-            { label: 'Bewertungen', href: '/bewertungen' },
-            { label: 'Anfrage', href: '/anfrage' },
+            { label: t.home, href: `${prefix}/` },
+            { label: t.apartments, href: `${prefix}/ferienwohnungen` },
+            { label: t.farmlife, href: `${prefix}/hofleben` },
+            { label: t.southtyrol, href: `${prefix}/jahreszeiten` },
+            { label: t.offers, href: `${prefix}/angebote` },
+            { label: t.prices, href: `${prefix}/preise` },
+            { label: t.reviews, href: `${prefix}/bewertungen` },
+            { label: t.request, href: `${prefix}/anfrage` },
           ].map(item => (
             <li>
               <a href={item.href} class="text-stone-400 text-sm hover:text-gold transition-colors tracking-wide">{item.label}</a>
@@ -45,16 +45,16 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Wohnungen -->
+      <!-- Apartments -->
       <div>
-        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Wohnungen</h3>
+        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">{t.aptsHeading}</h3>
         <ul class="space-y-3">
           {[
-            { label: 'Wohnung Ost (4–5 Pers.)', href: '/ferienwohnungen/ost' },
-            { label: 'Wohnung West (3–4 Pers.)', href: '/ferienwohnungen/west' },
-            { label: 'Wohnung West 2 (4 Pers.)', href: '/ferienwohnungen/west2' },
-            { label: 'Wohnung Suedost (6 Pers.)', href: '/ferienwohnungen/suedost' },
-            { label: 'Wohnung Suedwest (4–5 Pers.)', href: '/ferienwohnungen/suedwest' },
+            { label: t.aptEast, href: `${prefix}/ferienwohnungen/ost` },
+            { label: t.aptWest, href: `${prefix}/ferienwohnungen/west` },
+            { label: t.aptWest2, href: `${prefix}/ferienwohnungen/west2` },
+            { label: t.aptSouthEast, href: `${prefix}/ferienwohnungen/suedost` },
+            { label: t.aptSouthWest, href: `${prefix}/ferienwohnungen/suedwest` },
           ].map(item => (
             <li>
               <a href={item.href} class="text-stone-400 text-sm hover:text-gold transition-colors tracking-wide">{item.label}</a>
@@ -63,9 +63,9 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Kontakt & Lage -->
+      <!-- Contact -->
       <div>
-        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Kontakt & Lage</h3>
+        <h3 class="text-xs tracking-[0.3em] uppercase text-gold mb-6">{t.contactHeading}</h3>
         <address class="not-italic space-y-3 text-stone-400 text-sm">
           <div class="flex gap-3">
             <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
@@ -73,17 +73,14 @@ const year = new Date().getFullYear();
           </div>
           <div class="flex gap-3">
             <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-            <div>
-              <a href="tel:+390471706038" class="hover:text-gold transition-colors block">+39 0471 706 038</a>
-              <a href="tel:+393404191634" class="hover:text-gold transition-colors block">+39 340 4191634</a>
-            </div>
+            <a href="tel:+393404191634" class="hover:text-gold transition-colors">+39 340 4191634</a>
           </div>
           <div class="flex gap-3">
             <svg class="w-4 h-4 text-gold mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
             <a href="mailto:info@koflerhof.bz" class="hover:text-gold transition-colors">info@koflerhof.bz</a>
           </div>
           <div class="mt-4">
-            <a href="/lage" class="text-xs tracking-widest uppercase text-gold hover:text-yellow-400 transition-colors">Anfahrt anzeigen →</a>
+            <a href={`${prefix}/lage`} class="text-xs tracking-widest uppercase text-gold hover:text-yellow-400 transition-colors">{t.directions}</a>
           </div>
         </address>
       </div>
@@ -93,13 +90,11 @@ const year = new Date().getFullYear();
   <!-- Bottom bar -->
   <div class="border-t border-stone-800">
     <div class="container mx-auto px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-stone-600 text-xs tracking-wider">
-        © {year} Koflerhof · Familie Griesser · Kastelruth, Südtirol
-      </p>
+      <p class="text-stone-600 text-xs tracking-wider">{ui[lang].copyright(year)}</p>
       <div class="flex gap-6 text-xs tracking-wider text-stone-600">
-        <a href="/datenschutz" class="hover:text-gold transition-colors">Datenschutz</a>
-        <a href="/impressum" class="hover:text-gold transition-colors">Impressum</a>
-        <a href="http://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" class="hover:text-gold transition-colors">EU-Streitbeilegung</a>
+        <a href={`${prefix}/datenschutz`} class="hover:text-gold transition-colors">{t.privacy}</a>
+        <a href={`${prefix}/impressum`} class="hover:text-gold transition-colors">{t.imprint}</a>
+        <a href="http://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" class="hover:text-gold transition-colors">{t.euDispute}</a>
       </div>
     </div>
   </div>

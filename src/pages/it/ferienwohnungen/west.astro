@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West Wohnraum 2.jpeg', alt: 'Soggiorno' },
+  { src: '/images/ferienwohnungen/West Wohnraum 3.jpg', alt: 'Soggiorno 2' },
+  { src: '/images/ferienwohnungen/West Kueche 1.jpg', alt: 'Cucina' },
+  { src: '/images/ferienwohnungen/West Kueche 2.jpg', alt: 'Cucina 2' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 1.jpeg', alt: 'Camera da letto 1' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 2.jpeg', alt: 'Camera da letto 2' },
+  { src: '/images/ferienwohnungen/West Bad.jpeg', alt: 'Bagno' },
+  { src: '/images/ferienwohnungen/West Eingangsbereich.jpg', alt: 'Ingresso' },
+];
+---
+
+<ApartmentLayout
+  title="Appartamento Ovest"
+  subtitle="Appartamento · Piano terra"
+  description="L'<strong>Appartamento Ovest</strong> si trova al piano terra sul lato nord del Koflerhof e offre un accogliente soggiorno per 3–4 persone. L'ampia cucina-soggiorno con zona cottura moderna invita a cucinare insieme e a trascorrere momenti piacevoli.<br/><br/>Due camere da letto e un divano letto in soggiorno offrono soluzioni flessibili per dormire. L'accesso diretto al giardino rende questo appartamento particolarmente attraente per famiglie che desiderano godersi il giardino, la piscina e i giochi del Koflerhof."
+  headerImage="/images/ferienwohnungen/West Wohnraum 2.jpeg"
+  persons="3–4"
+  floor="Piano terra, lato nord"
+  bedrooms="2"
+  badge="Particolarmente adatto ai bambini"
+  beds={[
+    '1× letto matrimoniale',
+    '1× letto singolo',
+    'Divano letto per 1–2 persone (cucina-soggiorno)',
+  ]}
+  features={[
+    'Cucina completamente attrezzata',
+    'Accesso diretto al giardino',
+    'TV/Sat in tutte le camere',
+    'Wi-Fi gratuito',
+    'Lavatrice',
+    'Ventilazione controllata',
+    'Aria condizionata',
+    'Bagno',
+  ]}
+  inclusions={[
+    'Biancheria da letto e asciugamani',
+    'Attrezzatura per bambini su richiesta',
+    'Verdura & erbe dal giardino',
+    'Marmellata di lamponi (fatta in casa)',
+    'Servizio panini (su richiesta)',
+    'Pulizia finale prenotabile separatamente',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Wohnung-west-plan.jpg"
+  prevApt={{ name: 'Appartamento Est', href: '/it/ferienwohnungen/ost' }}
+  nextApt={{ name: 'Appartamento Ovest 2', href: '/it/ferienwohnungen/west2' }}
+/>

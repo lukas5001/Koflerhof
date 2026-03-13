@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg', alt: 'Soggiorno-sala da pranzo' },
+  { src: '/images/ferienwohnungen/West 2 Wohn- Essbereich.jpeg', alt: 'Soggiorno 2' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer.jpeg', alt: 'Camera da letto' },
+  { src: '/images/ferienwohnungen/West 2 Schlafzimmer 1.jpeg', alt: 'Camera da letto 2' },
+  { src: '/images/ferienwohnungen/West 2 Bad.jpeg', alt: 'Bagno' },
+  { src: '/images/ferienwohnungen/West 2 Balkon.jpeg', alt: 'Balcone privato' },
+  { src: '/images/ferienwohnungen/West 2 Eingangsbereich.jpg', alt: 'Ingresso' },
+];
+---
+
+<ApartmentLayout
+  title="Appartamento Ovest 2"
+  subtitle="Appartamento · 1° piano"
+  description="L'<strong>Appartamento Ovest 2</strong> si trova al primo piano sul lato ovest del Koflerhof. Un luminoso e accogliente soggiorno-sala da pranzo vi accoglie all'ingresso, e il balcone privato invita a rilassarsi ammirando il paesaggio altoatesino.<br/><br/>Con due camere da letto e quattro posti letto complessivi, questo appartamento è ideale per famiglie o due coppie di amici. L'accesso avviene dal lato ovest dell'edificio tramite una scala riservata."
+  headerImage="/images/ferienwohnungen/West 2 Wohn-Essbereich.jpeg"
+  persons="4"
+  floor="1° piano, lato ovest"
+  bedrooms="2"
+  extra="Balcone privato"
+  badge="Particolarmente adatto ai bambini"
+  beds={[
+    '1× letto matrimoniale',
+    '2× letto singolo',
+  ]}
+  features={[
+    'Cucina completamente attrezzata',
+    'Balcone privato',
+    'TV/Sat in tutte le camere',
+    'Wi-Fi gratuito',
+    'Lavatrice',
+    'Ventilazione controllata',
+    'Aria condizionata',
+    'Bagno',
+  ]}
+  inclusions={[
+    'Biancheria da letto e asciugamani',
+    'Attrezzatura per bambini su richiesta',
+    'Verdura & erbe dal giardino',
+    'Marmellata di lamponi (fatta in casa)',
+    'Gazebo con barbecue (nelle vicinanze)',
+    'Servizio panini (su richiesta)',
+    'Pulizia finale prenotabile separatamente',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/West 2 Grundriss.jpeg"
+  prevApt={{ name: 'Appartamento Ovest', href: '/it/ferienwohnungen/west' }}
+  nextApt={{ name: 'Appartamento Sud-Est', href: '/it/ferienwohnungen/suedost' }}
+/>

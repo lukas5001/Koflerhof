@@ -1,0 +1,52 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/West Wohnraum 2.jpeg', alt: 'Living room' },
+  { src: '/images/ferienwohnungen/West Wohnraum 3.jpg', alt: 'Living room 2' },
+  { src: '/images/ferienwohnungen/West Kueche 1.jpg', alt: 'Kitchen' },
+  { src: '/images/ferienwohnungen/West Kueche 2.jpg', alt: 'Kitchen 2' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 1.jpeg', alt: 'Bedroom 1' },
+  { src: '/images/ferienwohnungen/West Schlafzimmer 2.jpeg', alt: 'Bedroom 2' },
+  { src: '/images/ferienwohnungen/West Bad.jpeg', alt: 'Bathroom' },
+  { src: '/images/ferienwohnungen/West Eingangsbereich.jpg', alt: 'Entrance' },
+];
+---
+
+<ApartmentLayout
+  title="Apartment West"
+  subtitle="Apartment · Ground floor"
+  description="<strong>Apartment West</strong> is located on the ground floor on the north side of Koflerhof and offers a cosy home for 3–4 people. The generous open-plan kitchen-living room with modern cooking area invites you to cook together and spend enjoyable time as a family.<br/><br/>Two bedrooms and a sofa bed in the living area provide flexible sleeping arrangements. Direct garden access makes this apartment particularly appealing for families who want to enjoy the garden, pool and activities at Koflerhof."
+  headerImage="/images/ferienwohnungen/West Wohnraum 2.jpeg"
+  persons="3–4"
+  floor="Ground floor, north side"
+  bedrooms="2"
+  badge="Especially family-friendly"
+  beds={[
+    '1× double bed',
+    '1× single bed',
+    'Sofa bed for 1–2 (kitchen-living room)',
+  ]}
+  features={[
+    'Fully equipped kitchen',
+    'Direct garden access',
+    'TV/Sat in all rooms',
+    'Free Wi-Fi',
+    'Washing machine',
+    'Controlled ventilation',
+    'Air conditioning',
+    'Bathroom',
+  ]}
+  inclusions={[
+    'Bed linen & towels',
+    'Baby & toddler equipment on request',
+    'Vegetables & herbs from the garden',
+    'Home-made raspberry jam',
+    'Roll service (on request)',
+    'Final cleaning bookable separately',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Wohnung-west-plan.jpg"
+  prevApt={{ name: 'Apartment East', href: '/en/ferienwohnungen/ost' }}
+  nextApt={{ name: 'Apartment West 2', href: '/en/ferienwohnungen/west2' }}
+/>

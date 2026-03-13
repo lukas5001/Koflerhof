@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, getLangPrefix } from '../i18n/utils';
+
 interface Props {
   name: string;
   slug: string;
@@ -11,9 +13,20 @@ interface Props {
 }
 
 const { name, slug, persons, floor, bedrooms, highlight, image, badge } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const prefix = getLangPrefix(lang);
+
+const labels = {
+  de: { persons: 'Personen', bedrooms: 'Schlafzimmer', type: 'Ferienwohnung', more: 'Mehr erfahren', details: 'Details ansehen' },
+  it: { persons: 'Persone', bedrooms: 'Camere', type: 'Appartamento', more: 'Scopri di più', details: 'Vedi dettagli' },
+  en: { persons: 'Persons', bedrooms: 'Bedrooms', type: 'Apartment', more: 'Learn more', details: 'View details' },
+};
+
+const l = labels[lang];
 ---
 
-<a href={`/ferienwohnungen/${slug}`} class="group block bg-white overflow-hidden shadow-md card-hover">
+<a href={`${prefix}/ferienwohnungen/${slug}`} class="group block bg-white overflow-hidden shadow-md card-hover">
   <div class="relative aspect-[4/3] overflow-hidden">
     <img
       src={image}
@@ -28,16 +41,16 @@ const { name, slug, persons, floor, bedrooms, highlight, image, badge } = Astro.
       </div>
     )}
     <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <span class="text-white text-xs tracking-widest uppercase border border-white px-3 py-1.5">Details ansehen</span>
+      <span class="text-white text-xs tracking-widest uppercase border border-white px-3 py-1.5">{l.details}</span>
     </div>
   </div>
   <div class="p-6">
-    <div class="font-sans text-[11px] tracking-[0.3em] uppercase text-forest-600 font-semibold mb-1">Ferienwohnung</div>
+    <div class="font-sans text-[11px] tracking-[0.3em] uppercase text-forest-600 font-semibold mb-1">{l.type}</div>
     <h3 class="font-serif text-2xl text-stone-800 mb-3">{name}</h3>
     <div class="flex flex-wrap gap-4 text-sm text-stone-500 mb-4">
       <span class="flex items-center gap-1.5">
         <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
-        {persons} Personen
+        {persons} {l.persons}
       </span>
       <span class="flex items-center gap-1.5">
         <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
@@ -45,12 +58,12 @@ const { name, slug, persons, floor, bedrooms, highlight, image, badge } = Astro.
       </span>
       <span class="flex items-center gap-1.5">
         <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        {bedrooms} Schlafzimmer
+        {bedrooms} {l.bedrooms}
       </span>
     </div>
     <p class="text-stone-600 text-sm leading-relaxed">{highlight}</p>
     <div class="mt-5 flex items-center text-forest-700 text-sm font-medium tracking-wider">
-      Mehr erfahren
+      {l.more}
       <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
     </div>
   </div>

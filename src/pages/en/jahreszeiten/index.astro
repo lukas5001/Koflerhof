@@ -1,0 +1,100 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const seasons = [
+  {
+    name: 'Spring',
+    href: '/en/jahreszeiten/fruehling',
+    dates: 'March – May',
+    image: '/images/hof/Blumen 1.jpg',
+    desc: 'Nature awakening, meadows in bloom and the first warm sunshine. Ideal for hiking, cycling and cultural excursions.',
+    highlights: ['Blossom in the valleys', 'Hiking without summer crowds', 'Towns & culture to discover', 'Tranquillity before peak season'],
+  },
+  {
+    name: 'Summer',
+    href: '/en/jahreszeiten/sommer',
+    dates: 'June – August',
+    image: '/images/hof/Seiser Alm.jpg',
+    desc: 'Hikes on the Seiser Alm, swimming in the Koflerhof pool, cycling through the valleys and breathtaking mountain panoramas.',
+    highlights: ['Hikes on the Seiser Alm', 'Pool & lawn', 'E-Bike tours', 'Swimming lakes nearby'],
+  },
+  {
+    name: 'Autumn',
+    href: '/en/jahreszeiten/herbst',
+    dates: 'September – November',
+    image: '/images/hof/Herbst Toerggelen.jpeg',
+    desc: 'Golden vineyards, the traditional Törggelen with new wine and chestnuts, and crisp autumn air for perfect trekking days.',
+    highlights: ['Törggelen tradition', 'Chestnut forest trails', 'Autumn hikes', 'Cultural city visits'],
+  },
+  {
+    name: 'Winter',
+    href: '/en/jahreszeiten/winter',
+    dates: 'December – March',
+    image: '/images/hof/Winter Skifahren.jpeg',
+    desc: 'World-class ski resorts on the doorstep: Seiser Alm (10 min.) and Grödnertal (20 min.) for skiing, cross-country and snowshoe hikes.',
+    highlights: ['Skiing on the Seiser Alm', 'Grödnertal & Dolomiti Superski', 'Snowshoe hikes & cross-country', 'Christmas markets'],
+  },
+];
+---
+
+<Layout title="South Tyrol in Every Season" description="Discover South Tyrol all year round – spring, summer, autumn and winter each offer unique experiences directly from Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm.jpg" alt="South Tyrol" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">All year round</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Discover South Tyrol</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Every season has something unique to offer – discover it from Koflerhof
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-8">
+        {seasons.map((season) => (
+          <a href={season.href} class="group block bg-white overflow-hidden shadow-md card-hover fade-in">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={season.image} alt={season.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <p class="text-xs tracking-widest uppercase text-gold mb-1">{season.dates}</p>
+                <h2 class="font-serif text-3xl text-white">{season.name}</h2>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-stone-600 mb-6 leading-relaxed">{season.desc}</p>
+              <ul class="grid grid-cols-2 gap-2">
+                {season.highlights.map(h => (
+                  <li class="flex items-center gap-2 text-sm text-stone-600">
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full shrink-0"></span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-6 text-forest-700 text-sm font-medium tracking-wider flex items-center gap-2">
+                Discover {season.name}
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Travel free with the Mobilcard</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-8">
+        Many of our offers include the <strong class="text-gold">South Tyrol Mobilcard</strong> –
+        with it you can travel free of charge on all public transport in South Tyrol.
+        Ideal for day trips to Bozen, Klausen, Brixen and Meran.
+      </p>
+      <a href="/en/angebote" class="btn-gold">View offers with Mobilcard</a>
+    </div>
+  </section>
+
+</Layout>

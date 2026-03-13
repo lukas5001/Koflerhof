@@ -1,0 +1,106 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+const gallery = [
+  { src: '/images/hof/Seiser Alm.jpg', alt: 'Seiser Alm' },
+  { src: '/images/hof/Garten Pool 1.png', alt: 'Garden pool' },
+  { src: '/images/hof/Garten Pool und Trampolin.jpg', alt: 'Pool and trampoline' },
+  { src: '/images/hof/Suedtirol Sommer Rittner Horn.jpeg', alt: 'South Tyrol in summer' },
+  { src: '/images/hof/Koflerhof Hofumgebung Sommer.jpeg', alt: 'Koflerhof in summer' },
+  { src: '/images/hof/Suedtirol Weinberg.jpeg', alt: 'South Tyrolean vineyards' },
+];
+---
+
+<Layout title="Summer in South Tyrol" description="Summer in South Tyrol – hikes on the Seiser Alm, swimming pool, E-Bike tours and mountain panoramas from Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm.jpg" alt="Summer in South Tyrol" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-black/20"></div>
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">June – August</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Summer in South Tyrol</h1>
+      <div class="deco-line"></div>
+    </div>
+  </div>
+
+  <nav class="bg-cream border-b border-stone-200">
+    <div class="container mx-auto px-6 md:px-12 py-3 flex items-center gap-2 text-xs tracking-wider text-stone-500">
+      <a href="/en/" class="hover:text-gold transition-colors">Home</a><span>/</span>
+      <a href="/en/jahreszeiten" class="hover:text-gold transition-colors">Discover South Tyrol</a><span>/</span>
+      <span class="text-stone-700">Summer</span>
+    </div>
+  </nav>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <p class="section-subtitle">Mountains, nature & relaxation</p>
+          <h2 class="section-title mb-6">The most beautiful summer in the Dolomites</h2>
+          <div class="deco-line mx-0 mb-8"></div>
+          <p class="prose-kofler mb-6">
+            Summer in South Tyrol is the season for mountain lovers. Just 10 minutes from Koflerhof,
+            the Seiser Alm opens up with its endless high-altitude hiking trails,
+            panoramic views of the Dolomites and the unspoilt tranquillity of the alpine landscape.
+          </p>
+          <p class="prose-kofler mb-8">
+            In the evening, after a day's hiking, you can relax in the Koflerhof pool,
+            enjoy the sunset on the lawn or barbecue with the family.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            {[
+              'Hikes on the Seiser Alm',
+              'Pool & lawn at Koflerhof',
+              'E-Bike tours through the valleys',
+              'Climbing in the Dolomites',
+              'Swimming lakes nearby',
+              'Restaurants & nightlife',
+            ].map(item => (
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></span>
+                <span class="text-sm text-stone-700">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/en/anfrage" class="btn-primary">Plan your summer holiday</a>
+        </div>
+        <div class="fade-in">
+          <img src="/images/hof/Seiser Alm.jpg" alt="Seiser Alm" class="w-full aspect-[4/3] object-cover shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12 fade-in">
+        <p class="section-subtitle">Gallery</p>
+        <h2 class="section-title">Summer in South Tyrol</h2>
+        <div class="deco-line"></div>
+      </div>
+      <div class="fade-in">
+        <Gallery images={gallery} columns={3} />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Summer holiday at Koflerhof</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        Book early – summer is the most popular season. Send us a non-binding inquiry.
+      </p>
+      <a href="/en/anfrage" class="btn-gold">Inquire now</a>
+    </div>
+  </section>
+
+  <div class="bg-stone-800 py-6">
+    <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="/en/jahreszeiten/fruehling" class="text-white/60 text-sm hover:text-gold transition-colors">← Spring</a>
+      <a href="/en/jahreszeiten" class="text-gold text-sm hover:text-yellow-400 transition-colors">Overview</a>
+      <a href="/en/jahreszeiten/herbst" class="text-white/60 text-sm hover:text-gold transition-colors">Autumn →</a>
+    </div>
+  </div>
+
+</Layout>

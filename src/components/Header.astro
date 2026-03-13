@@ -1,34 +1,46 @@
 ---
-const navItems = [
-  {
-    label: 'Ferienwohnungen',
-    href: '/ferienwohnungen',
-    dropdown: [
-      { label: 'Wohnung Ost', href: '/ferienwohnungen/ost' },
-      { label: 'Wohnung West', href: '/ferienwohnungen/west' },
-      { label: 'Wohnung West 2', href: '/ferienwohnungen/west2' },
-      { label: 'Wohnung Suedost', href: '/ferienwohnungen/suedost' },
-      { label: 'Wohnung Suedwest', href: '/ferienwohnungen/suedwest' },
-    ],
-  },
-  { label: 'Hofleben', href: '/hofleben' },
-  {
-    label: 'Südtirol erleben',
-    href: '/jahreszeiten',
-    dropdown: [
-      { label: 'Frühling', href: '/jahreszeiten/fruehling' },
-      { label: 'Sommer', href: '/jahreszeiten/sommer' },
-      { label: 'Herbst', href: '/jahreszeiten/herbst' },
-      { label: 'Winter', href: '/jahreszeiten/winter' },
-    ],
-  },
-  { label: 'Angebote', href: '/angebote' },
-  { label: 'Preise', href: '/preise' },
-  { label: 'Lage', href: '/lage' },
-  { label: 'Bewertungen', href: '/bewertungen' },
-];
+import { getLangFromUrl, getPathWithoutLang, getLangPrefix } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
+const prefix = getLangPrefix(lang);
+
+const pathWithoutLang = getPathWithoutLang(Astro.url.pathname);
+const deUrl = pathWithoutLang;
+const itUrl = `/it${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+const enUrl = `/en${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
 
 const currentPath = Astro.url.pathname;
+
+const navItems = [
+  {
+    label: t.nav.apartments,
+    href: `${prefix}/ferienwohnungen`,
+    dropdown: [
+      { label: t.nav.aptEast, href: `${prefix}/ferienwohnungen/ost` },
+      { label: t.nav.aptWest, href: `${prefix}/ferienwohnungen/west` },
+      { label: t.nav.aptWest2, href: `${prefix}/ferienwohnungen/west2` },
+      { label: t.nav.aptSouthEast, href: `${prefix}/ferienwohnungen/suedost` },
+      { label: t.nav.aptSouthWest, href: `${prefix}/ferienwohnungen/suedwest` },
+    ],
+  },
+  { label: t.nav.farmlife, href: `${prefix}/hofleben` },
+  {
+    label: t.nav.southtyrol,
+    href: `${prefix}/jahreszeiten`,
+    dropdown: [
+      { label: t.nav.spring, href: `${prefix}/jahreszeiten/fruehling` },
+      { label: t.nav.summer, href: `${prefix}/jahreszeiten/sommer` },
+      { label: t.nav.fall, href: `${prefix}/jahreszeiten/herbst` },
+      { label: t.nav.winter, href: `${prefix}/jahreszeiten/winter` },
+    ],
+  },
+  { label: t.nav.offers, href: `${prefix}/angebote` },
+  { label: t.nav.prices, href: `${prefix}/preise` },
+  { label: t.nav.location, href: `${prefix}/lage` },
+  { label: t.nav.reviews, href: `${prefix}/bewertungen` },
+];
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -41,9 +53,23 @@ const currentPath = Astro.url.pathname;
         +39 340 4191634
       </a>
       <div class="flex items-center gap-2 text-white/60">
-        <span>DE</span><span class="text-white/30">|</span>
-        <a href="#" class="hover:text-gold transition-colors">IT</a><span class="text-white/30">|</span>
-        <a href="#" class="hover:text-gold transition-colors">EN</a>
+        {lang === 'de' ? (
+          <span class="text-gold font-medium">DE</span>
+        ) : (
+          <a href={deUrl} class="hover:text-gold transition-colors">DE</a>
+        )}
+        <span class="text-white/30">|</span>
+        {lang === 'it' ? (
+          <span class="text-gold font-medium">IT</span>
+        ) : (
+          <a href={itUrl} class="hover:text-gold transition-colors">IT</a>
+        )}
+        <span class="text-white/30">|</span>
+        {lang === 'en' ? (
+          <span class="text-gold font-medium">EN</span>
+        ) : (
+          <a href={enUrl} class="hover:text-gold transition-colors">EN</a>
+        )}
       </div>
     </div>
     <!-- Desktop top bar -->
@@ -59,11 +85,23 @@ const currentPath = Astro.url.pathname;
         </a>
       </div>
       <div class="flex items-center gap-3 text-white/70">
-        <span>DE</span>
+        {lang === 'de' ? (
+          <span class="text-gold font-medium">DE</span>
+        ) : (
+          <a href={deUrl} class="hover:text-gold transition-colors">DE</a>
+        )}
         <span class="text-white/30">|</span>
-        <a href="#" class="hover:text-gold transition-colors">IT</a>
+        {lang === 'it' ? (
+          <span class="text-gold font-medium">IT</span>
+        ) : (
+          <a href={itUrl} class="hover:text-gold transition-colors">IT</a>
+        )}
         <span class="text-white/30">|</span>
-        <a href="#" class="hover:text-gold transition-colors">EN</a>
+        {lang === 'en' ? (
+          <span class="text-gold font-medium">EN</span>
+        ) : (
+          <a href={enUrl} class="hover:text-gold transition-colors">EN</a>
+        )}
       </div>
     </div>
   </div>
@@ -71,7 +109,7 @@ const currentPath = Astro.url.pathname;
   <!-- Main nav -->
   <nav id="main-nav" class="flex items-center justify-between px-6 md:px-12 py-6 transition-all duration-500">
     <!-- Logo -->
-    <a href="/" class="flex flex-col items-start group">
+    <a href={`${prefix}/`} class="flex flex-col items-start group">
       <span class="font-serif text-3xl md:text-4xl text-white group-hover:text-gold transition-colors leading-none tracking-wide">Koflerhof</span>
       <span class="font-sans text-[10px] tracking-[0.35em] uppercase text-white/70 group-hover:text-gold/70 transition-colors mt-1">Ferienwohnungen · Südtirol</span>
     </a>
@@ -127,8 +165,8 @@ const currentPath = Astro.url.pathname;
     </ul>
 
     <!-- CTA Button desktop -->
-    <a href="/anfrage" class="hidden lg:inline-block btn-gold py-3 px-7 text-sm">
-      Anfrage senden
+    <a href={`${prefix}/anfrage`} class="hidden lg:inline-block btn-gold py-3 px-7 text-sm">
+      {t.nav.request}
     </a>
 
     <!-- Mobile hamburger -->
@@ -164,9 +202,9 @@ const currentPath = Astro.url.pathname;
         </div>
       ))}
       <div class="pt-6 pb-4 flex flex-col gap-3">
-        <a href="tel:+390471706038" class="text-white/70 text-sm tracking-wider">+39 0471 706 038</a>
+        <a href="tel:+393404191634" class="text-white/70 text-sm tracking-wider">+39 340 4191634</a>
         <a href="mailto:info@koflerhof.bz" class="text-white/70 text-sm tracking-wider">info@koflerhof.bz</a>
-        <a href="/anfrage" class="btn-gold text-center mt-2">Anfrage senden</a>
+        <a href={`${prefix}/anfrage`} class="btn-gold text-center mt-2">{t.nav.request}</a>
       </div>
     </div>
   </div>
@@ -175,15 +213,12 @@ const currentPath = Astro.url.pathname;
 <script>
   const header = document.getElementById('site-header');
   const topBar = document.getElementById('top-bar');
-  const mainNav = document.getElementById('main-nav');
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   const hamburgerLines = document.querySelectorAll('.hamburger-line');
 
-  let isScrolled = false;
-
   function updateHeader() {
-    isScrolled = window.scrollY > 60;
+    const isScrolled = window.scrollY > 60;
     if (isScrolled) {
       header?.classList.add('bg-stone-900/95', 'backdrop-blur-md', 'shadow-xl');
       header?.classList.remove('bg-transparent');
@@ -197,7 +232,6 @@ const currentPath = Astro.url.pathname;
   window.addEventListener('scroll', updateHeader);
   updateHeader();
 
-  // Mobile menu toggle
   hamburger?.addEventListener('click', () => {
     const isOpen = !mobileMenu?.classList.contains('hidden');
     if (isOpen) {

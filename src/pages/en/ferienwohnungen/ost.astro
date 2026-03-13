@@ -1,0 +1,57 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Ost Wohn-Essbereich Groß.png', alt: 'Living-dining area' },
+  { src: '/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg', alt: 'Living room' },
+  { src: '/images/ferienwohnungen/Ost Kueche.jpeg', alt: 'Kitchen' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Eltern 1 Groß.png', alt: 'Master bedroom' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Eltern 2.jpeg', alt: 'Master bedroom 2' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Kinder Groß.png', alt: "Children's bedroom" },
+  { src: '/images/ferienwohnungen/Ost Schlafcouch.png', alt: 'Sofa bed' },
+  { src: '/images/ferienwohnungen/Ost Badezimmer.jpeg', alt: 'Bathroom 1' },
+  { src: '/images/ferienwohnungen/Ost Badezimmer 2.jpeg', alt: 'Bathroom 2' },
+  { src: '/images/ferienwohnungen/Ost Terrasse.jpeg', alt: 'Private terrace' },
+  { src: '/images/ferienwohnungen/Ost Eingang.jpeg', alt: 'Entrance' },
+];
+---
+
+<ApartmentLayout
+  title="Apartment East"
+  subtitle="Apartment · Ground floor"
+  description="<strong>Apartment East</strong> is located on the ground floor on the north side of Koflerhof and offers space for 4–5 people. The generous open-plan kitchen-living room, two separate bedrooms and a private terrace with direct garden access make this apartment the ideal choice for families with children.<br/><br/>The fully equipped kitchen leaves nothing to be desired – from the vegetable knife to the coffee machine, everything is there. A cosy living area with sofa bed provides additional flexibility. In season you can enjoy fresh vegetables and herbs straight from our garden."
+  headerImage="/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg"
+  persons="4–5"
+  floor="Ground floor, north side"
+  bedrooms="2"
+  extra="Private terrace"
+  badge="Especially family-friendly"
+  beds={[
+    '1× double bed (master bedroom)',
+    '2× single beds (children\'s bedroom)',
+    'Sofa bed for 2 (kitchen-living room)',
+  ]}
+  features={[
+    'Fully equipped kitchen',
+    'Private terrace with garden access',
+    'TV/Sat in all rooms',
+    'Free Wi-Fi',
+    'Washing machine',
+    'Controlled ventilation',
+    'Air conditioning',
+    '2 full bathrooms',
+  ]}
+  inclusions={[
+    'Bed linen & towels',
+    'Baby & toddler equipment (cot, highchair)',
+    'Trybike & children\'s toys',
+    'Vegetables & herbs from the garden',
+    'Home-made raspberry jam',
+    'Roll service (on request)',
+    'Final cleaning bookable separately',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Ost Wohnungsskizze.png"
+  prevApt={{ name: 'Apartment South-West', href: '/en/ferienwohnungen/suedwest' }}
+  nextApt={{ name: 'Apartment West', href: '/en/ferienwohnungen/west' }}
+/>

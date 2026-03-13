@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const offers = [
+  {
+    id: 'fruehling',
+    title: 'Spring Awakening',
+    tagline: 'Nature comes alive',
+    dates: '14 March – 28 March 2026',
+    price: 'from €495',
+    image: '/images/hof/Blumen 1.jpg',
+    highlights: ['7 nights for 2 persons', 'Fresh spring air', 'First hikes of the season', 'Blossoming valleys'],
+    desc: 'Experience the spring awakening in South Tyrol – when nature stirs after winter, orchards burst into blossom and the first warm sunshine invites you on walks and hikes. A holiday for body and soul.',
+    season: 'Spring',
+    href: '/en/jahreszeiten/fruehling',
+  },
+  {
+    id: 'bluetezeit',
+    title: 'Blossom Time',
+    tagline: 'South Tyrol at its most beautiful',
+    dates: '11 April – 9 May 2026',
+    price: 'from €505',
+    image: '/images/hof/Blumen 3.jpg',
+    highlights: ['7 nights for 2 persons', 'Mobilcard included', 'Final cleaning included', 'Blossom & hiking'],
+    desc: '7 nights for 2 persons including Mobilcard – travel free of charge on all South Tyrolean public transport and explore towns, culture and nature during the most beautiful blossoming season.',
+    season: 'Spring',
+    href: '/en/jahreszeiten/fruehling',
+  },
+  {
+    id: 'toergelle',
+    title: 'Törggelen Season',
+    tagline: 'Tradition & pleasures',
+    dates: '24 October – 14 November 2026',
+    price: 'from €495',
+    image: '/images/hof/Herbst Toerggelen.jpeg',
+    highlights: ['7 nights for 2 persons', 'Mobilcard included', 'Chestnut forest walks', 'South Tyrolean wine culture'],
+    desc: 'Walk through golden chestnut forests, admire the vineyards in autumn colours and enjoy the traditional Törggelen with new wine, roasted chestnuts and hearty specialities at local farms.',
+    season: 'Autumn',
+    href: '/en/jahreszeiten/herbst',
+  },
+  {
+    id: 'kultur',
+    title: 'Culture & Culinary Week',
+    tagline: 'Relaxation & culinary delights',
+    dates: '14 November – 5 December 2026',
+    price: 'from €380',
+    image: '/images/hof/Weihnachten Adventskranz.jpeg',
+    highlights: ['7 nights', 'Most affordable season', 'Christmas markets', 'Culinary discoveries'],
+    desc: 'Relax in the tranquillity of late autumn, explore the cultural treasures of South Tyrol and experience the first Advent moments at the wonderful Christmas markets in Bozen, Brixen and Klausen.',
+    season: 'Autumn/Winter',
+    href: '/en/jahreszeiten/herbst',
+  },
+  {
+    id: 'ski',
+    title: 'Winter Hiking & Ski Weeks',
+    tagline: 'Snow & adventure',
+    dates: '9 January – 30 January 2027',
+    price: 'from €460',
+    image: '/images/hof/Winter Skifahren.jpeg',
+    highlights: ['7 nights for 2 persons', 'Mobilcard included', 'Final cleaning included', 'Seiser Alm (10 min.)'],
+    desc: '7 nights for 2 persons including Mobilcard and final cleaning. Koflerhof is the ideal base for skiing on the Seiser Alm (10 min.), in the Grödnertal (20 min.) and for snowshoe hikes through the winter landscape.',
+    season: 'Winter',
+    href: '/en/jahreszeiten/winter',
+  },
+  {
+    id: 'lastminute',
+    title: 'Last Minute',
+    tagline: 'Spontaneous & affordable',
+    dates: 'Up to 7 days before arrival',
+    price: '–30% discount',
+    image: '/images/hof/Sonnenuntergang.jpg',
+    highlights: ['Up to 7 days in advance', 'Up to 30% off', 'Spontaneous decision', 'All seasons'],
+    desc: 'Made a spontaneous decision and Koflerhof still has availability? Take advantage of up to 30% off the regular price. Simply send an inquiry and check availability!',
+    season: 'All year',
+    href: '/en/anfrage',
+  },
+];
+---
+
+<Layout title="Special Offers" description="Special offers for your holiday in South Tyrol at Koflerhof – spring, summer, autumn, winter and last minute.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm.jpg" alt="Koflerhof offers" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Special packages</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Our offers</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Discover our packages for every taste and every season
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="space-y-12">
+        {offers.map((offer, idx) => (
+          <div class={`grid lg:grid-cols-2 gap-0 overflow-hidden shadow-xl fade-in ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div class={`relative aspect-video lg:aspect-auto ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <img src={offer.image} alt={offer.title} class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+              <div class="absolute top-6 left-6">
+                <span class="bg-gold text-stone-900 text-xs tracking-widest uppercase px-3 py-1.5">{offer.season}</span>
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span class="font-serif text-3xl md:text-4xl text-white">{offer.price}</span>
+              </div>
+            </div>
+            <div class={`bg-white p-8 md:p-12 flex flex-col justify-center ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <p class="section-subtitle text-left">{offer.dates}</p>
+              <h2 class="font-serif text-3xl text-stone-800 mb-1">{offer.title}</h2>
+              <p class="text-gold italic font-serif text-lg mb-4">{offer.tagline}</p>
+              <div class="deco-line mx-0 mb-6"></div>
+              <p class="text-stone-600 leading-relaxed mb-6">{offer.desc}</p>
+              <ul class="grid grid-cols-2 gap-2 mb-8">
+                {offer.highlights.map(h => (
+                  <li class="flex items-center gap-2 text-sm text-stone-600">
+                    <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div class="flex flex-wrap gap-3">
+                <a href="/en/anfrage" class="btn-primary">Inquire now</a>
+                <a href={offer.href} class="btn-outline">Learn more</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Would you like a personalised offer?</h2>
+      <p class="text-white/80 max-w-xl mx-auto mb-8">
+        No offer quite right for you? Contact us – together we will find the ideal holiday at Koflerhof.
+      </p>
+      <a href="/en/anfrage" class="btn-gold">Send personal inquiry</a>
+    </div>
+  </section>
+
+</Layout>

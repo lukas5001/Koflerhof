@@ -1,0 +1,57 @@
+---
+import ApartmentLayout from '../../../layouts/ApartmentLayout.astro';
+
+const gallery = [
+  { src: '/images/ferienwohnungen/Ost Wohn-Essbereich Groß.png', alt: 'Soggiorno-cucina' },
+  { src: '/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg', alt: 'Soggiorno' },
+  { src: '/images/ferienwohnungen/Ost Kueche.jpeg', alt: 'Cucina' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Eltern 1 Groß.png', alt: 'Camera da letto matrimoniale' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Eltern 2.jpeg', alt: 'Camera matrimoniale 2' },
+  { src: '/images/ferienwohnungen/Ost Schlafzimmer Kinder Groß.png', alt: 'Camera bambini' },
+  { src: '/images/ferienwohnungen/Ost Schlafcouch.png', alt: 'Divano letto' },
+  { src: '/images/ferienwohnungen/Ost Badezimmer.jpeg', alt: 'Bagno 1' },
+  { src: '/images/ferienwohnungen/Ost Badezimmer 2.jpeg', alt: 'Bagno 2' },
+  { src: '/images/ferienwohnungen/Ost Terrasse.jpeg', alt: 'Terrazza privata' },
+  { src: '/images/ferienwohnungen/Ost Eingang.jpeg', alt: 'Ingresso' },
+];
+---
+
+<ApartmentLayout
+  title="Appartamento Est"
+  subtitle="Appartamento · Piano terra"
+  description="L'<strong>Appartamento Est</strong> si trova al piano terra sul lato nord del Koflerhof e offre spazio per 4–5 persone. L'ampia cucina-soggiorno, due camere da letto separate e una terrazza privata con accesso diretto al giardino rendono questo appartamento la scelta ideale per famiglie con bambini.<br/><br/>La cucina completamente attrezzata non lascia nulla a desiderare. Dal coltello per le verdure alla macchina del caffè, c'è tutto. Un accogliente soggiorno con divano letto offre flessibilità aggiuntiva. Stagionalmente potrete gustare verdura fresca ed erbe aromatiche dal nostro giardino."
+  headerImage="/images/ferienwohnungen/Ost Wohnbereich hoehere Pixel.jpg"
+  persons="4–5"
+  floor="Piano terra, lato nord"
+  bedrooms="2"
+  extra="Terrazza privata"
+  badge="Particolarmente adatto ai bambini"
+  beds={[
+    '1× letto matrimoniale (camera genitori)',
+    '2× letto singolo (camera bambini)',
+    'Divano letto per 2 persone (cucina-soggiorno)',
+  ]}
+  features={[
+    'Cucina completamente attrezzata',
+    'Terrazza privata con accesso al giardino',
+    'TV/Sat in tutte le camere',
+    'Wi-Fi gratuito',
+    'Lavatrice',
+    'Ventilazione controllata',
+    'Aria condizionata',
+    '2 bagni completi',
+  ]}
+  inclusions={[
+    'Biancheria da letto e asciugamani',
+    'Attrezzatura per bambini (lettino, seggiolone)',
+    'Trybike e giochi per bambini',
+    'Verdura & erbe dal giardino',
+    'Marmellata di lamponi (fatta in casa)',
+    'Servizio panini (su richiesta)',
+    'Pulizia finale prenotabile separatamente',
+  ]}
+  gallery={gallery}
+  floorPlan="/images/ferienwohnungen/Ost Wohnungsskizze.png"
+  prevApt={{ name: 'Appartamento Sud-Ovest', href: '/it/ferienwohnungen/suedwest' }}
+  nextApt={{ name: 'Appartamento Ovest', href: '/it/ferienwohnungen/west' }}
+/>

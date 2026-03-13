@@ -1,0 +1,100 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const seasons = [
+  {
+    name: 'Primavera',
+    href: '/it/jahreszeiten/fruehling',
+    dates: 'Marzo – Maggio',
+    image: '/images/hof/Blumen 1.jpg',
+    desc: 'Natura che si risveglia, prati in fiore e i primi raggi di sole caldi. Ideale per escursioni, gite in bicicletta e visite culturali.',
+    highlights: ['Fioritura nelle valli', 'Escursioni senza la calura estiva', 'Città & cultura da scoprire', 'Tranquillità prima dell\'alta stagione'],
+  },
+  {
+    name: 'Estate',
+    href: '/it/jahreszeiten/sommer',
+    dates: 'Giugno – Agosto',
+    image: '/images/hof/Seiser Alm.jpg',
+    desc: "Escursioni sull'Alpe di Siusi, bagni nella piscina del Koflerhof, gite in bici nelle valli e panorami montani mozzafiato.",
+    highlights: ["Escursioni sull'Alpe di Siusi", 'Piscina & prato', 'Tour in E-Bike', 'Laghi balneabili nelle vicinanze'],
+  },
+  {
+    name: 'Autunno',
+    href: '/it/jahreszeiten/herbst',
+    dates: 'Settembre – Novembre',
+    image: '/images/hof/Herbst Toerggelen.jpeg',
+    desc: "Vigneti dorati, il tradizionale Törggelen con vino rosso e castagne e l'aria limpida autunnale per giornate di trekking perfette.",
+    highlights: ['Tradizione del Törggelen', 'Sentieri dei castagneti', 'Escursioni autunnali', 'Visita delle città d\'arte'],
+  },
+  {
+    name: 'Inverno',
+    href: '/it/jahreszeiten/winter',
+    dates: 'Dicembre – Marzo',
+    image: '/images/hof/Winter Skifahren.jpeg',
+    desc: "Comprensori sciistici di livello mondiale a due passi: Alpe di Siusi (10 min.) e Val Gardena (20 min.) per sci, fondo e ciaspolate.",
+    highlights: ["Sci sull'Alpe di Siusi", 'Val Gardena & Dolomiti Superski', 'Ciaspolate & sci di fondo', 'Mercatini di Natale'],
+  },
+];
+---
+
+<Layout title="L'Alto Adige in ogni stagione" description="Scoprite l'Alto Adige tutto l'anno – primavera, estate, autunno e inverno offrono esperienze uniche direttamente dal Koflerhof.">
+
+  <div class="relative pt-32 pb-24 md:pt-52 md:pb-32 overflow-hidden bg-stone-900">
+    <img src="/images/hof/Seiser Alm.jpg" alt="Alto Adige" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+    <div class="relative container mx-auto px-6 md:px-12 text-center text-white">
+      <p class="section-subtitle">Tutto l'anno</p>
+      <h1 class="font-serif text-5xl md:text-6xl text-white mb-4">Scopri l'Alto Adige</h1>
+      <div class="deco-line"></div>
+      <p class="text-white/80 text-lg mt-6 max-w-2xl mx-auto">
+        Ogni stagione ha qualcosa di unico da offrire – scopritelo dal Koflerhof
+      </p>
+    </div>
+  </div>
+
+  <section class="py-24 md:py-32 bg-linen">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid md:grid-cols-2 gap-8">
+        {seasons.map((season) => (
+          <a href={season.href} class="group block bg-white overflow-hidden shadow-md card-hover fade-in">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={season.image} alt={season.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <p class="text-xs tracking-widest uppercase text-gold mb-1">{season.dates}</p>
+                <h2 class="font-serif text-3xl text-white">{season.name}</h2>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-stone-600 mb-6 leading-relaxed">{season.desc}</p>
+              <ul class="grid grid-cols-2 gap-2">
+                {season.highlights.map(h => (
+                  <li class="flex items-center gap-2 text-sm text-stone-600">
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full shrink-0"></span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-6 text-forest-700 text-sm font-medium tracking-wider flex items-center gap-2">
+                Scopri {season.name}
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-forest-700 text-white">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Viaggiate gratis con la Mobilcard</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-8">
+        In molte nostre offerte è inclusa la <strong class="text-gold">Mobilcard Alto Adige</strong> –
+        con essa viaggiate gratuitamente con tutti i mezzi pubblici in Alto Adige.
+        Ideale per gite a Bolzano, Chiusa, Bressanone e Merano.
+      </p>
+      <a href="/it/angebote" class="btn-gold">Vedi offerte con Mobilcard</a>
+    </div>
+  </section>
+
+</Layout>
